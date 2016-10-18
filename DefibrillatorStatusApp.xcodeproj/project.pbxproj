@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */; };
-		D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */; };
+		D3E0B0D41DB3FA4D00943F19 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* BluetoothController.swift */; };
 		D3E0B0D71DB3FA4D00943F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */; };
 		D3E0B0D91DB3FA4D00943F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */; };
 		D3E0B0DC1DB3FA4D00943F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */; };
-		D3E0B0E71DB3FA4E00943F19 /* DefibrillatorStatusAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0E61DB3FA4E00943F19 /* DefibrillatorStatusAppTests.swift */; };
 		D3E0B0F21DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */; };
+		D3E0B1001DB416DB00943F19 /* BluetoothControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0FF1DB416DB00943F19 /* BluetoothControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,17 +36,17 @@
 /* Begin PBXFileReference section */
 		D3E0B0CE1DB3FA4D00943F19 /* DefibrillatorStatusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefibrillatorStatusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D3E0B0D31DB3FA4D00943F19 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		D3E0B0D61DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E0B0DB1DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3E0B0DD1DB3FA4D00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E0B0E21DB3FA4E00943F19 /* DefibrillatorStatusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefibrillatorStatusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3E0B0E61DB3FA4E00943F19 /* DefibrillatorStatusAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefibrillatorStatusAppTests.swift; sourceTree = "<group>"; };
 		D3E0B0E81DB3FA4E00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E0B0ED1DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefibrillatorStatusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefibrillatorStatusAppUITests.swift; sourceTree = "<group>"; };
 		D3E0B0F31DB3FA4E00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E0B0FF1DB416DB00943F19 /* BluetoothControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */,
-				D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */,
+				D3E0B0D31DB3FA4D00943F19 /* BluetoothController.swift */,
 				D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */,
 				D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */,
 				D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */,
@@ -110,8 +110,8 @@
 		D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3E0B0E61DB3FA4E00943F19 /* DefibrillatorStatusAppTests.swift */,
 				D3E0B0E81DB3FA4E00943F19 /* Info.plist */,
+				D3E0B0FF1DB416DB00943F19 /* BluetoothControllerTests.swift */,
 			);
 			path = DefibrillatorStatusAppTests;
 			sourceTree = "<group>";
@@ -199,6 +199,7 @@
 					D3E0B0E11DB3FA4E00943F19 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 353TD9TL6M;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D3E0B0CD1DB3FA4D00943F19;
 					};
@@ -262,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */,
+				D3E0B0D41DB3FA4D00943F19 /* BluetoothController.swift in Sources */,
 				D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0B0E71DB3FA4E00943F19 /* DefibrillatorStatusAppTests.swift in Sources */,
+				D3E0B1001DB416DB00943F19 /* BluetoothControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,11 +443,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DefibrillatorStatusApp.app/DefibrillatorStatusApp";
 			};
@@ -457,6 +460,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -514,6 +518,7 @@
 				D3E0B0F81DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E0B0F91DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +527,7 @@
 				D3E0B0FB1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E0B0FC1DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +536,7 @@
 				D3E0B0FE1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
