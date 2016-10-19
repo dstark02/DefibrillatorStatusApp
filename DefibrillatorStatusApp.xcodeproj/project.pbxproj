@@ -84,7 +84,7 @@
 				D328C3201DB8031400E3485B /* BluetoothState.swift */,
 				D328C3221DB803DC00E3485B /* BluetoothManager.swift */,
 			);
-			name = BluetoothManager;
+			path = BluetoothManager;
 			sourceTree = "<group>";
 		};
 		D3E0B0C51DB3FA4D00943F19 = {
