@@ -9,4 +9,4 @@ build_project:
   tags:
     - ios_10
     - xcode_8
-    - osx_10-12
+    - osx_10_12
