@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9" : 9223372036854775807,
+    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "28455F07-5FD3-49CA-B220-B94B24BD4DF1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9" : "DefibrillatorStatusApp\/",
+    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DefibrillatorStatusApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DefibrillatorStatusApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.eeecs.qub.ac.uk:40103947\/DefibrillatorStatusApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CB584C1F715F3768F4EC43696D5A369C216B8B39"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.eeecs.qub.ac.uk:40103947\/DefibrillatorStatusApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9"
+    }
+  ]
+}
