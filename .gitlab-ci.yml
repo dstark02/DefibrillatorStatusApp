@@ -4,7 +4,7 @@ stages:
 build_project:
   stage: build
   script:
-    - xcodebuild clean -project DefibrillatorStatus.xcodeproj -scheme DefibrillatorStatus | xcpretty
-    - xcodebuild test -project DefibrillatorStatus.xcodeproj -scheme DefibrillatorStatus -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.0' | xcpretty -s
+    - xcodebuild clean -project DefibrillatorStatusApp.xcodeproj -scheme DefibrillatorStatusApp | xcpretty
+    - xcodebuild test -project DefibrillatorStatusApp.xcodeproj -scheme DefibrillatorStatusApp -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.0' | xcpretty -s
   tags:
     - ios
