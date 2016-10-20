@@ -1,17 +1,20 @@
 //
-//  BluetoothControllerTests.swift
+//  BluetoothManagerTests.swift
 //  DefibrillatorStatusApp
 //
-//  Created by David Stark on 16/10/2016.
+//  Created by David Stark on 19/10/2016.
 //  Copyright © 2016 David Stark. All rights reserved.
 //
 
 import XCTest
 @testable import DefibrillatorStatusApp
 
-class BluetoothControllerTests: XCTestCase {
+class BluetoothManagerTests: XCTestCase {
+    
+    var bluetoothManager: BluetoothManager!
     
     override func setUp() {
+        bluetoothManager = BluetoothManager()
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -21,10 +24,13 @@ class BluetoothControllerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testScanForPeripherals() {
-        let bluetoothController = BluetoothController()
-        
-        
+    func testGetBluetoothState() {
+        XCTAssertEqual(BluetoothState.Started, bluetoothManager.getBluetoothState())
     }
     
+    func testScanForDefibrillator() {
+        bluetoothManager.scanForDefibrillators()
+        XCTAssertEqual(BluetoothState.Scanning, bluetoothManager.getBluetoothState())
+    }
 }
+
