@@ -32,5 +32,7 @@ class BluetoothManagerTests: XCTestCase {
         bluetoothManager.scanForDefibrillators()
         XCTAssertEqual(BluetoothState.Scanning, bluetoothManager.getBluetoothState())
     }
+    
+    
+    
 }
-

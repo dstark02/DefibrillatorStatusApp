@@ -10,8 +10,10 @@
 		D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3201DB8031400E3485B /* BluetoothState.swift */; };
 		D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3221DB803DC00E3485B /* BluetoothManager.swift */; };
 		D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */; };
+		D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */; };
+		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
 		D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */; };
-		D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */; };
+		D3E0B0D41DB3FA4D00943F19 /* BluetoothScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* BluetoothScanController.swift */; };
 		D3E0B0D71DB3FA4D00943F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */; };
 		D3E0B0D91DB3FA4D00943F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */; };
 		D3E0B0DC1DB3FA4D00943F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */; };
@@ -39,9 +41,11 @@
 		D328C3201DB8031400E3485B /* BluetoothState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothState.swift; sourceTree = "<group>"; };
 		D328C3221DB803DC00E3485B /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerTests.swift; sourceTree = "<group>"; };
+		D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerDelegate.swift; sourceTree = "<group>"; };
+		D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerProtocol.swift; sourceTree = "<group>"; };
 		D3E0B0CE1DB3FA4D00943F19 /* DefibrillatorStatusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefibrillatorStatusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D3E0B0D31DB3FA4D00943F19 /* BluetoothScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothScanController.swift; sourceTree = "<group>"; };
 		D3E0B0D61DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E0B0DB1DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +87,21 @@
 			children = (
 				D328C3201DB8031400E3485B /* BluetoothState.swift */,
 				D328C3221DB803DC00E3485B /* BluetoothManager.swift */,
+				D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */,
+				D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */,
 			);
 			path = BluetoothManager;
+			sourceTree = "<group>";
+		};
+		D36C01721DB9841D00E19158 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */,
+				D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */,
+				D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */,
+				D3E0B0DD1DB3FA4D00943F19 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D3E0B0C51DB3FA4D00943F19 = {
@@ -111,12 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				D328C31F1DB8008B00E3485B /* BluetoothManager */,
-				D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */,
-				D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */,
 				D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */,
-				D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */,
-				D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */,
-				D3E0B0DD1DB3FA4D00943F19 /* Info.plist */,
+				D3E0B0D31DB3FA4D00943F19 /* BluetoothScanController.swift */,
+				D36C01721DB9841D00E19158 /* Supporting Files */,
 			);
 			path = DefibrillatorStatusApp;
 			sourceTree = "<group>";
@@ -278,7 +292,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */,
+				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
+				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
+				D3E0B0D41DB3FA4D00943F19 /* BluetoothScanController.swift in Sources */,
 				D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */,
 				D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */,
 				D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */,
