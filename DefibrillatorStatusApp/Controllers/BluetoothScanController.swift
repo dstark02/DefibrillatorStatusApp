@@ -11,19 +11,19 @@ import UIKit
 class BluetoothScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
     
     // MARK: Properties
-    var bluetoothManager: BluetoothManagerProtocol?
+    
+    var bluetoothManager : BluetoothManagerProtocol!
     @IBOutlet weak var bluetoothScanView: UITableView!
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    // MARK: viewDidLoad Method
     
+    // MARK: viewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bluetoothManager = BluetoothManager()
-        bluetoothManager?.delegate = self
+        bluetoothManager.delegate = self
         bluetoothScanView.delegate = self
         bluetoothScanView.dataSource = self
         activityIndicator.hidesWhenStopped = true
@@ -34,18 +34,33 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // MARK: Bluetooth Methods
     
     @IBAction func switchToggled(_ sender: Any) {
         if bluetoothSwitch.isOn {
-            bluetoothManager?.scanForDefibrillators()
+            bluetoothManager.scanForDefibrillators()
         } else {
-            bluetoothManager?.stopScan()
+            bluetoothManager.stopScan()
+        }
+    }
+    
+    func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
+        
+        switch bluetoothState {
+        case .Scanning:
+            updateScanningView()
+        case.FoundDefibrillator:
+            bluetoothScanView.reloadData()
+            bluetoothScanView.isHidden = false
+        case.Stopped:
+            updateStoppedScanningView()
+        default: break
+            
         }
     }
     
     
-    
+    // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Defibrillators"
@@ -55,51 +70,38 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         return "Select Device to see Events on it"
     }
     
-    // MARK: Bluetooth State Method
-    
-    func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
-        
-        switch bluetoothState {
-        case .Scanning:
-            scanLabel.text = "SCANNING"
-            scanLabel.isHidden = false
-            activityIndicator.startAnimating()
-        case.FoundDefibrillator:
-            bluetoothScanView.reloadData()
-            bluetoothScanView.isHidden = false
-        case.Stopped:
-            bluetoothSwitch.setOn(false, animated: true)
-            scanLabel.text = "COULDN'T FIND DEVICE, MAKE SURE DEVICE IS IN RANGE"
-            activityIndicator.stopAnimating()
-        default: break
-            
-        }
-    }
-    
-    
-    // MARK: UITableView methods
-    
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        
-        if let peripheralName = bluetoothManager?.defibrillatorList[indexPath.row] {
-            cell.textLabel?.text = peripheralName
-            return cell
-        }
-        
-        cell.textLabel?.text = "nothing"
+        let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
+        cell.textLabel?.text = peripheralName
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if let _ = bluetoothManager?.defibrillatorList.count {
-            return bluetoothManager!.defibrillatorList.count
-        }
-        return 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return (bluetoothManager.defibrillatorList.count)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
+        bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
     }
     
     
+    // MARK: Helper Methods
+    
+    func updateScanningView() {
+        scanLabel.text = "SCANNING"
+        scanLabel.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func updateStoppedScanningView() {
+        bluetoothSwitch.setOn(false, animated: true)
+        scanLabel.text = "FINISHED SCAN, RETRY IF NO DEVICES LISTED"
+        activityIndicator.stopAnimating()
+    }
 }
 

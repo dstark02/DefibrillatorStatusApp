@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import CoreBluetooth
 
 protocol BluetoothManagerProtocol {
     
     var delegate: BluetoothManagerDelegate? { get set}
     func scanForDefibrillators()
     func stopScan()
-    var defibrillatorList : [String] { get set}
+    func connectToDefibrillator(peripheral : CBPeripheral)
+    var defibrillatorList : [CBPeripheral] { get set}
 }
