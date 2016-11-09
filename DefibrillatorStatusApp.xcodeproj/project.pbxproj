@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */; };
-		D327E0A71DD3B5F500A66CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D327E0A31DD3B5F500A66CAF /* Assets.xcassets */; };
-		D327E0A91DD3B5F500A66CAF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D327E0A51DD3B5F500A66CAF /* Info.plist */; };
-		D327E0B11DD3B93F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
-		D327E0B21DD3B93F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
+		D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
+		D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
+		D327E0B71DD3E07800A66CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D327E0A31DD3B5F500A66CAF /* Assets.xcassets */; };
 		D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3201DB8031400E3485B /* BluetoothState.swift */; };
 		D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3221DB803DC00E3485B /* BluetoothManager.swift */; };
 		D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */; };
@@ -180,7 +179,7 @@
 			buildPhases = (
 				D3E0B0CA1DB3FA4D00943F19 /* Sources */,
 				D3E0B0CB1DB3FA4D00943F19 /* Frameworks */,
-				D3E0B0CC1DB3FA4D00943F19 /* Resources */,
+				D327E0B41DD3E06500A66CAF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -278,14 +277,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D3E0B0CC1DB3FA4D00943F19 /* Resources */ = {
+		D327E0B41DD3E06500A66CAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D327E0B11DD3B93F00A66CAF /* LaunchScreen.storyboard in Resources */,
-				D327E0A71DD3B5F500A66CAF /* Assets.xcassets in Resources */,
-				D327E0A91DD3B5F500A66CAF /* Info.plist in Resources */,
-				D327E0B21DD3B93F00A66CAF /* Main.storyboard in Resources */,
+				D327E0B71DD3E07800A66CAF /* Assets.xcassets in Resources */,
+				D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */,
+				D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

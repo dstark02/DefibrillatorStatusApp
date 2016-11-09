@@ -15,7 +15,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     
     var centralManager : CBCentralManager?
     let defibrillatorServiceUUID = CBUUID(string: "12ab")
-    var defibrillatorList: [String]
+    var defibrillatorList: [CBPeripheral]
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -27,9 +27,8 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     
     override init() {
         bluetoothState = BluetoothState.Started
-        defibrillatorList = [String]()
+        defibrillatorList = [CBPeripheral]()
         super.init()
-        
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
@@ -46,12 +45,13 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
     }
     
-    
-    
-    func stopScan()
-    {
+    func stopScan() {
         centralManager?.stopScan()
         bluetoothState = .Stopped
+    }
+    
+    func connectToDefibrillator(peripheral : CBPeripheral) {
+        centralManager?.connect(peripheral, options: nil)
     }
     
     
@@ -61,12 +61,9 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
                         rssi RSSI: NSNumber) {
         
         print(peripheral.name ?? "Defib")
-        if let name = peripheral.name {
-            defibrillatorList.append(name)
-        }
+        defibrillatorList.append(peripheral)
         
         bluetoothState = .FoundDefibrillator
-        // centralManager?.connect(peripheral, options: nil)
     }
     
     // MARK: CBCentral required method
