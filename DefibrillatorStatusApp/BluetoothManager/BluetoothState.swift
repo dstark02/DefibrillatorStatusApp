@@ -11,6 +11,7 @@ import Foundation
 enum BluetoothState {
     case Started
     case Scanning
+    case Stopped
     case FoundDefibrillator
     case ConnectedToDefibrillator
 }
