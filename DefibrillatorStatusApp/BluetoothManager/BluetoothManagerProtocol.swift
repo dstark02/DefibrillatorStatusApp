@@ -12,5 +12,6 @@ protocol BluetoothManagerProtocol {
     
     var delegate: BluetoothManagerDelegate? { get set}
     func scanForDefibrillators()
+    func stopScan()
     var defibrillatorList : [String] { get set}
 }

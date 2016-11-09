@@ -43,15 +43,28 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         centralManager?.scanForPeripherals(withServices: [defibrillatorServiceUUID], options: nil)
         bluetoothState = .Scanning
         print("scanning")
+        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
     }
+    
+    
+    
+    func stopScan()
+    {
+        centralManager?.stopScan()
+        bluetoothState = .Stopped
+    }
+    
     
     func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
         
-        print(peripheral.name)
-        defibrillatorList.append(peripheral.name!)
+        print(peripheral.name ?? "Defib")
+        if let name = peripheral.name {
+            defibrillatorList.append(name)
+        }
+        
         bluetoothState = .FoundDefibrillator
         // centralManager?.connect(peripheral, options: nil)
     }
@@ -59,21 +72,23 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     // MARK: CBCentral required method
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch central.state {
-        case.poweredOn:
-            scanForDefibrillators()
-        case.poweredOff:
-            print("Turn Bluetooth on")
-        case.unauthorized:
-            print("Unautorized")
-        case.resetting:
-            print("resetting")
-        case.unknown:
-            print("unknown")
-        case.unsupported:
-            print("Unsupported")
-            
-        }
+        
     }
+     //   switch central.state {
+       // case.poweredOn:
+         //   print("Bluetooth is on")
+       // case.poweredOff:
+       //     print("Turn Bluetooth on")
+       // case.unauthorized:
+         //   print("Unautorized")
+       // case.resetting:
+         //   print("resetting")
+        //case.unknown:
+        //    print("unknown")
+        //case.unsupported:
+          //  print("Unsupported")
+            
+       // }
+    //}
     
 }

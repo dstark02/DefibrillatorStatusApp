@@ -11,26 +11,48 @@ import UIKit
 class BluetoothScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
     
     // MARK: Properties
-    
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var bluetoothScanView: UITableView!
     var bluetoothManager: BluetoothManagerProtocol?
+    @IBOutlet weak var bluetoothScanView: UITableView!
+    @IBOutlet weak var bluetoothSwitch: UISwitch!
+    @IBOutlet weak var scanLabel: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     // MARK: viewDidLoad Method
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bluetoothManager = BluetoothManager()
         bluetoothManager?.delegate = self
-        
         bluetoothScanView.delegate = self
         bluetoothScanView.dataSource = self
+        activityIndicator.hidesWhenStopped = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    @IBAction func switchToggled(_ sender: Any) {
+        if bluetoothSwitch.isOn {
+            bluetoothManager?.scanForDefibrillators()
+        } else {
+            bluetoothManager?.stopScan()
+        }
+    }
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Defibrillators"
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Select Device to see Events on it"
     }
     
     // MARK: Bluetooth State Method
@@ -39,12 +61,18 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         
         switch bluetoothState {
         case .Scanning:
-            label.text = "Scanning"
+            scanLabel.text = "SCANNING"
+            scanLabel.isHidden = false
+            activityIndicator.startAnimating()
         case.FoundDefibrillator:
-            label.text = "Found Defibrillator"
             bluetoothScanView.reloadData()
-        default:
-            label.text = "Waiting"
+            bluetoothScanView.isHidden = false
+        case.Stopped:
+            bluetoothSwitch.setOn(false, animated: true)
+            scanLabel.text = "COULDN'T FIND DEVICE, MAKE SURE DEVICE IS IN RANGE"
+            activityIndicator.stopAnimating()
+        default: break
+            
         }
     }
     
