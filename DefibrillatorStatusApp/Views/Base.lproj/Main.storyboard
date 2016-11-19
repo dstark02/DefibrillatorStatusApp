@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j87-dM-ph9">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bluetooth Scan Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="c20-za-kn0">
+            <objects>
+                <tabBarController id="j87-dM-ph9" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="htE-cD-nBE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="WZ2-vQ-2mJ"/>
+                        <segue destination="XFi-rl-bfe" kind="relationship" relationship="viewControllers" id="BNx-vm-KHW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-HT-aqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1430" y="202"/>
+        </scene>
+        <!--Find Defibrillator-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BluetoothScanController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +58,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="v19-Ph-fjE" kind="show" id="yuF-1g-Emu"/>
+                                            <segue destination="v19-Ph-fjE" kind="show" identifier="eventListSegue" id="yuF-1g-Emu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,6 +109,7 @@
                             <constraint firstItem="t75-C2-NdJ" firstAttribute="leading" secondItem="voS-ig-O8J" secondAttribute="leading" id="uvr-7r-cMW"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Find Defibrillator" id="H1a-N1-Tkr"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -104,10 +123,29 @@
             </objects>
             <point key="canvasLocation" x="-494.20289855072468" y="-154.07608695652175"/>
         </scene>
-        <!--View Controller-->
+        <!--Saved Events-->
+        <scene sceneID="99S-ql-KlE">
+            <objects>
+                <viewController id="XFi-rl-bfe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VP2-zC-hik"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZS3-w1-POb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TgE-cl-VFX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Saved Events" id="FgZ-6X-11g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAN-5r-PKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-577" y="975"/>
+        </scene>
+        <!--Event List Controller-->
         <scene sceneID="063-gU-cyn">
             <objects>
-                <viewController storyboardIdentifier="EventListController" id="v19-Ph-fjE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventListController" id="v19-Ph-fjE" customClass="EventListController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zM8-E7-c9d"/>
                         <viewControllerLayoutGuide type="bottom" id="Irr-wB-s7G"/>
@@ -116,22 +154,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-yr-DRq">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-yr-DRq">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Event List" id="WRe-05-nUS">
-                                        <barButtonItem key="backBarButtonItem" title="Defibrillator Scan" id="ocy-HA-1N1"/>
-                                    </navigationItem>
+                                    <navigationItem title="Event List" id="WRe-05-nUS"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-lh-CQu">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="kr4-eW-8cL">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kr4-eW-8cL" id="1ZE-Zn-PMQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a6b-yr-DRq" firstAttribute="leading" secondItem="y5f-aU-Wc5" secondAttribute="leading" id="0C8-ao-X9e"/>
+                            <constraint firstItem="X1b-lh-CQu" firstAttribute="top" secondItem="a6b-yr-DRq" secondAttribute="bottom" id="CBc-XG-qw2"/>
+                            <constraint firstAttribute="trailing" secondItem="a6b-yr-DRq" secondAttribute="trailing" id="FvW-La-IOm"/>
+                            <constraint firstItem="a6b-yr-DRq" firstAttribute="top" secondItem="zM8-E7-c9d" secondAttribute="bottom" id="YXV-u0-iD3"/>
+                            <constraint firstAttribute="bottom" secondItem="X1b-lh-CQu" secondAttribute="bottom" id="abB-VC-dRq"/>
+                            <constraint firstItem="X1b-lh-CQu" firstAttribute="trailing" secondItem="a6b-yr-DRq" secondAttribute="trailing" id="ufk-Ra-Fjo"/>
+                            <constraint firstItem="X1b-lh-CQu" firstAttribute="leading" secondItem="a6b-yr-DRq" secondAttribute="leading" id="uqf-Dw-qMz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eventListTable" destination="X1b-lh-CQu" id="Gpg-5F-Ztt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dfs-Am-Cw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="-154"/>
+            <point key="canvasLocation" x="257.97101449275362" y="-154.07608695652175"/>
         </scene>
     </scenes>
 </document>

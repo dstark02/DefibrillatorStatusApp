@@ -34,6 +34,13 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "eventListSegue") {
+            let svc = segue.destination as! EventListController;
+            svc.bluetoothManager = bluetoothManager
+        }
+    }
+    
     // MARK: Bluetooth Methods
     
     @IBAction func switchToggled(_ sender: Any) {
@@ -59,7 +66,6 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -71,7 +77,6 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
         cell.textLabel?.text = peripheralName
@@ -79,12 +84,10 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return (bluetoothManager.defibrillatorList.count)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
         bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
     }
