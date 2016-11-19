@@ -34,12 +34,6 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "eventListSegue") {
-            let svc = segue.destination as! EventListController;
-            svc.bluetoothManager = bluetoothManager
-        }
-    }
     
     // MARK: Bluetooth Methods
     
@@ -90,6 +84,15 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
         bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+    }
+    
+    // MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "eventListSegue") {
+            let svc = segue.destination as! EventListController;
+            svc.bluetoothManager = bluetoothManager
+        }
     }
     
     

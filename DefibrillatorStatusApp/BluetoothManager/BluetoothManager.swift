@@ -14,8 +14,11 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     // MARK: Properties
     
     var centralManager : CBCentralManager?
+    var currentPeripheral : CBPeripheral?
+    
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
+    
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -40,11 +43,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
-    //MARK: Bluetooth Methods
-    
-    func getBluetoothState() -> BluetoothState {
-        return bluetoothState
-    }
+    //MARK: Central Methods
     
     func scanForDefibrillators() {
         centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
@@ -75,60 +74,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        currentPeripheral = peripheral
+        currentPeripheral?.delegate = self
         bluetoothState = .ConnectedToDefibrillator
         print("Connected to Defib")
-        peripheral.discoverServices([BluetoothConstants.serviceUUID])
+        discoverDefibrillatorServices()
     }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        
-        print("Discovered Service")
-        for service in peripheral.services! {
-            let thisService = service as CBService
-            characteristicState = .Searching
-            peripheral.discoverCharacteristics([BluetoothConstants.characteristicUUID], for: thisService)
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        
-        print("discovered characteristic")
-        characteristicState = .Found
-        
-        // check the uuid of each characteristic to find config and data characteristics
-        for charateristic in service.characteristics! {
-            let thisCharacteristic = charateristic as CBCharacteristic
-            // check for data characteristic
-            peripheral.readValue(for: thisCharacteristic)
-            //peripheral.setNotifyValue(true, forCharacteristic: thisCharacteristic)
-                //peripheral.readValueForCharacteristic(thisCharacteristic);
-        }
-        
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-    
-        print("updated value")
-        if let dataReceived = characteristic.value {
-            
-            if let dataString = String(data: dataReceived, encoding: .utf8) {
-                let stringFormatted = dataString.components(separatedBy: ",")
-                print(dataString)
-                
-                print(stringFormatted.count)
-                
-                for i in 0 ..< stringFormatted.count {
-                    eventList.append(stringFormatted[i])
-                }
-                characteristicState = .Updated
-                
-            }
-            //peripheral.setNotifyValue(false, forCharacteristic: characteristic)
-        }
-    }
-
-
-
 
     // MARK: CBCentral required method
 
