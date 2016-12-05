@@ -13,9 +13,9 @@ protocol BluetoothManagerProtocol {
     
     var delegate: BluetoothManagerDelegate? { get set }
     var characteristicDelegate : BluetoothCharacteristicDelegate? { get set }
+    var defibrillatorList : [CBPeripheral] { get set }
+    var eventList : [String] { get set }
     func scanForDefibrillators()
     func stopScan()
     func connectToDefibrillator(peripheral : CBPeripheral)
-    var defibrillatorList : [CBPeripheral] { get set }
-    var eventList : [String] { get set}
 }
