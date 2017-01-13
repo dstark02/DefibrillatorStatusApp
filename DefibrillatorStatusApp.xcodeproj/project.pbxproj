@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D320DDB21E2901E700916D28 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320DDB11E2901E700916D28 /* DataController.swift */; };
 		D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */; };
 		D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
 		D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D320DDB11E2901E700916D28 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D327E0A31DD3B5F500A66CAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D327E0A51DD3B5F500A66CAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				D3E0B0D31DB3FA4D00943F19 /* BluetoothScanController.swift */,
 				D3CEB4721DDFC5670049358A /* EventListController.swift */,
+				D320DDB11E2901E700916D28 /* DataController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */,
+				D320DDB21E2901E700916D28 /* DataController.swift in Sources */,
 				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
 				D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */,
 				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
@@ -503,8 +507,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,8 +522,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

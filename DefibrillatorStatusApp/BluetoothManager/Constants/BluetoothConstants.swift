@@ -11,5 +11,6 @@ import CoreBluetooth
 
 struct BluetoothConstants {
     static let serviceUUID = CBUUID(string: "12ab")
-    static let characteristicUUID = CBUUID(string: "34cd")
+    static let eventListCharacteristicUUID = CBUUID(string: "34cd")
+    static let ecgDataCharacteristicUUID = CBUUID(string: "1234")
 }

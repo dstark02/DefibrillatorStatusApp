@@ -13,6 +13,8 @@ extension BluetoothManager {
     
     // MARK : Peripheral Methods
     
+    
+    
     func discoverDefibrillatorServices() {
         currentPeripheral?.delegate = self
         currentPeripheral?.discoverServices([BluetoothConstants.serviceUUID])
@@ -24,7 +26,7 @@ extension BluetoothManager {
         for service in peripheral.services! {
             let thisService = service as CBService
             characteristicState = .Searching
-            peripheral.discoverCharacteristics([BluetoothConstants.characteristicUUID], for: thisService)
+            peripheral.discoverCharacteristics([BluetoothConstants.eventListCharacteristicUUID, BluetoothConstants.ecgDataCharacteristicUUID], for: thisService)
         }
     }
     
@@ -35,9 +37,17 @@ extension BluetoothManager {
         
         // check the uuid of each characteristic to find config and data characteristics
         for charateristic in service.characteristics! {
-            let thisCharacteristic = charateristic as CBCharacteristic
-            peripheral.readValue(for: thisCharacteristic)
-            peripheral.setNotifyValue(true, for: thisCharacteristic)
+            if charateristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
+                //let thisCharacteristic = charateristic as CBCharacteristic
+                peripheral.readValue(for: charateristic)
+                peripheral.setNotifyValue(true, for: charateristic)
+            }
+            
+            if charateristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
+                
+                peripheral.setNotifyValue(true, for: charateristic)
+            }
+            
         }
     }
     
@@ -45,9 +55,45 @@ extension BluetoothManager {
                     didUpdateValueFor characteristic: CBCharacteristic,
                     error: Error?){
         
-        print("updated value")
-        formatStringToDisplay(characteristic: characteristic)
+        // print("updated value")
+        if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
+            formatStringToDisplay(characteristic: characteristic)
+        }
+        
+        if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
+            
+            if let dataReceived = characteristic.value {
+                
+                var value = UInt32(0)
+                var index = 0
+                var length = 0
+                
+                while (index < dataReceived.count - 4) {
+                    
+                    count += dataReceived.count
+                    length = dataReceived.count - 4
+                    print(length)
+                    print("NOTE")
+                    
+                    (dataReceived as NSData).getBytes(&value, range: NSMakeRange(index, 4))
+                    value = UInt32(bigEndian: value)
+                    print(value)
+                    index += 4
+                }
+                
+                if (count >= 59648) {
+                    print("Notify set")
+                    peripheral.setNotifyValue(false, for: characteristic)
+                }
+                
+            }
+        }
     }
+    
+    
+    
+    
+    
     
     // MARK : Helper Method
     
@@ -69,6 +115,8 @@ extension BluetoothManager {
             //peripheral.setNotifyValue(false, forCharacteristic: characteristic)
         }
     }
+    
+    
 
     
 }

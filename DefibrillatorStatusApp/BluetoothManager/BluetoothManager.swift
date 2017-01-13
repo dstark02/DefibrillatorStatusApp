@@ -12,7 +12,7 @@ import CoreBluetooth
 class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     // MARK: Properties
-    
+    var count : Int
     var centralManager : CBCentralManager?
     var currentPeripheral : CBPeripheral?
     
@@ -39,6 +39,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         characteristicState = .NotFound
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
+        count = 0
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }

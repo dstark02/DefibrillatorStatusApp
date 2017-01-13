@@ -47,6 +47,7 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
         switch bluetoothState {
+            
         case .Scanning:
             updateScanningView()
         case.FoundDefibrillator:
@@ -71,8 +72,8 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
-        cell.textLabel?.text = peripheralName
+        // let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
+        cell.textLabel?.text = "HeartSine Defibrillator"
         return cell
     }
     

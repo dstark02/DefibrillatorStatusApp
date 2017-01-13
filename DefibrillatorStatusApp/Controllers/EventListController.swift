@@ -58,5 +58,14 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (bluetoothManager.eventList.count)
     }
+    
+    // MARK : Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "dataSegue") {
+            let svc = segue.destination as! DataController;
+            svc.bluetoothManager = bluetoothManager
+        }
+    }
 
 }
