@@ -10,8 +10,14 @@ import UIKit
 
 class EventListController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothCharacteristicDelegate {
 
+    // MARK: Properties
+    
     var bluetoothManager : BluetoothManagerProtocol!
+    let eventList = "Event List"
+    let selectEvent = "Select an Event to view"
     @IBOutlet weak var eventListTable: UITableView!
+    
+    // MARK: viewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +28,6 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: CharacteristicState Method
@@ -41,11 +46,11 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Event List"
+        return eventList
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Select an Event to view"
+        return selectEvent
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

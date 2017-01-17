@@ -8,17 +8,15 @@
 
 import Foundation
 import CoreBluetooth
+import RealmSwift
 
 class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     // MARK: Properties
-    var count : Int
     var centralManager : CBCentralManager?
     var currentPeripheral : CBPeripheral?
-    
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
-    
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -39,9 +37,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         characteristicState = .NotFound
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
-        count = 0
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
     //MARK: Central Methods

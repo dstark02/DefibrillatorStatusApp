@@ -13,12 +13,14 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Properties
     
     var bluetoothManager : BluetoothManagerProtocol!
+    let titleForHeaderInSection = "Defibrillators"
+    let titleForFooterInSection = "Select Device to see Events on it"
     @IBOutlet weak var bluetoothScanView: UITableView!
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    // MARK: viewDidLoad Method
+    // MARK: ViewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
+        
         switch bluetoothState {
             
         case .Scanning:
@@ -63,11 +66,11 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Defibrillators"
+        return titleForHeaderInSection
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Select Device to see Events on it"
+        return titleForFooterInSection
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
