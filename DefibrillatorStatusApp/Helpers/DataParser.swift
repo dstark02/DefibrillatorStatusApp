@@ -33,6 +33,7 @@ class DataParser {
                 else {
                     if isECGData {
                         print(value)
+                        if value == 65535 { break }
                         ecgData.append(value)
                         isECGData = false
                     } else {

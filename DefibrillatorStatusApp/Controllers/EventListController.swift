@@ -67,8 +67,8 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK : Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "dataSegue") {
-            let svc = segue.destination as! DataController;
+        if (segue.identifier == "downloadSegue") {
+            let svc = segue.destination as! DownloadEventController;
             svc.bluetoothManager = bluetoothManager
         }
     }

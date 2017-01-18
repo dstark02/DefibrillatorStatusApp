@@ -35,16 +35,19 @@ extension BluetoothManager {
         characteristicState = .Found
         
         // check the uuid of each characteristic to find config and data characteristics
-        for charateristic in service.characteristics! {
-            if charateristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
+        for characteristic in service.characteristics! {
+            if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
                 //let thisCharacteristic = charateristic as CBCharacteristic
-                peripheral.readValue(for: charateristic)
-                peripheral.setNotifyValue(true, for: charateristic)
+                peripheral.readValue(for: characteristic)
+                peripheral.setNotifyValue(true, for: characteristic)
             }
             
-            if charateristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
+            if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
                 
-                peripheral.setNotifyValue(true, for: charateristic)
+                
+                peripheral.readValue(for: characteristic)
+                
+                
             }
             
         }
@@ -57,7 +60,20 @@ extension BluetoothManager {
         }
         
         if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
-            readECGData(characteristic: characteristic, periperhral: peripheral)
+            if (fileLength != 0) {
+                readECGData(characteristic: characteristic, periperhral: peripheral)
+            } else {
+                if let dataReceived = characteristic.value {
+                    
+                    if let dataAsString = String(data: dataReceived, encoding: .utf8) {
+                        
+                        if let length = UInt16(dataAsString) {
+                            fileLength = Float(length)
+                            peripheral.setNotifyValue(true, for: characteristic)
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -95,6 +111,12 @@ extension BluetoothManager {
             } catch let error as NSError {
                 fatalError(error.localizedDescription)
             }
+        }
+        
+        downloadValue += 1/fileLength
+        
+        if (downloadValue > 0.998) {
+            periperhral.setNotifyValue(false, for: characteristic)
         }
     }
     

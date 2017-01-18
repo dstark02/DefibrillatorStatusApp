@@ -10,9 +10,7 @@ import UIKit
 import RealmSwift
 import Charts
 
-class DataController: UIViewController, ChartViewDelegate {
-    
-    var bluetoothManager : BluetoothManagerProtocol!
+class ChartController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: LineChartView!
     

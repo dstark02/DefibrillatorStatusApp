@@ -21,7 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="WZ2-vQ-2mJ"/>
-                        <segue destination="XFi-rl-bfe" kind="relationship" relationship="viewControllers" id="BNx-vm-KHW"/>
+                        <segue destination="cdm-Fx-520" kind="relationship" relationship="viewControllers" id="5t3-fi-1hv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-HT-aqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -51,10 +51,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Lry-Lf-ueV">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lry-Lf-ueV" id="fKV-Ab-veN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -123,25 +123,6 @@
             </objects>
             <point key="canvasLocation" x="-494.20289855072468" y="-154.07608695652175"/>
         </scene>
-        <!--Saved Events-->
-        <scene sceneID="99S-ql-KlE">
-            <objects>
-                <viewController id="XFi-rl-bfe" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VP2-zC-hik"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZS3-w1-POb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TgE-cl-VFX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Saved Events" id="FgZ-6X-11g"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qAN-5r-PKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-577" y="975"/>
-        </scene>
         <!--Event List Controller-->
         <scene sceneID="063-gU-cyn">
             <objects>
@@ -165,14 +146,14 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="kr4-eW-8cL">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kr4-eW-8cL" id="1ZE-Zn-PMQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cdm-Fx-520" kind="show" identifier="dataSegue" id="LP8-Ge-Zbn"/>
+                                            <segue destination="2pC-KP-Bof" kind="show" identifier="downloadSegue" id="asa-Ep-XZG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -197,10 +178,55 @@
             </objects>
             <point key="canvasLocation" x="257.97101449275362" y="-154.07608695652175"/>
         </scene>
-        <!--Data Controller-->
+        <!--Download Event Controller-->
+        <scene sceneID="IJJ-Eq-iql">
+            <objects>
+                <viewController id="2pC-KP-Bof" customClass="DownloadEventController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cp8-q5-2kq"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZNI-e4-KUq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oR8-Xu-6Ty">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-oR-tUc">
+                                <rect key="frame" x="132" y="367" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="iic-DD-KL9"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-pR-w6j">
+                                <rect key="frame" x="132" y="338" width="156" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="8NC-O8-QjY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="centerY" secondItem="oR8-Xu-6Ty" secondAttribute="centerY" id="0Dl-FS-c2s"/>
+                            <constraint firstItem="uhO-pR-w6j" firstAttribute="leading" secondItem="XBw-oR-tUc" secondAttribute="leading" id="3xc-mL-Gta"/>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="top" secondItem="uhO-pR-w6j" secondAttribute="bottom" constant="8" symbolic="YES" id="UHw-wu-2gn"/>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="centerX" secondItem="oR8-Xu-6Ty" secondAttribute="centerX" id="pda-TC-bYk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressView" destination="XBw-oR-tUc" id="fcC-dd-kb8"/>
+                        <segue destination="cdm-Fx-520" kind="show" identifier="chartSegue" id="W3W-U6-k6D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8D-PS-jmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982.60869565217399" y="-154.07608695652175"/>
+        </scene>
+        <!--Chart-->
         <scene sceneID="lCX-Ue-byF">
             <objects>
-                <viewController id="cdm-Fx-520" customClass="DataController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cdm-Fx-520" userLabel="Chart" customClass="ChartController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PcY-xh-P7i"/>
                         <viewControllerLayoutGuide type="bottom" id="iFH-LM-URv"/>
@@ -210,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TS6-tm-cEr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="138" width="414" height="554"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vla-Xm-AF4">
@@ -231,13 +257,17 @@
                             <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="3Uu-PL-tmw" secondAttribute="leading" id="i6t-9b-VLT"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Chart" id="auD-Pi-RoF" userLabel="Chart"/>
                     <connections>
                         <outlet property="chartView" destination="TS6-tm-cEr" id="H5w-HA-Wlc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1U-mf-5IG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="-154.07608695652175"/>
+            <point key="canvasLocation" x="-494" y="602"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="W3W-U6-k6D"/>
+    </inferredMetricsTieBreakers>
 </document>

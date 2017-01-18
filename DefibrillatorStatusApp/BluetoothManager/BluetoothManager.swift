@@ -17,6 +17,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var currentPeripheral : CBPeripheral?
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
+    var fileLength : Float
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -30,11 +31,20 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     
+    var downloadDelegate : DownloadDelegate?
+    var downloadValue : Float {
+        didSet {
+            downloadDelegate?.progressHasUpdated(value: downloadValue)
+        }
+    }
+    
     // MARK: Initialiser
     
     override init() {
         bluetoothState = .Started
         characteristicState = .NotFound
+        downloadValue = 0
+        fileLength = 0
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
         super.init()
