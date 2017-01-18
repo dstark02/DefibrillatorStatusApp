@@ -52,9 +52,11 @@ extension BluetoothManager {
     // MARK : Helper Method
     
     func formatStringToDisplay(characteristic: CBCharacteristic) {
+        
         if let dataReceived = characteristic.value {
             
             if let dataString = String(data: dataReceived, encoding: .utf8) {
+                
                 let stringFormatted = dataString.components(separatedBy: ",")
                 
                 print(dataString)

@@ -39,23 +39,25 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssertFalse(finishedLabel.exists)
     }
     
-    func testScanningLabelAppears() {
-        app.switches["0"].tap()
-        XCTAssert(app.staticTexts["SCANNING"].exists)
-    }
-    
-    func testFinishScanLabelAppears() {
-        app.switches["0"].tap()
-        app.switches["1"].tap()
-        XCTAssert(app.staticTexts["FINISHED SCAN, RETRY IF NO DEVICES LISTED"].exists)
-    }
-    
-    func testScanLabelDisappears() {
-        let scanLabel = app.staticTexts["SCANNING"]
-        app.switches["0"].tap()
-        app.switches["1"].tap()
-        XCTAssertFalse(scanLabel.exists)
-    }
+//    func testScanningLabelAppears() {
+//        app.switches["0"].tap()
+//        XCTAssert(app.staticTexts["SCANNING"].exists)
+//    }
+//    
+//    func testFinishScanLabelAppears() {
+//        
+//        if (app.)
+//        app.switches["0"].tap()
+//        app.switches["1"].tap()
+//        XCTAssert(app.staticTexts["FINISHED SCAN, RETRY IF NO DEVICES LISTED"].exists)
+//    }
+//    
+//    func testScanLabelDisappears() {
+//        let scanLabel = app.staticTexts["SCANNING"]
+//        app.switches["0"].tap()
+//        app.switches["1"].tap()
+//        XCTAssertFalse(scanLabel.exists)
+//    }
     
     
 }

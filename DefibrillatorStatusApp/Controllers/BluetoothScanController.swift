@@ -46,7 +46,6 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
-        
         switch bluetoothState {
         case .Scanning:
             updateScanningView()

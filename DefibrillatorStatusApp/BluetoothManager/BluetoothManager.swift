@@ -46,10 +46,13 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     //MARK: Central Methods
     
     func scanForDefibrillators() {
-        centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
-        bluetoothState = .Scanning
-        print("scanning")
-        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
+        
+        if (bluetoothState != .Off) {
+            centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
+            bluetoothState = .Scanning
+            print("scanning")
+            _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
+        }
     }
     
     func centralManager(_ central: CBCentralManager,
@@ -82,26 +85,28 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
 
     // MARK: CBCentral required method
-
-
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        
-    }
-     //   switch central.state {
-       // case.poweredOn:
-         //   print("Bluetooth is on")
-       // case.poweredOff:
-       //     print("Turn Bluetooth on")
-       // case.unauthorized:
-         //   print("Unautorized")
-       // case.resetting:
-         //   print("resetting")
-        //case.unknown:
-        //    print("unknown")
-        //case.unsupported:
-          //  print("Unsupported")
+
+        switch central.state {
+        case.poweredOn:
+            bluetoothState = .Started
+            print("Bluetooth is on")
+        case.poweredOff:
+            bluetoothState = .Off
+            print("Turn Bluetooth on")
+        case.unauthorized:
+            bluetoothState = .Off
+            print("Unautorized")
+        case.resetting:
+            print("resetting")
+        case.unknown:
+            print("unknown")
+        case.unsupported:
+            bluetoothState = .Off
+            print("Unsupported")
             
-       // }
-    //}
+        }
+    }
     
 }
