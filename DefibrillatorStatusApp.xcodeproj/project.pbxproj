@@ -21,8 +21,6 @@
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
 		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
-		D38E3A1A1E2E3CF300C3B63F /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A151E2E3CC900C3B63F /* Charts.framework */; };
-		D38E3A1B1E2E3CF300C3B63F /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A151E2E3CC900C3B63F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D38E3A201E2E8AE300C3B63F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; };
 		D38E3A211E2E8AE300C3B63F /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D38E3A231E2E8AF100C3B63F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; };
@@ -38,33 +36,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D38E3A141E2E3CC900C3B63F /* PBXContainerItemProxy */ = {
+		D33208161E312338001C555B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		D38E3A161E2E3CC900C3B63F /* PBXContainerItemProxy */ = {
+		D33208181E312338001C555B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06B120D51D811E6200D14B02;
 			remoteInfo = ChartsRealm;
 		};
-		D38E3A181E2E3CC900C3B63F /* PBXContainerItemProxy */ = {
+		D332081A1E312338001C555B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
-		};
-		D38E3A1C1E2E3CF300C3B63F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
 		};
 		D3E0B0E31DB3FA4E00943F19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -90,7 +81,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D38E3A211E2E8AE300C3B63F /* Realm.framework in Embed Frameworks */,
-				D38E3A1B1E2E3CF300C3B63F /* Charts.framework in Embed Frameworks */,
 				D38E3A241E2E8AF100C3B63F /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -114,7 +104,7 @@
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
 		D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDelegate.swift; path = Protocols/DownloadDelegate.swift; sourceTree = "<group>"; };
 		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		D38E3A1F1E2E8AE300C3B63F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D38E3A271E2E8E8C00C3B63F /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECG.swift; sourceTree = "<group>"; };
@@ -139,7 +129,6 @@
 			files = (
 				D38E3A201E2E8AE300C3B63F /* Realm.framework in Frameworks */,
 				D38E3A231E2E8AF100C3B63F /* RealmSwift.framework in Frameworks */,
-				D38E3A1A1E2E3CF300C3B63F /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,22 +201,22 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		D33208111E312338001C555B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D33208171E312338001C555B /* Charts.framework */,
+				D33208191E312338001C555B /* ChartsRealm.framework */,
+				D332081B1E312338001C555B /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D33DCCAD1E2FE8B9002C4D11 /* 3rd-Party APIs */ = {
 			isa = PBXGroup;
 			children = (
 				D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */,
 			);
 			name = "3rd-Party APIs";
-			sourceTree = "<group>";
-		};
-		D38E3A0F1E2E3CC900C3B63F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D38E3A151E2E3CC900C3B63F /* Charts.framework */,
-				D38E3A171E2E3CC900C3B63F /* ChartsRealm.framework */,
-				D38E3A191E2E3CC900C3B63F /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D38E3A261E2E8E2000C3B63F /* Models */ = {
@@ -328,7 +317,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D38E3A1D1E2E3CF300C3B63F /* PBXTargetDependency */,
 			);
 			name = DefibrillatorStatusApp;
 			productName = DefibrillatorStatusApp;
@@ -414,7 +402,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D38E3A0F1E2E3CC900C3B63F /* Products */;
+					ProductGroup = D33208111E312338001C555B /* Products */;
 					ProjectRef = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
 				},
 			);
@@ -428,25 +416,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D38E3A151E2E3CC900C3B63F /* Charts.framework */ = {
+		D33208171E312338001C555B /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = D38E3A141E2E3CC900C3B63F /* PBXContainerItemProxy */;
+			remoteRef = D33208161E312338001C555B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D38E3A171E2E3CC900C3B63F /* ChartsRealm.framework */ = {
+		D33208191E312338001C555B /* ChartsRealm.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ChartsRealm.framework;
-			remoteRef = D38E3A161E2E3CC900C3B63F /* PBXContainerItemProxy */;
+			remoteRef = D33208181E312338001C555B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D38E3A191E2E3CC900C3B63F /* ChartsTests.xctest */ = {
+		D332081B1E312338001C555B /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = D38E3A181E2E3CC900C3B63F /* PBXContainerItemProxy */;
+			remoteRef = D332081A1E312338001C555B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -538,11 +526,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D38E3A1D1E2E3CF300C3B63F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = D38E3A1C1E2E3CF300C3B63F /* PBXContainerItemProxy */;
-		};
 		D3E0B0E41DB3FA4E00943F19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D3E0B0CD1DB3FA4D00943F19 /* DefibrillatorStatusApp */;
