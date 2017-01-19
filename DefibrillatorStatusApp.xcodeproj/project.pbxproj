@@ -599,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -644,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -772,7 +772,7 @@
 				D3E0B0F51DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D3E0B0F61DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusApp" */ = {
 			isa = XCConfigurationList;
@@ -781,7 +781,7 @@
 				D3E0B0F81DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D3E0B0F91DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppTests" */ = {
 			isa = XCConfigurationList;
@@ -790,7 +790,7 @@
 				D3E0B0FB1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D3E0B0FC1DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -799,7 +799,7 @@
 				D3E0B0FE1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
