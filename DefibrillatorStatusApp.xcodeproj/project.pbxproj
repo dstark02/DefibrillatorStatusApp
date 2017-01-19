@@ -660,7 +660,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -677,7 +680,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -766,7 +772,7 @@
 				D3E0B0F51DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D3E0B0F61DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusApp" */ = {
 			isa = XCConfigurationList;
@@ -775,7 +781,7 @@
 				D3E0B0F81DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D3E0B0F91DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppTests" */ = {
 			isa = XCConfigurationList;
@@ -784,7 +790,7 @@
 				D3E0B0FB1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D3E0B0FC1DB3FA4E00943F19 /* Build configuration list for PBXNativeTarget "DefibrillatorStatusAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -793,7 +799,7 @@
 				D3E0B0FE1DB3FA4E00943F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
