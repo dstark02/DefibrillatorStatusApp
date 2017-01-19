@@ -17,7 +17,7 @@
                BlueprintIdentifier = "06165F231D8110E600722320"
                BuildableName = "Charts.framework"
                BlueprintName = "Charts"
-               ReferencedContainer = "container:Charts.xcodeproj">
+               ReferencedContainer = "container:Charts-master/Charts.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
             BlueprintIdentifier = "06165F231D8110E600722320"
             BuildableName = "Charts.framework"
             BlueprintName = "Charts"
-            ReferencedContainer = "container:Charts.xcodeproj">
+            ReferencedContainer = "container:Charts-master/Charts.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "06165F231D8110E600722320"
             BuildableName = "Charts.framework"
             BlueprintName = "Charts"
-            ReferencedContainer = "container:Charts.xcodeproj">
+            ReferencedContainer = "container:Charts-master/Charts.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,7 +76,7 @@
             BlueprintIdentifier = "06165F231D8110E600722320"
             BuildableName = "Charts.framework"
             BlueprintName = "Charts"
-            ReferencedContainer = "container:Charts.xcodeproj">
+            ReferencedContainer = "container:Charts-master/Charts.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
