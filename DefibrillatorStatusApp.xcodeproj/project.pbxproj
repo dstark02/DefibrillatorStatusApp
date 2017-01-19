@@ -227,7 +227,7 @@
 			children = (
 				D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */,
 			);
-			name = "3rd-Party APIs";
+			path = "3rd-Party APIs";
 			sourceTree = "<group>";
 		};
 		D38E3A261E2E8E2000C3B63F /* Models */ = {
