@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 import Charts
 
-
 class ChartController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: LineChartView!

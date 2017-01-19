@@ -23,12 +23,12 @@
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
 		D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A271E2E8E8C00C3B63F /* ECG.swift */; };
 		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
-		D3BD8A7B1E3150A800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A6E1E31499F00504F8D /* Charts.framework */; };
-		D3BD8A7C1E3150A800504F8D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A6E1E31499F00504F8D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D3BD8A8A1E31563B00504F8D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; };
-		D3BD8A8B1E31563B00504F8D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D3BD8A8C1E31563B00504F8D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; };
-		D3BD8A8D1E31563B00504F8D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; };
+		D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3BD8A9F1E315C9900504F8D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; };
+		D3BD8AA01E315C9900504F8D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3BD8AA11E315C9900504F8D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; };
+		D3BD8AA21E315C9900504F8D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4721DDFC5670049358A /* EventListController.swift */; };
 		D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */; };
 		D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4771DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift */; };
@@ -38,30 +38,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D3BD8A6D1E31499F00504F8D /* PBXContainerItemProxy */ = {
+		D3BD8A951E315B8B00504F8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D3BD8A671E31499F00504F8D /* Charts.xcodeproj */;
+			containerPortal = D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		D3BD8A6F1E31499F00504F8D /* PBXContainerItemProxy */ = {
+		D3BD8A971E315B8B00504F8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D3BD8A671E31499F00504F8D /* Charts.xcodeproj */;
+			containerPortal = D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06B120D51D811E6200D14B02;
 			remoteInfo = ChartsRealm;
 		};
-		D3BD8A711E31499F00504F8D /* PBXContainerItemProxy */ = {
+		D3BD8A991E315B8B00504F8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D3BD8A671E31499F00504F8D /* Charts.xcodeproj */;
+			containerPortal = D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
-		D3BD8A7D1E3150A800504F8D /* PBXContainerItemProxy */ = {
+		D3BD8A9D1E315B9800504F8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D3BD8A671E31499F00504F8D /* Charts.xcodeproj */;
+			containerPortal = D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 06165F231D8110E600722320;
 			remoteInfo = Charts;
@@ -89,9 +89,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D3BD8A8D1E31563B00504F8D /* Realm.framework in Embed Frameworks */,
-				D3BD8A8B1E31563B00504F8D /* RealmSwift.framework in Embed Frameworks */,
-				D3BD8A7C1E3150A800504F8D /* Charts.framework in Embed Frameworks */,
+				D3BD8AA21E315C9900504F8D /* Realm.framework in Embed Frameworks */,
+				D3BD8AA01E315C9900504F8D /* RealmSwift.framework in Embed Frameworks */,
+				D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,7 @@
 		D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D38E3A271E2E8E8C00C3B63F /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECG.swift; sourceTree = "<group>"; };
 		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
-		D3BD8A671E31499F00504F8D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.1/Charts.xcodeproj"; sourceTree = "<group>"; };
+		D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.1/Charts.xcodeproj"; sourceTree = "<group>"; };
 		D3CEB4721DDFC5670049358A /* EventListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListController.swift; sourceTree = "<group>"; };
 		D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothConstants.swift; path = Constants/BluetoothConstants.swift; sourceTree = "<group>"; };
 		D3CEB4771DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothCharacteristicDelegate.swift; path = Protocols/BluetoothCharacteristicDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +137,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BD8A8C1E31563B00504F8D /* Realm.framework in Frameworks */,
-				D3BD8A8A1E31563B00504F8D /* RealmSwift.framework in Frameworks */,
-				D3BD8A7B1E3150A800504F8D /* Charts.framework in Frameworks */,
+				D3BD8AA11E315C9900504F8D /* Realm.framework in Frameworks */,
+				D3BD8A9F1E315C9900504F8D /* RealmSwift.framework in Frameworks */,
+				D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,12 +229,12 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		D3BD8A681E31499F00504F8D /* Products */ = {
+		D3BD8A901E315B8B00504F8D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3BD8A6E1E31499F00504F8D /* Charts.framework */,
-				D3BD8A701E31499F00504F8D /* ChartsRealm.framework */,
-				D3BD8A721E31499F00504F8D /* ChartsTests.xctest */,
+				D3BD8A961E315B8B00504F8D /* Charts.framework */,
+				D3BD8A981E315B8B00504F8D /* ChartsRealm.framework */,
+				D3BD8A9A1E315B8B00504F8D /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 		D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */ = {
 			isa = PBXGroup;
 			children = (
-				D3BD8A671E31499F00504F8D /* Charts.xcodeproj */,
+				D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */,
 				D38E3A291E2EA5D000C3B63F /* Helpers */,
 				D38E3A261E2E8E2000C3B63F /* Models */,
 				D327E0AA1DD3B60800A66CAF /* Supporting Files */,
@@ -320,7 +320,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D3BD8A7E1E3150A800504F8D /* PBXTargetDependency */,
+				D3BD8A9E1E315B9800504F8D /* PBXTargetDependency */,
 			);
 			name = DefibrillatorStatusApp;
 			productName = DefibrillatorStatusApp;
@@ -406,8 +406,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D3BD8A681E31499F00504F8D /* Products */;
-					ProjectRef = D3BD8A671E31499F00504F8D /* Charts.xcodeproj */;
+					ProductGroup = D3BD8A901E315B8B00504F8D /* Products */;
+					ProjectRef = D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -420,25 +420,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D3BD8A6E1E31499F00504F8D /* Charts.framework */ = {
+		D3BD8A961E315B8B00504F8D /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = D3BD8A6D1E31499F00504F8D /* PBXContainerItemProxy */;
+			remoteRef = D3BD8A951E315B8B00504F8D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D3BD8A701E31499F00504F8D /* ChartsRealm.framework */ = {
+		D3BD8A981E315B8B00504F8D /* ChartsRealm.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ChartsRealm.framework;
-			remoteRef = D3BD8A6F1E31499F00504F8D /* PBXContainerItemProxy */;
+			remoteRef = D3BD8A971E315B8B00504F8D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D3BD8A721E31499F00504F8D /* ChartsTests.xctest */ = {
+		D3BD8A9A1E315B8B00504F8D /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = D3BD8A711E31499F00504F8D /* PBXContainerItemProxy */;
+			remoteRef = D3BD8A991E315B8B00504F8D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -530,10 +530,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D3BD8A7E1E3150A800504F8D /* PBXTargetDependency */ = {
+		D3BD8A9E1E315B9800504F8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = D3BD8A7D1E3150A800504F8D /* PBXContainerItemProxy */;
+			targetProxy = D3BD8A9D1E315B9800504F8D /* PBXContainerItemProxy */;
 		};
 		D3E0B0E41DB3FA4E00943F19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -592,7 +592,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -644,7 +643,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -673,7 +671,7 @@
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -690,7 +688,7 @@
 				DEVELOPMENT_TEAM = 353TD9TL6M;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
