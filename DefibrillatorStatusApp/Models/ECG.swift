@@ -9,6 +9,6 @@
 import Foundation
 import RealmSwift
 
-class ECG: Object {
+class ECG : Object {
     dynamic var ecg: Data = Data()
 }

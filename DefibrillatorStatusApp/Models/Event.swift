@@ -1,5 +1,5 @@
 //
-//  DownloadDelegate.swift
+//  Event.swift
 //  DefibrillatorStatusApp
 //
 //  Created by David Stark on 18/01/2017.
@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-protocol DownloadDelegate {
-    
-    func progressHasUpdated(value: Float)
-    func downloadComplete()
+class Event : Object {
+    dynamic var date = ""
+    let ecgs = List<ECG>()
 }

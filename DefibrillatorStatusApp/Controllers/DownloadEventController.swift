@@ -32,10 +32,10 @@ class DownloadEventController: UIViewController, DownloadDelegate {
     func progressHasUpdated(value: Float) {
         valueAtBegining = value
         progressView.setProgress(value, animated: true)
-        
-        if (value > 0.998) {
-            performSegue(withIdentifier: "chartSegue", sender: nil)
-        }
+    }
+    
+    func downloadComplete() {
+        performSegue(withIdentifier: "chartSegue", sender: nil)
     }
 
 }

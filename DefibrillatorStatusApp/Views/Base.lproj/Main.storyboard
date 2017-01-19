@@ -51,10 +51,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Lry-Lf-ueV">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lry-Lf-ueV" id="fKV-Ab-veN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -146,10 +146,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="kr4-eW-8cL">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kr4-eW-8cL" id="1ZE-Zn-PMQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -236,25 +236,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TS6-tm-cEr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="138" width="414" height="549"/>
+                                <rect key="frame" x="0.0" y="63" width="414" height="629"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vla-Xm-AF4">
-                                <rect key="frame" x="20" y="87" width="76" height="30"/>
-                                <state key="normal" title="View Chart"/>
-                                <connections>
-                                    <action selector="buttonClicked:" destination="cdm-Fx-520" eventType="touchUpInside" id="NuU-nT-8e0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="vla-Xm-AF4" secondAttribute="bottom" constant="21" id="0mZ-mn-D5c"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="3Uu-PL-tmw" secondAttribute="top" constant="138" id="2wz-Fc-tsd"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="bottom" secondItem="iFH-LM-URv" secondAttribute="top" id="70i-W7-iRc"/>
-                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="MNU-pb-T4S"/>
-                            <constraint firstItem="vla-Xm-AF4" firstAttribute="leading" secondItem="3Uu-PL-tmw" secondAttribute="leadingMargin" id="aDa-8J-7uv"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="3Uu-PL-tmw" secondAttribute="leading" id="i6t-9b-VLT"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="3Uu-PL-tmw" secondAttribute="leading" id="9hd-ix-wYG"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="bottom" secondItem="iFH-LM-URv" secondAttribute="top" id="LGf-gs-m1L"/>
+                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="MK4-gH-LQa"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="PcY-xh-P7i" secondAttribute="bottom" constant="43" id="teZ-ar-FHj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chart" id="auD-Pi-RoF" userLabel="Chart"/>
@@ -264,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1U-mf-5IG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="602"/>
+            <point key="canvasLocation" x="-494.20289855072468" y="600.81521739130437"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

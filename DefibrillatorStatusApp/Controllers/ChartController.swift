@@ -16,10 +16,10 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         chartView.delegate = self
         chartView.gridBackgroundColor = UIColor.white
+        chartView.dragEnabled = true
+        setChartData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,26 +27,13 @@ class ChartController: UIViewController, ChartViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    private func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscapeLeft
-    }
-    private func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    @IBAction func buttonClicked(_ sender: Any) {
-        setChartData()
-    }
-    
     func setChartData() {
         
         var ecgPoints = DataParser.filterECG(data: getECGPointsFromDatabase())
-        var seconds = [String]()
         
         // 1 - creating an array of data entries
         var yVals : [ChartDataEntry] = [ChartDataEntry]()
         for i in 0 ..< ecgPoints.count {
-            seconds.append(String(i))
             yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
@@ -68,19 +55,17 @@ class ChartController: UIViewController, ChartViewDelegate {
         
         //5 - finally set our data
         chartView.data = lineData
+        chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
     }
     
-    func getECGPointsFromDatabase() -> Results<ECG> {
+    func getECGPointsFromDatabase() -> Results<Event> {
         do {
             let realm = try Realm()
-            return realm.objects(ECG.self)
+            return realm.objects(Event.self)
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
     }
-    
-    
-
     
 
 }

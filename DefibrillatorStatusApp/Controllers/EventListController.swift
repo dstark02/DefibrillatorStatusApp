@@ -60,6 +60,13 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let defibrillator = bluetoothManager.currentPeripheral {
+            bluetoothManager.downloadEvent(peripheral: defibrillator)
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (bluetoothManager.eventList.count)
     }

@@ -11,12 +11,13 @@ import RealmSwift
 
 class DataParser {
     
-    static func filterECG(data: Results<ECG>) -> [UInt16] {
+    static func filterECG(data: Results<Event>) -> [UInt16] {
         var isNewPage = true
         var isECGData = true
         var ecgData = [UInt16]()
+        let event = data[0]
         
-        for i in 0 ..< data.count {
+        for i in 0 ..< event.ecgs.count {
             
             if i % 4 == 0 {
                 isNewPage = true
@@ -24,10 +25,10 @@ class DataParser {
                 isNewPage = false
             }
             
-            for j in (0..<data[i].ecg.count) where j % 2 == 0 {
+            for j in (0..<event.ecgs[i].ecg.count) where j % 2 == 0 {
                 
                 var value = UInt16(0)
-                (data[i].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
+                (event.ecgs[i].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
                 
                 if isNewPage && j <= 2 {}
                 else {

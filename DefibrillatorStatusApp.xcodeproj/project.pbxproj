@@ -20,6 +20,7 @@
 		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
 		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
+		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
 		D38E3A1A1E2E3CF300C3B63F /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A151E2E3CC900C3B63F /* Charts.framework */; };
 		D38E3A1B1E2E3CF300C3B63F /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A151E2E3CC900C3B63F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D38E3A201E2E8AE300C3B63F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; };
@@ -112,6 +113,7 @@
 		D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
 		D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDelegate.swift; path = Protocols/DownloadDelegate.swift; sourceTree = "<group>"; };
+		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		D38E3A1F1E2E8AE300C3B63F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -136,8 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D38E3A201E2E8AE300C3B63F /* Realm.framework in Frameworks */,
-				D38E3A1A1E2E3CF300C3B63F /* Charts.framework in Frameworks */,
 				D38E3A231E2E8AF100C3B63F /* RealmSwift.framework in Frameworks */,
+				D38E3A1A1E2E3CF300C3B63F /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +212,14 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		D33DCCAD1E2FE8B9002C4D11 /* 3rd-Party APIs */ = {
+			isa = PBXGroup;
+			children = (
+				D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */,
+			);
+			name = "3rd-Party APIs";
+			sourceTree = "<group>";
+		};
 		D38E3A0F1E2E3CC900C3B63F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				D38E3A271E2E8E8C00C3B63F /* ECG.swift */,
+				D33DCCB01E2FFF25002C4D11 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,9 +260,9 @@
 		D3E0B0C51DB3FA4D00943F19 = {
 			isa = PBXGroup;
 			children = (
+				D33DCCAD1E2FE8B9002C4D11 /* 3rd-Party APIs */,
 				D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */,
 				D38E3A1F1E2E8AE300C3B63F /* Realm.framework */,
-				D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */,
 				D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */,
 				D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusApp Tests */,
 				D3E0B0F01DB3FA4E00943F19 /* DefibrillatorStatusAppUITests */,
@@ -496,6 +507,7 @@
 				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
 				D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */,
 				D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */,
+				D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */,
 				D3E0B0D41DB3FA4D00943F19 /* BluetoothScanController.swift in Sources */,
 				D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */,
 				D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */,
