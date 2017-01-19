@@ -18,6 +18,8 @@
 		D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */; };
 		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
 		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
+		D33208201E31326E001C555B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33208171E312338001C555B /* Charts.framework */; };
+		D33208211E31326E001C555B /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D33208171E312338001C555B /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
 		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
@@ -57,6 +59,13 @@
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
+		D33208221E31326E001C555B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 		D3E0B0E31DB3FA4E00943F19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E0B0C61DB3FA4D00943F19 /* Project object */;
@@ -80,6 +89,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D33208211E31326E001C555B /* Charts.framework in Embed Frameworks */,
 				D38E3A211E2E8AE300C3B63F /* Realm.framework in Embed Frameworks */,
 				D38E3A241E2E8AF100C3B63F /* RealmSwift.framework in Embed Frameworks */,
 			);
@@ -127,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33208201E31326E001C555B /* Charts.framework in Frameworks */,
 				D38E3A201E2E8AE300C3B63F /* Realm.framework in Frameworks */,
 				D38E3A231E2E8AF100C3B63F /* RealmSwift.framework in Frameworks */,
 			);
@@ -317,6 +328,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D33208231E31326E001C555B /* PBXTargetDependency */,
 			);
 			name = DefibrillatorStatusApp;
 			productName = DefibrillatorStatusApp;
@@ -526,6 +538,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D33208231E31326E001C555B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = D33208221E31326E001C555B /* PBXContainerItemProxy */;
+		};
 		D3E0B0E41DB3FA4E00943F19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D3E0B0CD1DB3FA4D00943F19 /* DefibrillatorStatusApp */;
