@@ -12,10 +12,13 @@ import CoreBluetooth
 protocol BluetoothManagerProtocol {
     
     var delegate: BluetoothManagerDelegate? { get set }
+    var currentPeripheral : CBPeripheral? { get set }
     var characteristicDelegate : BluetoothCharacteristicDelegate? { get set }
+    var downloadDelegate : DownloadDelegate? { get set }
     var defibrillatorList : [CBPeripheral] { get set }
     var eventList : [String] { get set }
     func scanForDefibrillators()
     func stopScan()
     func connectToDefibrillator(peripheral : CBPeripheral)
+    func downloadEvent(peripheral: CBPeripheral)
 }

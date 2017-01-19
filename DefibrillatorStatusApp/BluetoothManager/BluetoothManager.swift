@@ -8,17 +8,18 @@
 
 import Foundation
 import CoreBluetooth
+import RealmSwift
 
 class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     // MARK: Properties
-    
     var centralManager : CBCentralManager?
     var currentPeripheral : CBPeripheral?
-    
+    var newPeripheral : CBPeripheral!
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
-    
+    var fileLength : Float
+    let event : Event
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -32,15 +33,36 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     
+    var downloadDelegate : DownloadDelegate?
+    var downloadValue : Float {
+        didSet {
+            downloadDelegate?.progressHasUpdated(value: downloadValue)
+        }
+    }
+    
+    var downloadComplete : Bool {
+        didSet {
+            downloadDelegate?.downloadComplete()
+        }
+    }
+    
     // MARK: Initialiser
     
     override init() {
         bluetoothState = .Started
         characteristicState = .NotFound
+        downloadComplete = false
+        downloadValue = 0
+        fileLength = 0
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
+        event = Event()
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
     //MARK: Central Methods
@@ -59,8 +81,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
-        
-        print(peripheral.name ?? "Defib")
         defibrillatorList.append(peripheral)
         bluetoothState = .FoundDefibrillator
         print("Found")
@@ -72,7 +92,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func connectToDefibrillator(peripheral : CBPeripheral) {
-        peripheral.delegate = self
         centralManager?.connect(peripheral, options: nil)
     }
     

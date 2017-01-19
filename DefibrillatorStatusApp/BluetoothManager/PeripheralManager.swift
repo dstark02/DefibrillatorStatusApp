@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 import CoreBluetooth
 
 extension BluetoothManager {
@@ -14,17 +15,20 @@ extension BluetoothManager {
     // MARK : Peripheral Methods
     
     func discoverDefibrillatorServices() {
-        currentPeripheral?.delegate = self
         currentPeripheral?.discoverServices([BluetoothConstants.serviceUUID])
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        
         print("Discovered Service")
         for service in peripheral.services! {
-            let thisService = service as CBService
             characteristicState = .Searching
-            peripheral.discoverCharacteristics([BluetoothConstants.characteristicUUID], for: thisService)
+            peripheral.discoverCharacteristics([BluetoothConstants.eventListCharacteristicUUID], for: service)
+        }
+    }
+    
+    func downloadEvent(peripheral: CBPeripheral) {
+        for service in peripheral.services! {
+            peripheral.discoverCharacteristics([BluetoothConstants.ecgDataCharacteristicUUID], for: service)
         }
     }
     
@@ -33,42 +37,86 @@ extension BluetoothManager {
         print("Discovered Characteristic")
         characteristicState = .Found
         
-        // check the uuid of each characteristic to find config and data characteristics
-        for charateristic in service.characteristics! {
-            let thisCharacteristic = charateristic as CBCharacteristic
-            peripheral.readValue(for: thisCharacteristic)
-            peripheral.setNotifyValue(true, for: thisCharacteristic)
+        for characteristic in service.characteristics! {
+            if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
+                peripheral.readValue(for: characteristic)
+                peripheral.setNotifyValue(true, for: characteristic)
+            }
+            
+            if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
+                peripheral.readValue(for: characteristic)
+            }
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral,
-                    didUpdateValueFor characteristic: CBCharacteristic,
-                    error: Error?){
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
         
-        print("updated value")
-        formatStringToDisplay(characteristic: characteristic)
+        if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
+            formatStringToDisplay(characteristic: characteristic)
+        }
+        
+        if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
+            if (fileLength != 0) {
+                readECGData(characteristic: characteristic, periperhral: peripheral)
+            } else {
+                if let dataReceived = characteristic.value {
+                    if let dataAsString = String(data: dataReceived, encoding: .utf8) {
+                        if let length = UInt16(dataAsString) {
+                            fileLength = Float(length)
+                            peripheral.setNotifyValue(true, for: characteristic)
+                        }
+                    }
+                }
+            }
+        }
     }
     
-    // MARK : Helper Method
+    
+    // MARK : Helper Methods
     
     func formatStringToDisplay(characteristic: CBCharacteristic) {
         
         if let dataReceived = characteristic.value {
-            
-            if let dataString = String(data: dataReceived, encoding: .utf8) {
+            if let dataAsString = String(data: dataReceived, encoding: .utf8) {
                 
-                let stringFormatted = dataString.components(separatedBy: ",")
-                
-                print(dataString)
-                
-                for i in 0 ..< stringFormatted.count {
-                    eventList.append(stringFormatted[i])
+                let dataFormatted = dataAsString.components(separatedBy: ",")
+                for item in dataFormatted {
+                    eventList.append(item)
                 }
                 characteristicState = .Updated
             }
-            //peripheral.setNotifyValue(false, forCharacteristic: characteristic)
+        }
+    }
+    
+    func readECGData(characteristic : CBCharacteristic, periperhral : CBPeripheral) {
+        
+        if let dataReceived = characteristic.value {
+            let ecg = ECG()
+            ecg.ecg = dataReceived
+            event.ecgs.append(ecg)
+            downloadValue += 1/fileLength
+            print(downloadValue)
+        }
+        
+        if (downloadValue > 0.998) {
+            periperhral.setNotifyValue(false, for: characteristic)
+            writeToDatabase()
+        }
+    }
+    
+    func writeToDatabase() {
+
+        event.date = "18/Jan/2017"
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(event)
+                print("value wrote")
+                downloadComplete = true
+            }
+        } catch let error as NSError {
+            fatalError(error.localizedDescription)
         }
     }
 
-    
 }
