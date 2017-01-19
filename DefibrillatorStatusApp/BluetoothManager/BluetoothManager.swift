@@ -59,10 +59,10 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         event = Event()
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
+       // let realm = try! Realm()
+       // try! realm.write {
+       //     realm.deleteAll()
+       // }
     }
     
     //MARK: Central Methods
