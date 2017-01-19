@@ -38,6 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D33208091E311F4C001C555B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 		D38E3A141E2E3CC900C3B63F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38E3A0E1E2E3CC900C3B63F /* Charts.xcodeproj */;
@@ -346,6 +353,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D332080A1E311F4C001C555B /* PBXTargetDependency */,
 				D3E0B0E41DB3FA4E00943F19 /* PBXTargetDependency */,
 			);
 			name = DefibrillatorStatusAppTests;
@@ -538,6 +546,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D332080A1E311F4C001C555B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = D33208091E311F4C001C555B /* PBXContainerItemProxy */;
+		};
 		D38E3A1D1E2E3CF300C3B63F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
