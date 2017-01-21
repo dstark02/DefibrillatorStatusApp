@@ -21,7 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="WZ2-vQ-2mJ"/>
-                        <segue destination="cdm-Fx-520" kind="relationship" relationship="viewControllers" id="5t3-fi-1hv"/>
+                        <segue destination="orJ-8G-OBZ" kind="relationship" relationship="viewControllers" id="5YC-BL-rMX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-HT-aqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,7 +31,7 @@
         <!--Find Defibrillator-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BluetoothScanController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ScanController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -50,11 +50,11 @@
                                 <rect key="frame" x="0.0" y="205" width="414" height="531"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Lry-Lf-ueV">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceCell" id="Lry-Lf-ueV">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lry-Lf-ueV" id="fKV-Ab-veN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -146,10 +146,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="kr4-eW-8cL">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kr4-eW-8cL" id="1ZE-Zn-PMQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -216,12 +216,57 @@
                     </view>
                     <connections>
                         <outlet property="progressView" destination="XBw-oR-tUc" id="fcC-dd-kb8"/>
-                        <segue destination="cdm-Fx-520" kind="show" identifier="chartSegue" id="W3W-U6-k6D"/>
+                        <segue destination="cdm-Fx-520" kind="show" identifier="downloadToChartSegue" id="W3W-U6-k6D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8D-PS-jmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="982.60869565217399" y="-154.07608695652175"/>
+        </scene>
+        <!--Saved Events-->
+        <scene sceneID="8Gw-eQ-v2K">
+            <objects>
+                <viewController id="orJ-8G-OBZ" customClass="SavedEventsController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q2b-Cm-3fp"/>
+                        <viewControllerLayoutGuide type="bottom" id="S3S-Oo-gDq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pZu-CS-D8F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ogn-YN-94i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="WrD-xj-zhC">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WrD-xj-zhC" id="FpL-Fk-jha">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ogn-YN-94i" firstAttribute="top" secondItem="pZu-CS-D8F" secondAttribute="top" id="2Tn-Ye-PyI"/>
+                            <constraint firstItem="ogn-YN-94i" firstAttribute="leading" secondItem="pZu-CS-D8F" secondAttribute="leading" id="HPh-m1-yZt"/>
+                            <constraint firstItem="ogn-YN-94i" firstAttribute="bottom" secondItem="S3S-Oo-gDq" secondAttribute="top" id="YzB-RG-wZO"/>
+                            <constraint firstAttribute="trailing" secondItem="ogn-YN-94i" secondAttribute="trailing" id="wDv-rr-60P"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Saved Events" id="TjF-uA-EZm"/>
+                    <connections>
+                        <outlet property="eventListTable" destination="ogn-YN-94i" id="74N-Wd-9hZ"/>
+                        <segue destination="cdm-Fx-520" kind="show" identifier="eventListToChartSegue" id="YBn-lz-Xag"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rsw-ok-riV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494.20289855072468" y="589.4021739130435"/>
         </scene>
         <!--Chart-->
         <scene sceneID="lCX-Ue-byF">
@@ -236,7 +281,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TS6-tm-cEr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="63" width="414" height="629"/>
+                                <rect key="frame" x="0.0" y="63" width="414" height="624"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -255,10 +300,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1U-mf-5IG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.20289855072468" y="600.81521739130437"/>
+            <point key="canvasLocation" x="258" y="590"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="W3W-U6-k6D"/>
+        <segue reference="YBn-lz-Xag"/>
     </inferredMetricsTieBreakers>
 </document>

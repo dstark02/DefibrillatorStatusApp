@@ -11,11 +11,10 @@ import RealmSwift
 
 class DataParser {
     
-    static func filterECG(data: Results<Event>) -> [UInt16] {
+    static func filterECG(event: Event) -> [UInt16] {
         var isNewPage = true
         var isECGData = true
         var ecgData = [UInt16]()
-        let event = data[0]
         
         for i in 0 ..< event.ecgs.count {
             

@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
-class BluetoothScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
+class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
     
     // MARK: Properties
     
     var bluetoothManager : BluetoothManagerProtocol!
     let titleForHeaderInSection = "Defibrillators"
     let titleForFooterInSection = "Select Device to see Events on it"
+    var state : BluetoothState?
     @IBOutlet weak var bluetoothScanView: UITableView!
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
@@ -24,6 +26,7 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
         bluetoothScanView.delegate = self
@@ -40,6 +43,12 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Bluetooth Methods
     
     @IBAction func switchToggled(_ sender: Any) {
+        
+        if state == .Off {
+            print("bluetooth is off")
+            bluetoothSwitch.setOn(false, animated: true)
+        }
+        
         if bluetoothSwitch.isOn {
             bluetoothManager.scanForDefibrillators()
         } else {
@@ -48,6 +57,8 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
+        
+        state = bluetoothState
         
         switch bluetoothState {
             
@@ -74,7 +85,7 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "deviceCell")! as UITableViewCell
         // let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
         cell.textLabel?.text = "HeartSine Defibrillator"
         return cell

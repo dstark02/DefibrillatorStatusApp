@@ -40,7 +40,6 @@ extension BluetoothManager {
         for characteristic in service.characteristics! {
             if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
                 peripheral.readValue(for: characteristic)
-                peripheral.setNotifyValue(true, for: characteristic)
             }
             
             if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {

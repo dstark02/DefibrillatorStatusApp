@@ -13,23 +13,25 @@ import Charts
 class ChartController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: LineChartView!
+    var selectedEvent : Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
         chartView.gridBackgroundColor = UIColor.white
         chartView.dragEnabled = true
-        setChartData()
+        if let currentEvent = selectedEvent {
+            setChartData(event: currentEvent)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func setChartData() {
+    func setChartData(event: Event) {
         
-        var ecgPoints = DataParser.filterECG(data: getECGPointsFromDatabase())
+        var ecgPoints = DataParser.filterECG(event: event)
         
         // 1 - creating an array of data entries
         var yVals : [ChartDataEntry] = [ChartDataEntry]()
@@ -58,14 +60,4 @@ class ChartController: UIViewController, ChartViewDelegate {
         chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
     }
     
-    func getECGPointsFromDatabase() -> Results<Event> {
-        do {
-            let realm = try Realm()
-            return realm.objects(Event.self)
-        } catch let error as NSError {
-            fatalError(error.localizedDescription)
-        }
-    }
-    
-
 }
