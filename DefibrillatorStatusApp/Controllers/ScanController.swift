@@ -96,8 +96,11 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
-        bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+        if (state != .ConnectedToDefibrillator) {
+            let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
+            bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Segue

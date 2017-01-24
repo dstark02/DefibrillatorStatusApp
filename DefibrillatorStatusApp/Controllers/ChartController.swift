@@ -18,7 +18,9 @@ class ChartController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
-        chartView.gridBackgroundColor = UIColor.white
+        chartView.rightAxis.enabled = false
+        chartView.xAxis.enabled = false
+    
         chartView.dragEnabled = true
         if let currentEvent = selectedEvent {
             setChartData(event: currentEvent)
@@ -58,6 +60,8 @@ class ChartController: UIViewController, ChartViewDelegate {
         //5 - finally set our data
         chartView.data = lineData
         chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
+        chartView.drawBordersEnabled = false
+        chartView.drawGridBackgroundEnabled = false
     }
     
 }
