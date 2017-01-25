@@ -21,6 +21,8 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    let alert = UIAlertController(title: "", message: "Turn Bluetooth on", preferredStyle: .alert)
+    
     
     // MARK: ViewDidLoad Method
     
@@ -32,6 +34,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         bluetoothScanView.delegate = self
         bluetoothScanView.dataSource = self
         activityIndicator.hidesWhenStopped = true
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,6 +48,8 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func switchToggled(_ sender: Any) {
         
         if state == .Off {
+            //event handler with closure
+            show(alert, sender: nil);
             print("bluetooth is off")
             bluetoothSwitch.setOn(false, animated: true)
         }

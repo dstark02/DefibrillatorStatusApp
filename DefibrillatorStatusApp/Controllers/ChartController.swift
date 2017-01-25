@@ -45,7 +45,6 @@ class ChartController: UIViewController, ChartViewDelegate {
         let set1: LineChartDataSet = LineChartDataSet(values: yVals, label: "First Data Set")
         set1.axisDependency = .left // Line will correlate with left axis values
         set1.setColor(UIColor.black.withAlphaComponent(0.5)) // our line's opacity is 50%
-        // our circle will be dark red
         set1.lineWidth = 2.0
         set1.drawCirclesEnabled = false
         
