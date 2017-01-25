@@ -57,6 +57,7 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = self.eventListTable.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         let event = bluetoothManager.eventList[indexPath.row]
         cell.textLabel?.text = event
+        cell.textLabel?.textColor = Colour.HeartSineBlue
         return cell
     }
     

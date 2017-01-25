@@ -99,6 +99,7 @@ extension BluetoothManager {
         
         if (downloadValue > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
+            centralManager?.cancelPeripheralConnection(periperhral)
             downloadComplete = AccessDatabase.write(event: event)
         }
     }

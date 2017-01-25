@@ -17,7 +17,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var state : BluetoothState?
     let titleForHeaderInSection = "Defibrillators"
     let titleForFooterInSection = "Select Device to see Events on it"
-    let alert = UIAlertController(title: "", message: "Turn Bluetooth on", preferredStyle: .alert)
     @IBOutlet weak var bluetoothScanView: UITableView!
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
@@ -34,7 +33,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         bluetoothScanView.delegate = self
         bluetoothScanView.dataSource = self
         activityIndicator.hidesWhenStopped = true
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,16 +44,21 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func switchToggled(_ sender: Any) {
         
+        
         if state == .Off {
-            show(alert, sender: nil);
+            if !bluetoothSwitch.isOn { return }
+            let alert = UIAlertController(title: "", message: "Turn Bluetooth on", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             print("bluetooth is off")
             bluetoothSwitch.setOn(false, animated: true)
-        }
-        
-        if bluetoothSwitch.isOn {
-            bluetoothManager.scanForDefibrillators()
         } else {
-            bluetoothManager.stopScan()
+        
+            if bluetoothSwitch.isOn {
+                bluetoothManager.scanForDefibrillators()
+            } else {
+                bluetoothManager.stopScan()
+            }
         }
     }
     
@@ -91,6 +94,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "deviceCell")! as UITableViewCell
         // let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
         cell.textLabel?.text = "HeartSine Defibrillator"
+        cell.textLabel?.textColor = Colour.HeartSineBlue
         return cell
     }
     

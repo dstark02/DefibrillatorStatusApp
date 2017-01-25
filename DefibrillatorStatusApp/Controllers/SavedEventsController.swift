@@ -47,6 +47,7 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = eventListTable.dequeueReusableCell(withIdentifier: "eventCell")! as UITableViewCell
         let event = events[indexPath.row]
         cell.textLabel?.text = event.date
+        cell.textLabel?.textColor = Colour.HeartSineBlue
         return cell
     }
     
