@@ -99,22 +99,7 @@ extension BluetoothManager {
         
         if (downloadValue > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
-            writeToDatabase()
-        }
-    }
-    
-    func writeToDatabase() {
-
-        event.date = "18/Jan/2017"
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(event)
-                print("value wrote")
-                downloadComplete = true
-            }
-        } catch let error as NSError {
-            fatalError(error.localizedDescription)
+            downloadComplete = AccessDatabase.write(event: event)
         }
     }
 

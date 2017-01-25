@@ -15,7 +15,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     // MARK: Properties
     var centralManager : CBCentralManager?
     var currentPeripheral : CBPeripheral?
-    var newPeripheral : CBPeripheral!
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
     var fileLength : Float
@@ -39,10 +38,11 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             downloadDelegate?.progressHasUpdated(value: downloadValue)
         }
     }
-    
     var downloadComplete : Bool {
         didSet {
-            downloadDelegate?.downloadComplete(event: event)
+            if (downloadComplete) {
+                downloadDelegate?.downloadComplete(event: event)
+            }
         }
     }
     
@@ -59,10 +59,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         event = Event()
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        //let realm = try! Realm()
-        //try! realm.write {
-        //    realm.deleteAll()
-        //}
     }
     
     //MARK: Central Methods

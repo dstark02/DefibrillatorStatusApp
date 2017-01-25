@@ -21,7 +21,7 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         events = [Event]()
-        events = getECGPointsFromDatabase()
+        events = AccessDatabase.read()
         eventListTable.delegate = self
         eventListTable.dataSource = self
         eventListTable.reloadData()
@@ -68,20 +68,6 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
                 let svc = segue.destination as! ChartController;
                 svc.selectedEvent = eventThatWasSelected
             }
-        }
-    }
-
-    
-    // MARK : Database Method
-    
-    func getECGPointsFromDatabase() -> [Event] {
-        do {
-            let realm = try Realm()
-            let a = Array(realm.objects(Event.self))
-            print(a)
-            return Array(realm.objects(Event.self))
-        } catch let error as NSError {
-            fatalError(error.localizedDescription)
         }
     }
 }
