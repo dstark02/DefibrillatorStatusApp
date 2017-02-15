@@ -23,9 +23,9 @@ class AccessDatabase {
         }
     }
     
-    static func write(event: Event) -> Bool {
+    static func write(event: Event, date: String) -> Bool {
         var result = false
-        event.date = "18/Jan/2017"
+        event.date = date
         do {
             let realm = try Realm()
             try realm.write {

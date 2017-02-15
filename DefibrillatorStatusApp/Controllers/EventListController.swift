@@ -63,7 +63,7 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let defibrillator = bluetoothManager.currentPeripheral {
-            bluetoothManager.downloadEvent(peripheral: defibrillator)
+            bluetoothManager.downloadEvent(peripheral: defibrillator, date: bluetoothManager.eventList[indexPath.row])
         }
         
     }

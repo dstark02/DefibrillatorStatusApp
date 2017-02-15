@@ -13,10 +13,15 @@ import Charts
 class ChartController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var eventInfo: UIScrollView!
+    
     var selectedEvent : Event?
+    var hideButton = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeButton.isHidden = hideButton
         chartView.delegate = self
         chartView.rightAxis.enabled = false
         chartView.xAxis.enabled = false
@@ -30,6 +35,18 @@ class ChartController: UIViewController, ChartViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func stretchChart(_ sender: Any) {
+        
+        if chartView.frame.size.height == view.frame.height {
+            chartView.frame.size.height = 444
+            eventInfo.isHidden = false
+        } else {
+            chartView.frame.size.height = view.frame.height
+            eventInfo.isHidden = true
+        }
+    }
+    
     
     func setChartData(event: Event) {
         
@@ -52,7 +69,6 @@ class ChartController: UIViewController, ChartViewDelegate {
         var dataSets : [LineChartDataSet] = [LineChartDataSet]()
         dataSets.append(set1)
         
-        //4 - pass our months in for our x-axis label value along with our dataSets
         let lineData: LineChartData = LineChartData(dataSets: dataSets)
         lineData.setValueTextColor(UIColor.white)
         
@@ -60,7 +76,16 @@ class ChartController: UIViewController, ChartViewDelegate {
         chartView.data = lineData
         chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
         chartView.drawBordersEnabled = false
-        chartView.drawGridBackgroundEnabled = false
+    }
+    
+    // MARK : Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "enlarge") {
+            let svc = segue.destination as! ChartController;
+            svc.selectedEvent = selectedEvent
+            svc.hideButton = true
+        }
     }
     
 }

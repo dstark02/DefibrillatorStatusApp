@@ -19,6 +19,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var eventList: [String]
     var fileLength : Float
     let event : Event
+    var date : String
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -54,6 +55,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         downloadComplete = false
         downloadValue = 0
         fileLength = 0
+        date = "18/Jan/2016 12:00"
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
         event = Event()

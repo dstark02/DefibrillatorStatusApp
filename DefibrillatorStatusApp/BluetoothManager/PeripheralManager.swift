@@ -26,7 +26,9 @@ extension BluetoothManager {
         }
     }
     
-    func downloadEvent(peripheral: CBPeripheral) {
+    func downloadEvent(peripheral: CBPeripheral, date: String) {
+        
+        self.date = date
         for service in peripheral.services! {
             peripheral.discoverCharacteristics([BluetoothConstants.ecgDataCharacteristicUUID], for: service)
         }
@@ -100,7 +102,7 @@ extension BluetoothManager {
         if (downloadValue > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
             centralManager?.cancelPeripheralConnection(periperhral)
-            downloadComplete = AccessDatabase.write(event: event)
+            downloadComplete = AccessDatabase.write(event: event, date: date)
         }
     }
 

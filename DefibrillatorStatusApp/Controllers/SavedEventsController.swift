@@ -68,6 +68,7 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
             if let eventThatWasSelected = selectedEvent {
                 let svc = segue.destination as! ChartController;
                 svc.selectedEvent = eventThatWasSelected
+                svc.hideButton = true
             }
         }
     }
