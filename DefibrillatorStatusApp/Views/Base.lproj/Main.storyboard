@@ -344,7 +344,7 @@
                                         <rect key="frame" x="342" y="16" width="25" height="25"/>
                                         <state key="normal" image="Resize"/>
                                         <connections>
-                                            <action selector="stretchChart:" destination="cdm-Fx-520" eventType="touchUpInside" id="Iip-j8-7Xc"/>
+                                            <action selector="resizeTapped:" destination="cdm-Fx-520" eventType="touchUpInside" id="ksl-8n-bdG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -359,16 +359,30 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDe-U0-tPQ">
                                 <rect key="frame" x="0.0" y="444" width="375" height="159"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Shocks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-ft-jx4">
-                                        <rect key="frame" x="8" y="40" width="142" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a17-ip-9gM">
+                                        <rect key="frame" x="8" y="11" width="104" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a17-ip-9gM">
-                                        <rect key="frame" x="8" y="11" width="113" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHg-ux-s2v" userLabel="eventDurText">
+                                        <rect key="frame" x="120" y="9" width="193" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Shocks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-ft-jx4">
+                                        <rect key="frame" x="8" y="36" width="129" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOy-QZ-8g3" userLabel="noOfShockText">
+                                        <rect key="frame" x="145" y="34" width="193" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -396,8 +410,10 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="TS6-tm-cEr" id="H5w-HA-Wlc"/>
+                        <outlet property="eventDuration" destination="eHg-ux-s2v" id="wKa-90-c2n"/>
                         <outlet property="eventInfo" destination="fDe-U0-tPQ" id="DJJ-ug-C1r"/>
                         <outlet property="homeButton" destination="okf-H0-A1F" id="T9v-DJ-zyi"/>
+                        <outlet property="numberOfShocks" destination="UOy-QZ-8g3" id="j48-fI-9KF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1U-mf-5IG" userLabel="First Responder" sceneMemberID="firstResponder"/>

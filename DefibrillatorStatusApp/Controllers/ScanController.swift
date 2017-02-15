@@ -27,7 +27,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.description)
+        // print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
         bluetoothScanView.delegate = self
@@ -43,23 +43,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Bluetooth Methods
     
     @IBAction func switchToggled(_ sender: Any) {
-        
-        
-        if state == .Off {
-            if !bluetoothSwitch.isOn { return }
-            let alert = UIAlertController(title: "", message: "Turn Bluetooth on", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            print("bluetooth is off")
-            bluetoothSwitch.setOn(false, animated: true)
-        } else {
-        
-            if bluetoothSwitch.isOn {
-                bluetoothManager.scanForDefibrillators()
-            } else {
-                bluetoothManager.stopScan()
-            }
-        }
+        bluetoothInteraction()
     }
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
@@ -132,6 +116,24 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         bluetoothSwitch.setOn(false, animated: true)
         scanLabel.text = "FINISHED SCAN, RETRY IF NO DEVICES LISTED"
         activityIndicator.stopAnimating()
+    }
+    
+    func bluetoothInteraction() {
+        if state == .Off {
+            if !bluetoothSwitch.isOn { return }
+            let alert = UIAlertController(title: "", message: "Turn Bluetooth On", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("bluetooth is off")
+            bluetoothSwitch.setOn(false, animated: true)
+        } else {
+            
+            if bluetoothSwitch.isOn {
+                bluetoothManager.scanForDefibrillators()
+            } else {
+                bluetoothManager.stopScan()
+            }
+        }
     }
 }
 

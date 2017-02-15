@@ -15,6 +15,8 @@ class ChartController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var eventInfo: UIScrollView!
+    @IBOutlet weak var eventDuration: UILabel!
+    @IBOutlet weak var numberOfShocks: UILabel!
     
     var selectedEvent : Event?
     var hideButton = true
@@ -24,7 +26,7 @@ class ChartController: UIViewController, ChartViewDelegate {
         homeButton.isHidden = hideButton
         chartView.delegate = self
         chartView.rightAxis.enabled = false
-        chartView.xAxis.enabled = false
+        //chartView.xAxis.enabled = false
     
         chartView.dragEnabled = true
         if let currentEvent = selectedEvent {
@@ -36,15 +38,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func stretchChart(_ sender: Any) {
-        
-        if chartView.frame.size.height == view.frame.height {
-            chartView.frame.size.height = 444
-            eventInfo.isHidden = false
-        } else {
-            chartView.frame.size.height = view.frame.height
-            eventInfo.isHidden = true
-        }
+    
+    @IBAction func resizeTapped(_ sender: Any) {
+        resizeChart()
     }
     
     
@@ -58,8 +54,11 @@ class ChartController: UIViewController, ChartViewDelegate {
             yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
+        eventDuration.text = String(ecgPoints.count/250) + " seconds"
+        
+        
         // 2 - create a data set with our array
-        let set1: LineChartDataSet = LineChartDataSet(values: yVals, label: "First Data Set")
+        let set1: LineChartDataSet = LineChartDataSet(values: yVals, label: "ECG Data")
         set1.axisDependency = .left // Line will correlate with left axis values
         set1.setColor(UIColor.black.withAlphaComponent(0.5)) // our line's opacity is 50%
         set1.lineWidth = 2.0
@@ -72,19 +71,33 @@ class ChartController: UIViewController, ChartViewDelegate {
         let lineData: LineChartData = LineChartData(dataSets: dataSets)
         lineData.setValueTextColor(UIColor.white)
         
+        
+        let limitLine = ChartLimitLine(limit: 32768)
+        limitLine.lineWidth = 1.0
+        chartView.leftAxis.addLimitLine(limitLine)
+        
+        chartView.xAxis.valueFormatter = XAxisFormatter()
         //5 - finally set our data
         chartView.data = lineData
         chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
         chartView.drawBordersEnabled = false
     }
     
-    // MARK : Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "enlarge") {
-            let svc = segue.destination as! ChartController;
-            svc.selectedEvent = selectedEvent
-            svc.hideButton = true
+    func resizeChart() {
+        
+        if chartView.frame.size.height == view.frame.height {
+            UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
+                self.chartView.frame.size.height -= 159
+            }, completion: { finished in
+                self.eventInfo.isHidden = false
+            })
+        } else {
+            UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
+                self.chartView.frame.size.height = self.view.frame.height
+                self.eventInfo.isHidden = true
+            }, completion: { finished in
+            })
         }
     }
     
