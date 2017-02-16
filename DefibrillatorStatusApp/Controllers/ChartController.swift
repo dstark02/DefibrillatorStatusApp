@@ -54,7 +54,7 @@ class ChartController: UIViewController, ChartViewDelegate {
             yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
-        eventDuration.text = String(ecgPoints.count/250) + " seconds"
+        eventDuration.text = String(ecgPoints.count/ChartConstants.ECGSampleRate) + " seconds"
         
         
         // 2 - create a data set with our array
@@ -72,7 +72,7 @@ class ChartController: UIViewController, ChartViewDelegate {
         lineData.setValueTextColor(UIColor.white)
         
         
-        let limitLine = ChartLimitLine(limit: 32768)
+        let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
         chartView.leftAxis.addLimitLine(limitLine)
         

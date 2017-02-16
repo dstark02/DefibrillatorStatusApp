@@ -18,6 +18,7 @@
 		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
 		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
 		D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */; };
+		D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A81E55C3EC0081E9BD /* ChartConstants.swift */; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
 		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
 		D33531081E37F5B600884E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33531071E37F5B600884E86 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManagerProtocol.swift; path = Protocols/BluetoothManagerProtocol.swift; sourceTree = "<group>"; };
 		D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
+		D33395A81E55C3EC0081E9BD /* ChartConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConstants.swift; sourceTree = "<group>"; };
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
 		D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDelegate.swift; path = Protocols/DownloadDelegate.swift; sourceTree = "<group>"; };
 		D33531071E37F5B600884E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,6 +223,14 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		D33395A51E55C3760081E9BD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D33395A81E55C3EC0081E9BD /* ChartConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		D38E3A261E2E8E2000C3B63F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */,
+				D33395A51E55C3760081E9BD /* Constants */,
 				D3B680D11E38BF1B0048FF7D /* Database */,
 				D38E3A291E2EA5D000C3B63F /* Helpers */,
 				D38E3A261E2E8E2000C3B63F /* Models */,
@@ -519,6 +530,7 @@
 				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
 				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
 				D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */,
+				D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */,
 				D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */,
 				D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */,
 				D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */,
