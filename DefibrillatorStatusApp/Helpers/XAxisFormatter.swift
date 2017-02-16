@@ -11,13 +11,10 @@ import Charts
 class XAxisFormatter: NSObject, IAxisValueFormatter {
     
     
-    
-    
     func stringForValue(_ value: Double,
                         axis: AxisBase?) -> String {
         
-        return String(value/250)
-        
+        return String(value/ChartConstants.ECGSampleRate)
     }
     
     

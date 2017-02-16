@@ -54,7 +54,7 @@ class ChartController: UIViewController, ChartViewDelegate {
             yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
-        eventDuration.text = String(ecgPoints.count/ChartConstants.ECGSampleRate) + " seconds"
+        eventDuration.text = String(ecgPoints.count / Int(ChartConstants.ECGSampleRate)) + " seconds"
         
         
         // 2 - create a data set with our array

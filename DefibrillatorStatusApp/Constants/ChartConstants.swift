@@ -9,6 +9,6 @@
 import Foundation
 
 struct ChartConstants {
-    static let ECGSampleRate = 250
+    static let ECGSampleRate : Double = 250
     static let ECGBaseline : Double = 32768
 }
