@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
-class BluetoothScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
+class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothManagerDelegate {
     
     // MARK: Properties
     
     var bluetoothManager : BluetoothManagerProtocol!
+    var state : BluetoothState?
     let titleForHeaderInSection = "Defibrillators"
     let titleForFooterInSection = "Select Device to see Events on it"
     @IBOutlet weak var bluetoothScanView: UITableView!
@@ -20,10 +22,12 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var scanLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    
     // MARK: ViewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
         bluetoothScanView.delegate = self
@@ -33,21 +37,18 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
     // MARK: Bluetooth Methods
     
     @IBAction func switchToggled(_ sender: Any) {
-        if bluetoothSwitch.isOn {
-            bluetoothManager.scanForDefibrillators()
-        } else {
-            bluetoothManager.stopScan()
-        }
+        bluetoothInteraction()
     }
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
+        
+        state = bluetoothState
         
         switch bluetoothState {
             
@@ -74,9 +75,10 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = self.bluetoothScanView.dequeueReusableCell(withIdentifier: "deviceCell")! as UITableViewCell
         // let peripheralName = bluetoothManager.defibrillatorList[indexPath.row].name
         cell.textLabel?.text = "HeartSine Defibrillator"
+        cell.textLabel?.textColor = Colour.HeartSineBlue
         return cell
     }
     
@@ -85,8 +87,11 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
-        bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+        if (state != .ConnectedToDefibrillator) {
+            let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
+            bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Segue
@@ -111,6 +116,24 @@ class BluetoothScanController: UIViewController, UITableViewDelegate, UITableVie
         bluetoothSwitch.setOn(false, animated: true)
         scanLabel.text = "FINISHED SCAN, RETRY IF NO DEVICES LISTED"
         activityIndicator.stopAnimating()
+    }
+    
+    func bluetoothInteraction() {
+        if state == .Off {
+            if !bluetoothSwitch.isOn { return }
+            let alert = UIAlertController(title: "", message: "Turn Bluetooth On", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("bluetooth is off")
+            bluetoothSwitch.setOn(false, animated: true)
+        } else {
+            
+            if bluetoothSwitch.isOn {
+                bluetoothManager.scanForDefibrillators()
+            } else {
+                bluetoothManager.stopScan()
+            }
+        }
     }
 }
 

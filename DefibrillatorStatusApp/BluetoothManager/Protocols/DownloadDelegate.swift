@@ -11,5 +11,5 @@ import Foundation
 protocol DownloadDelegate {
     
     func progressHasUpdated(value: Float)
-    func downloadComplete()
+    func downloadComplete(event: Event)
 }

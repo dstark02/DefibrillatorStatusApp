@@ -26,7 +26,9 @@ extension BluetoothManager {
         }
     }
     
-    func downloadEvent(peripheral: CBPeripheral) {
+    func downloadEvent(peripheral: CBPeripheral, date: String) {
+        
+        self.date = date
         for service in peripheral.services! {
             peripheral.discoverCharacteristics([BluetoothConstants.ecgDataCharacteristicUUID], for: service)
         }
@@ -40,7 +42,6 @@ extension BluetoothManager {
         for characteristic in service.characteristics! {
             if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
                 peripheral.readValue(for: characteristic)
-                peripheral.setNotifyValue(true, for: characteristic)
             }
             
             if characteristic.uuid == BluetoothConstants.ecgDataCharacteristicUUID {
@@ -100,22 +101,8 @@ extension BluetoothManager {
         
         if (downloadValue > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
-            writeToDatabase()
-        }
-    }
-    
-    func writeToDatabase() {
-
-        event.date = "18/Jan/2017"
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(event)
-                print("value wrote")
-                downloadComplete = true
-            }
-        } catch let error as NSError {
-            fatalError(error.localizedDescription)
+            centralManager?.cancelPeripheralConnection(periperhral)
+            downloadComplete = AccessDatabase.write(event: event, date: date)
         }
     }
 

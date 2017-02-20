@@ -57,12 +57,13 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = self.eventListTable.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         let event = bluetoothManager.eventList[indexPath.row]
         cell.textLabel?.text = event
+        cell.textLabel?.textColor = Colour.HeartSineBlue
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let defibrillator = bluetoothManager.currentPeripheral {
-            bluetoothManager.downloadEvent(peripheral: defibrillator)
+            bluetoothManager.downloadEvent(peripheral: defibrillator, date: bluetoothManager.eventList[indexPath.row])
         }
         
     }

@@ -15,11 +15,11 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     // MARK: Properties
     var centralManager : CBCentralManager?
     var currentPeripheral : CBPeripheral?
-    var newPeripheral : CBPeripheral!
     var defibrillatorList: [CBPeripheral]
     var eventList: [String]
     var fileLength : Float
     let event : Event
+    var date : String
     var delegate : BluetoothManagerDelegate?
     var bluetoothState : BluetoothState {
         didSet {
@@ -39,10 +39,11 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             downloadDelegate?.progressHasUpdated(value: downloadValue)
         }
     }
-    
     var downloadComplete : Bool {
         didSet {
-            downloadDelegate?.downloadComplete()
+            if (downloadComplete) {
+                downloadDelegate?.downloadComplete(event: event)
+            }
         }
     }
     
@@ -54,15 +55,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         downloadComplete = false
         downloadValue = 0
         fileLength = 0
+        date = "18/Jan/2016 12:00"
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
         event = Event()
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
     }
     
     //MARK: Central Methods
@@ -87,8 +85,10 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func stopScan() {
-        centralManager?.stopScan()
-        bluetoothState = .Stopped
+        if bluetoothState != .Off {
+            centralManager?.stopScan()
+            bluetoothState = .Stopped
+        }
     }
     
     func connectToDefibrillator(peripheral : CBPeripheral) {
@@ -118,13 +118,14 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             bluetoothState = .Off
             print("Unautorized")
         case.resetting:
+            bluetoothState = .Off
             print("resetting")
         case.unknown:
+            bluetoothState = .Off
             print("unknown")
         case.unsupported:
             bluetoothState = .Off
             print("Unsupported")
-            
         }
     }
     
