@@ -9,8 +9,6 @@
 import UIKit
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
-    
-    var hasFullAccess = true
 
     override func viewDidLoad() {
         super.viewDidLoad()

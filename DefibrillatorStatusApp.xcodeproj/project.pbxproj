@@ -212,8 +212,8 @@
 		D328C31F1DB8008B00E3485B /* BluetoothManager */ = {
 			isa = PBXGroup;
 			children = (
-				D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */,
 				D328C3221DB803DC00E3485B /* BluetoothManager.swift */,
+				D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */,
 				D32BE8681DE0C144006C19A7 /* Protocols */,
 				D3CEB4761DDFCAEC0049358A /* Constants */,
 			);

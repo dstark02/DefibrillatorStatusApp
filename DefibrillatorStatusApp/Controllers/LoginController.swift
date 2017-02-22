@@ -9,10 +9,15 @@
 import UIKit
 import LocalAuthentication
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        username.delegate = self
+        password.delegate = self
         authenticateUser()
         // Do any additional setup after loading the view.
     }
@@ -22,13 +27,22 @@ class LoginController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     func authenticateUser() {
         let context = LAContext()
         var error: NSError?
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Identify yourself!"
+            let reason = "Touch to Log In"
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [unowned self] success, authenticationError in
