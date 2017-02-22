@@ -32,7 +32,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             characteristicDelegate?.characteristicStateHasChanged(characteristicState: characteristicState)
         }
     }
-    
     var downloadDelegate : DownloadDelegate?
     var downloadValue : Float {
         didSet {

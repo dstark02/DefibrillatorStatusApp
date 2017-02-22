@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D320DDB21E2901E700916D28 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320DDB11E2901E700916D28 /* ChartController.swift */; };
+		D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32380B01E5B836600A8BE27 /* LoginController.swift */; };
 		D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */; };
 		D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
 		D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		D34EB39D1E39302600735300 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB39C1E39302600735300 /* Colour.swift */; };
 		D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A271E2E8E8C00C3B63F /* ECG.swift */; };
 		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
+		D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA891E5B94060017C0B7 /* TabBarController.swift */; };
+		D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */; };
 		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
 		D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; };
 		D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -105,6 +108,7 @@
 
 /* Begin PBXFileReference section */
 		D320DDB11E2901E700916D28 /* ChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
+		D32380B01E5B836600A8BE27 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D327E0A51DD3B5F500A66CAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D327E0AE1DD3B93F00A66CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D38E3A271E2E8E8C00C3B63F /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECG.swift; sourceTree = "<group>"; };
 		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		D390FA891E5B94060017C0B7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessRights.swift; sourceTree = "<group>"; };
 		D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDatabase.swift; sourceTree = "<group>"; };
 		D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.1/Charts.xcodeproj"; sourceTree = "<group>"; };
 		D3CEB4721DDFC5670049358A /* EventListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListController.swift; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				D320DDB11E2901E700916D28 /* ChartController.swift */,
 				D334C9641E2F88C000C8B004 /* DownloadEventController.swift */,
 				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
+				D32380B01E5B836600A8BE27 /* LoginController.swift */,
+				D390FA891E5B94060017C0B7 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,8 +212,8 @@
 		D328C31F1DB8008B00E3485B /* BluetoothManager */ = {
 			isa = PBXGroup;
 			children = (
-				D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */,
 				D328C3221DB803DC00E3485B /* BluetoothManager.swift */,
+				D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */,
 				D32BE8681DE0C144006C19A7 /* Protocols */,
 				D3CEB4761DDFCAEC0049358A /* Constants */,
 			);
@@ -227,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				D33395A81E55C3EC0081E9BD /* ChartConstants.swift */,
+				D34EB39C1E39302600735300 /* Colour.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -244,10 +253,17 @@
 			isa = PBXGroup;
 			children = (
 				D38E3A2A1E2EA62300C3B63F /* DataParser.swift */,
-				D34EB39C1E39302600735300 /* Colour.swift */,
 				D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D390FA8B1E5B9DB50017C0B7 /* AuthenticateUser */ = {
+			isa = PBXGroup;
+			children = (
+				D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */,
+			);
+			path = AuthenticateUser;
 			sourceTree = "<group>";
 		};
 		D3B680D11E38BF1B0048FF7D /* Database */ = {
@@ -304,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */,
+				D390FA8B1E5B9DB50017C0B7 /* AuthenticateUser */,
 				D33395A51E55C3760081E9BD /* Constants */,
 				D3B680D11E38BF1B0048FF7D /* Database */,
 				D38E3A291E2EA5D000C3B63F /* Helpers */,
@@ -531,11 +548,14 @@
 				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
 				D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */,
 				D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */,
+				D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */,
 				D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */,
 				D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */,
 				D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */,
+				D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */,
 				D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */,
 				D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */,
+				D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */,
 				D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */,
 				D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */,
 				D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */,
