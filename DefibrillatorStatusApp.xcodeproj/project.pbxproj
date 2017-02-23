@@ -28,6 +28,7 @@
 		D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */; };
 		D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */; };
 		D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */; };
+		D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33388691E5F88120003AD70 /* PatientDetailsCell.swift */; };
 		D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */; };
 		D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A81E55C3EC0081E9BD /* ChartConstants.swift */; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
@@ -139,6 +140,7 @@
 		D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationController.swift; sourceTree = "<group>"; };
 		D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventProvider.swift; sourceTree = "<group>"; };
 		D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDurationCalculator.swift; sourceTree = "<group>"; };
+		D33388691E5F88120003AD70 /* PatientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsCell.swift; sourceTree = "<group>"; };
 		D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
 		D33395A81E55C3EC0081E9BD /* ChartConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConstants.swift; sourceTree = "<group>"; };
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
@@ -218,16 +220,9 @@
 		D327E0AC1DD3B7DB00A66CAF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */,
-				D3CEB4721DDFC5670049358A /* EventListController.swift */,
-				D320DDB11E2901E700916D28 /* ChartController.swift */,
-				D334C9641E2F88C000C8B004 /* DownloadEventController.swift */,
-				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
-				D32380B01E5B836600A8BE27 /* LoginController.swift */,
-				D390FA891E5B94060017C0B7 /* TabBarController.swift */,
-				D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */,
-				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
-				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
+				D333886C1E5F924F0003AD70 /* Bluetooth */,
+				D333886D1E5F92BC0003AD70 /* Event */,
+				D333886B1E5F92110003AD70 /* Login */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,11 +252,8 @@
 		D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				D32DC02B1E5E13D4009C54B6 /* NameCell.swift */,
-				D32DC02D1E5E1500009C54B6 /* GenderCell.swift */,
-				D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */,
-				D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */,
-				D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */,
+				D33388671E5F86640003AD70 /* PatientDetails */,
+				D33388681E5F872F0003AD70 /* EventInformation */,
 			);
 			path = CustomTableViewCells;
 			sourceTree = "<group>";
@@ -272,6 +264,65 @@
 				D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */,
 			);
 			path = CurrentEventProvider;
+			sourceTree = "<group>";
+		};
+		D33388671E5F86640003AD70 /* PatientDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC02B1E5E13D4009C54B6 /* NameCell.swift */,
+				D32DC02D1E5E1500009C54B6 /* GenderCell.swift */,
+				D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */,
+				D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */,
+			);
+			path = PatientDetails;
+			sourceTree = "<group>";
+		};
+		D33388681E5F872F0003AD70 /* EventInformation */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */,
+				D33388691E5F88120003AD70 /* PatientDetailsCell.swift */,
+			);
+			path = EventInformation;
+			sourceTree = "<group>";
+		};
+		D333886B1E5F92110003AD70 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D32380B01E5B836600A8BE27 /* LoginController.swift */,
+				D390FA891E5B94060017C0B7 /* TabBarController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D333886C1E5F924F0003AD70 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */,
+				D3CEB4721DDFC5670049358A /* EventListController.swift */,
+				D334C9641E2F88C000C8B004 /* DownloadEventController.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		D333886D1E5F92BC0003AD70 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D320DDB11E2901E700916D28 /* ChartController.swift */,
+				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
+				D333886E1E5F92E60003AD70 /* Patient */,
+				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
+				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		D333886E1E5F92E60003AD70 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */,
+			);
+			path = Patient;
 			sourceTree = "<group>";
 		};
 		D33395A51E55C3760081E9BD /* Constants */ = {
@@ -363,8 +414,8 @@
 		D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */ = {
 			isa = PBXGroup;
 			children = (
-				D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */,
 				D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */,
+				D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */,
 				D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */,
 				D390FA8B1E5B9DB50017C0B7 /* AuthenticateUser */,
 				D33395A51E55C3760081E9BD /* Constants */,
@@ -587,6 +638,7 @@
 			files = (
 				D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */,
 				D320DDB21E2901E700916D28 /* ChartController.swift in Sources */,
+				D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */,
 				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
 				D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */,
 				D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */,

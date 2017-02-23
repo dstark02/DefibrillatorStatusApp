@@ -44,15 +44,26 @@ class EventInformationController: UIViewController, UITableViewDelegate, UITable
             cell.cellTitle.text = "Duration"
             cell.cellValue.text = EventDurationCalculator.getEventDuration()
             return cell
-        default:
+        case 2:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "eventInfoCell") as! EventInfoCell
             cell.cellTitle.text = "Number of Shocks"
             cell.cellValue.text = ""
             return cell
+        default:
+            let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "patientCell") as! PatientDetailsCell
+            cell.cellTitle.text = "Patient Information"
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 3 {
+            eventInfoTable.deselectRow(at: indexPath, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
 }

@@ -33,11 +33,13 @@ class SegmentedController: UIViewController {
     @IBAction func showComponent(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             UIView.animate(withDuration: 0.5, animations: {
+                self.view.backgroundColor = .white
                 self.traceContainer.alpha = 1
                 self.informationContainer.alpha = 0
             })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
+                self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
                 self.traceContainer.alpha = 0
                 self.informationContainer.alpha = 1
             })
