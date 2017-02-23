@@ -27,7 +27,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // print(Realm.Configuration.defaultConfiguration.description)
+         print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
         bluetoothScanView.delegate = self

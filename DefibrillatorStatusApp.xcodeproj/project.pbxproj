@@ -23,6 +23,11 @@
 		D32DC02E1E5E1500009C54B6 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02D1E5E1500009C54B6 /* GenderCell.swift */; };
 		D32DC0301E5E15BE009C54B6 /* DOBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */; };
 		D32DC0331E5F05F4009C54B6 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */; };
+		D32DC0381E5F37E3009C54B6 /* EventInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */; };
+		D32DC03C1E5F4A55009C54B6 /* SegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */; };
+		D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */; };
+		D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */; };
+		D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */; };
 		D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */; };
 		D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A81E55C3EC0081E9BD /* ChartConstants.swift */; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
@@ -129,6 +134,11 @@
 		D32DC02D1E5E1500009C54B6 /* GenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
 		D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOBCell.swift; sourceTree = "<group>"; };
 		D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoCell.swift; sourceTree = "<group>"; };
+		D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedController.swift; sourceTree = "<group>"; };
+		D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationController.swift; sourceTree = "<group>"; };
+		D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventProvider.swift; sourceTree = "<group>"; };
+		D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDurationCalculator.swift; sourceTree = "<group>"; };
 		D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
 		D33395A81E55C3EC0081E9BD /* ChartConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConstants.swift; sourceTree = "<group>"; };
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
@@ -216,6 +226,8 @@
 				D32380B01E5B836600A8BE27 /* LoginController.swift */,
 				D390FA891E5B94060017C0B7 /* TabBarController.swift */,
 				D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */,
+				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
+				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,8 +261,17 @@
 				D32DC02D1E5E1500009C54B6 /* GenderCell.swift */,
 				D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */,
 				D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */,
+				D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */,
 			);
 			path = CustomTableViewCells;
+			sourceTree = "<group>";
+		};
+		D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */,
+			);
+			path = CurrentEventProvider;
 			sourceTree = "<group>";
 		};
 		D33395A51E55C3760081E9BD /* Constants */ = {
@@ -276,6 +297,7 @@
 			children = (
 				D38E3A2A1E2EA62300C3B63F /* DataParser.swift */,
 				D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */,
+				D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -341,8 +363,9 @@
 		D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */ = {
 			isa = PBXGroup;
 			children = (
-				D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */,
+				D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */,
 				D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */,
+				D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */,
 				D390FA8B1E5B9DB50017C0B7 /* AuthenticateUser */,
 				D33395A51E55C3760081E9BD /* Constants */,
 				D3B680D11E38BF1B0048FF7D /* Database */,
@@ -565,6 +588,7 @@
 				D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */,
 				D320DDB21E2901E700916D28 /* ChartController.swift in Sources */,
 				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
+				D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */,
 				D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */,
 				D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */,
 				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
@@ -575,6 +599,7 @@
 				D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */,
 				D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */,
 				D32DC02E1E5E1500009C54B6 /* GenderCell.swift in Sources */,
+				D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */,
 				D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */,
 				D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */,
 				D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */,
@@ -582,14 +607,17 @@
 				D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */,
 				D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */,
 				D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */,
+				D32DC03C1E5F4A55009C54B6 /* SegmentedController.swift in Sources */,
 				D32DC02C1E5E13D4009C54B6 /* NameCell.swift in Sources */,
 				D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */,
+				D32DC0381E5F37E3009C54B6 /* EventInfoCell.swift in Sources */,
 				D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */,
 				D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */,
 				D34EB39D1E39302600735300 /* Colour.swift in Sources */,
 				D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */,
 				D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */,
 				D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */,
+				D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */,
 				D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */,
 				D32DC0331E5F05F4009C54B6 /* DatePickerCell.swift in Sources */,
 			);

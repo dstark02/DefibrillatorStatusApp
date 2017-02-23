@@ -12,14 +12,13 @@ import Charts
 
 class ChartController: UIViewController, ChartViewDelegate {
 
+    // MARK: Properties
+    
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var homeButton: UIButton!
-    @IBOutlet weak var eventInfo: UIScrollView!
-    @IBOutlet weak var eventDuration: UILabel!
-    @IBOutlet weak var numberOfShocks: UILabel!
-    
-    var selectedEvent : Event?
     var hideButton = true
+    
+    // MARK: ViewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,10 @@ class ChartController: UIViewController, ChartViewDelegate {
         //chartView.xAxis.enabled = false
     
         chartView.dragEnabled = true
-        if let currentEvent = selectedEvent {
-            setChartData(event: currentEvent)
+        if let currentEvent = CurrentEventProvider.currentEvent {
+            let ecgPoints = DataParser.filterECG(event: currentEvent)
+            CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
+            setChartData(ecgPoints: ecgPoints)
         }
     }
 
@@ -38,15 +39,16 @@ class ChartController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: Action Methods
     
     @IBAction func resizeTapped(_ sender: Any) {
         resizeChart()
     }
     
+    // MARK: Chart Methods
     
-    func setChartData(event: Event) {
+    func setChartData(ecgPoints: [UInt16]) {
         
-        var ecgPoints = DataParser.filterECG(event: event)
         
         // 1 - creating an array of data entries
         var yVals : [ChartDataEntry] = [ChartDataEntry]()
@@ -54,7 +56,7 @@ class ChartController: UIViewController, ChartViewDelegate {
             yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
-        eventDuration.text = String(ecgPoints.count / Int(ChartConstants.ECGSampleRate)) + " seconds"
+      //  eventDuration.text = String(ecgPoints.count / Int(ChartConstants.ECGSampleRate)) + " seconds"
         
         
         // 2 - create a data set with our array
@@ -90,15 +92,15 @@ class ChartController: UIViewController, ChartViewDelegate {
             UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
                 self.chartView.frame.size.height -= 159
             }, completion: { finished in
-                self.eventInfo.isHidden = false
+                //self.eventInfoTable.isHidden = false
             })
         } else {
             UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
                 self.chartView.frame.size.height = self.view.frame.height
-                self.eventInfo.isHidden = true
+                //self.eventInfoTable.isHidden = true
             }, completion: { finished in
             })
         }
-    }
+    }    
     
 }
