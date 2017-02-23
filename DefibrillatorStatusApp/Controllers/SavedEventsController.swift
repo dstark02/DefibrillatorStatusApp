@@ -22,8 +22,6 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         events = [Event]()
         events = AccessDatabase.read()
-        eventListTable.delegate = self
-        eventListTable.dataSource = self
         eventListTable.reloadData()
     }
 
