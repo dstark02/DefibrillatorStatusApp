@@ -22,8 +22,6 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         bluetoothManager.characteristicDelegate = self
-        eventListTable.delegate = self
-        eventListTable.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {

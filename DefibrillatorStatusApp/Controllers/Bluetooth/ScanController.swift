@@ -30,8 +30,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
-        bluetoothScanView.delegate = self
-        bluetoothScanView.dataSource = self
         activityIndicator.hidesWhenStopped = true
     }
     
