@@ -27,7 +27,6 @@ extension BluetoothManager {
     }
     
     func downloadEvent(peripheral: CBPeripheral, date: String) {
-        
         self.date = date
         for service in peripheral.services! {
             peripheral.discoverCharacteristics([BluetoothConstants.ecgDataCharacteristicUUID], for: service)
@@ -35,7 +34,6 @@ extension BluetoothManager {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        
         print("Discovered Characteristic")
         characteristicState = .Found
         
@@ -51,7 +49,6 @@ extension BluetoothManager {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
-        
         if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
             formatStringToDisplay(characteristic: characteristic)
         }
@@ -76,7 +73,6 @@ extension BluetoothManager {
     // MARK : Helper Methods
     
     func formatStringToDisplay(characteristic: CBCharacteristic) {
-        
         if let dataReceived = characteristic.value {
             if let dataAsString = String(data: dataReceived, encoding: .utf8) {
                 
@@ -90,7 +86,6 @@ extension BluetoothManager {
     }
     
     func readECGData(characteristic : CBCharacteristic, periperhral : CBPeripheral) {
-        
         if let dataReceived = characteristic.value {
             let ecg = ECG()
             ecg.ecg = dataReceived

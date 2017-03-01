@@ -27,7 +27,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         print(Realm.Configuration.defaultConfiguration.description)
+        // print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.delegate = self
         bluetoothScanView.delegate = self
@@ -103,7 +103,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
     // MARK: Helper Methods
     
     func updateScanningView() {
@@ -121,7 +120,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func bluetoothInteraction() {
         if state == .Off {
             if !bluetoothSwitch.isOn { return }
-            let alert = UIAlertController(title: "", message: "Turn Bluetooth On", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Bluetooth", message: "Turn Bluetooth On", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             print("bluetooth is off")

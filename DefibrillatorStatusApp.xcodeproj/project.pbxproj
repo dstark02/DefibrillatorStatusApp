@@ -29,6 +29,7 @@
 		D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */; };
 		D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */; };
 		D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33388691E5F88120003AD70 /* PatientDetailsCell.swift */; };
+		D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D333888C1E5FA20F0003AD70 /* Event.storyboard */; };
 		D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */; };
 		D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A81E55C3EC0081E9BD /* ChartConstants.swift */; };
 		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
@@ -141,6 +142,7 @@
 		D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventProvider.swift; sourceTree = "<group>"; };
 		D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDurationCalculator.swift; sourceTree = "<group>"; };
 		D33388691E5F88120003AD70 /* PatientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsCell.swift; sourceTree = "<group>"; };
+		D333888C1E5FA20F0003AD70 /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
 		D33395A81E55C3EC0081E9BD /* ChartConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConstants.swift; sourceTree = "<group>"; };
 		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */,
 				D327E0AF1DD3B93F00A66CAF /* Main.storyboard */,
+				D333888C1E5FA20F0003AD70 /* Event.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,9 +311,9 @@
 		D333886D1E5F92BC0003AD70 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D333886E1E5F92E60003AD70 /* Patient */,
 				D320DDB11E2901E700916D28 /* ChartController.swift */,
 				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
-				D333886E1E5F92E60003AD70 /* Patient */,
 				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
 				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
 			);
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */,
+				D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */,
 				D33531081E37F5B600884E86 /* Assets.xcassets in Resources */,
 				D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */,
 			);

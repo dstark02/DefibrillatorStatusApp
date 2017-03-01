@@ -65,13 +65,10 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     //MARK: Central Methods
     
     func scanForDefibrillators() {
-        
-        if (bluetoothState != .Off) {
-            centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
-            bluetoothState = .Scanning
-            print("scanning")
-            _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
-        }
+        centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
+        bluetoothState = .Scanning
+        print("scanning")
+        Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
     }
     
     func centralManager(_ central: CBCentralManager,
@@ -84,10 +81,8 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func stopScan() {
-        if bluetoothState != .Off {
-            centralManager?.stopScan()
-            bluetoothState = .Stopped
-        }
+        centralManager?.stopScan()
+        bluetoothState = .Stopped
     }
     
     func connectToDefibrillator(peripheral : CBPeripheral) {

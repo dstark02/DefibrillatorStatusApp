@@ -35,7 +35,14 @@ class DownloadEventController: UIViewController, DownloadDelegate {
     }
     
     func downloadComplete(event: Event) {
-        CurrentEventProvider.currentEvent = event
-        performSegue(withIdentifier: "downloadToChartSegue", sender: nil)
+        let alert = UIAlertController(title: "Download Complete", message: "Event: " + event.date + " successfully downloaded.\nLocated in Saved Events", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+            self.performSegue(withIdentifier: "downloadCompleteSegue", sender: self)
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
+    
 }
