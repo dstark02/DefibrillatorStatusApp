@@ -11,19 +11,18 @@ import RealmSwift
 
 class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // MARK : Properties
+    // MARK: Properties
     let eventList = "Event List"
     let selectEvent = "Select an Event to view"
     var events : [Event] = []
-    var selectedEvent : Event?
     @IBOutlet weak var eventListTable: UITableView!
+    
+    // MARK: ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         events = [Event]()
         events = AccessDatabase.read()
-        eventListTable.delegate = self
-        eventListTable.dataSource = self
         eventListTable.reloadData()
     }
 
@@ -52,24 +51,12 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedEvent = events[indexPath.row]
+        CurrentEventProvider.currentEvent = events[indexPath.row]
         performSegue(withIdentifier: "eventListToChartSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (events.count)
-    }
-
-    // MARK : Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "eventListToChartSegue") {
-            if let eventThatWasSelected = selectedEvent {
-                let svc = segue.destination as! ChartController;
-                svc.selectedEvent = eventThatWasSelected
-                svc.hideButton = true
-            }
-        }
     }
 }

@@ -14,13 +14,13 @@ class DownloadEventController: UIViewController, DownloadDelegate {
 
     var bluetoothManager : BluetoothManagerProtocol!
     @IBOutlet weak var progressView: UIProgressView!
-    var valueAtBegining = Float(0)
+    var startValue = Float(0)
     var selectedEvent : Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bluetoothManager.downloadDelegate = self
-        progressView.progress = valueAtBegining
+        progressView.progress = startValue
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,25 +30,19 @@ class DownloadEventController: UIViewController, DownloadDelegate {
     // MARK : Methods
     
     func progressHasUpdated(value: Float) {
-        valueAtBegining = value
+        startValue = value
         progressView.setProgress(value, animated: true)
     }
     
     func downloadComplete(event: Event) {
-        selectedEvent = event
-        performSegue(withIdentifier: "downloadToChartSegue", sender: nil)
+        let alert = UIAlertController(title: "Download Complete", message: "Event: " + event.date + " successfully downloaded.\nLocated in Saved Events", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+            self.performSegue(withIdentifier: "downloadCompleteSegue", sender: self)
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    // MARK : Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "downloadToChartSegue") {
-            if let eventThatWasSelected = selectedEvent {
-                let svc = segue.destination as! ChartController;
-                svc.selectedEvent = eventThatWasSelected
-                svc.hideButton = false
-            }
-        }
-    }
-
 }
