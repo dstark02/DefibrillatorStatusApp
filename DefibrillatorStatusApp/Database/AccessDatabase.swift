@@ -15,8 +15,6 @@ class AccessDatabase {
     static func read() -> [Event] {
         do {
             let realm = try Realm()
-            //let a = Array(realm.objects(Event.self))
-            //print(a)
             return Array(realm.objects(Event.self))
         } catch let error as NSError {
             fatalError(error.localizedDescription)

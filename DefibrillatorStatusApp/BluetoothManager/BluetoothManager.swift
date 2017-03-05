@@ -20,10 +20,16 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var fileLength : Float
     let event : Event
     var date : String
-    var delegate : BluetoothManagerDelegate?
+    var timer = Timer()
+    var scanDelegate : ScanDelegate?
     var bluetoothState : BluetoothState {
         didSet {
-            delegate?.bluetoothStateHasChanged(bluetoothState: bluetoothState)
+            scanDelegate?.bluetoothStateHasChanged(bluetoothState: bluetoothState)
+        }
+    }
+    var scanProgress : Float {
+        didSet {
+            scanDelegate?.progressHasUpdated(value: scanProgress)
         }
     }
     var characteristicDelegate : BluetoothCharacteristicDelegate?
@@ -33,9 +39,9 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     var downloadDelegate : DownloadDelegate?
-    var downloadValue : Float {
+    var downloadProgress : Float {
         didSet {
-            downloadDelegate?.progressHasUpdated(value: downloadValue)
+            downloadDelegate?.progressHasUpdated(value: downloadProgress)
         }
     }
     var downloadComplete : Bool {
@@ -51,8 +57,9 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     override init() {
         bluetoothState = .Started
         characteristicState = .NotFound
+        scanProgress = 0
         downloadComplete = false
-        downloadValue = 0
+        downloadProgress = 0
         fileLength = 0
         date = "18/Jan/2016 12:00"
         defibrillatorList = [CBPeripheral]()
@@ -65,10 +72,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     //MARK: Central Methods
     
     func scanForDefibrillators() {
-        centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
-        bluetoothState = .Scanning
-        print("scanning")
-        Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(CBCentralManager.stopScan), userInfo: nil, repeats: false)
+        if bluetoothState != .Scanning {
+            centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
+            bluetoothState = .Scanning
+            print("scanning")
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(BluetoothManager.updateTimer), userInfo: nil, repeats: true)
+        }
     }
     
     func centralManager(_ central: CBCentralManager,
@@ -80,9 +89,28 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         print("Found")
     }
     
+    func updateTimer() {
+        scanProgress += 0.01
+        print(scanProgress)
+        if scanProgress > Float(1){
+            timer.invalidate()
+            scanProgress = 0
+            stopScan()
+        }
+    }
+    
+    func isBluetoothOn() -> Bool {
+        if centralManager?.state == .poweredOn {
+            return true
+        }
+        return false
+    }
+    
     func stopScan() {
-        centralManager?.stopScan()
-        bluetoothState = .Stopped
+        if (isBluetoothOn()) {
+            centralManager?.stopScan()
+            bluetoothState = .Stopped
+        }
     }
     
     func connectToDefibrillator(peripheral : CBPeripheral) {
@@ -96,6 +124,13 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         print("Connected to Defib")
         discoverDefibrillatorServices()
     }
+    
+    func centralManager(_ central: CBCentralManager,
+                        didDisconnectPeripheral peripheral: CBPeripheral,
+                        error: Error?){
+        print("Disconnected")
+        bluetoothState = .Stopped
+    }
 
     // MARK: CBCentral required method
     
@@ -106,19 +141,14 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             bluetoothState = .Started
             print("Bluetooth is on")
         case.poweredOff:
-            bluetoothState = .Off
             print("Turn Bluetooth on")
         case.unauthorized:
-            bluetoothState = .Off
             print("Unautorized")
         case.resetting:
-            bluetoothState = .Off
             print("resetting")
         case.unknown:
-            bluetoothState = .Off
             print("unknown")
         case.unsupported:
-            bluetoothState = .Off
             print("Unsupported")
         }
     }

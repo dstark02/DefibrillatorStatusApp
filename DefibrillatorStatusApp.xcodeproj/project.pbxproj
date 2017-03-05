@@ -15,7 +15,7 @@
 		D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3201DB8031400E3485B /* BluetoothState.swift */; };
 		D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3221DB803DC00E3485B /* BluetoothManager.swift */; };
 		D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */; };
-		D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */; };
+		D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */; };
 		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
 		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
 		D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */; };
@@ -128,7 +128,7 @@
 		D328C3201DB8031400E3485B /* BluetoothState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothState.swift; path = Constants/BluetoothState.swift; sourceTree = "<group>"; };
 		D328C3221DB803DC00E3485B /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerTests.swift; sourceTree = "<group>"; };
-		D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManagerDelegate.swift; path = Protocols/BluetoothManagerDelegate.swift; sourceTree = "<group>"; };
+		D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanDelegate.swift; path = Protocols/ScanDelegate.swift; sourceTree = "<group>"; };
 		D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManagerProtocol.swift; path = Protocols/BluetoothManagerProtocol.swift; sourceTree = "<group>"; };
 		D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsController.swift; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 		D32BE8681DE0C144006C19A7 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D32B2FAD1DBBB80B00302434 /* BluetoothManagerDelegate.swift */,
+				D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */,
 				D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */,
 				D3CEB4771DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift */,
 				D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */,
@@ -649,7 +649,7 @@
 				D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */,
 				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
 				D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */,
-				D32B2FAE1DBBB80B00302434 /* BluetoothManagerDelegate.swift in Sources */,
+				D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */,
 				D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */,
 				D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */,
 				D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */,
