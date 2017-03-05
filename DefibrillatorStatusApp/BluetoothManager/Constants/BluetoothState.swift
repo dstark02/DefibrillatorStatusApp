@@ -9,7 +9,6 @@
 import Foundation
 
 enum BluetoothState {
-    case Off
     case Started
     case Scanning
     case Stopped

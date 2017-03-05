@@ -8,7 +8,8 @@
 
 import Foundation
 
-protocol BluetoothManagerDelegate {
+protocol ScanDelegate {
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState)
+    func progressHasUpdated(value: Float)
 }

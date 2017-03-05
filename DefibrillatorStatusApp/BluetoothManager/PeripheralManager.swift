@@ -90,11 +90,10 @@ extension BluetoothManager {
             let ecg = ECG()
             ecg.ecg = dataReceived
             event.ecgs.append(ecg)
-            downloadValue += 1/fileLength
-            print(downloadValue)
+            downloadProgress += 1/fileLength
         }
         
-        if (downloadValue > 0.998) {
+        if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
             centralManager?.cancelPeripheralConnection(periperhral)
             downloadComplete = AccessDatabase.write(event: event, date: date)
