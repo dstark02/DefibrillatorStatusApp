@@ -12,6 +12,7 @@
 		D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */; };
 		D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
 		D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
+		D32839EB1E78852E00B066AC /* ChartLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32839EA1E78852E00B066AC /* ChartLabel.xib */; };
 		D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3201DB8031400E3485B /* BluetoothState.swift */; };
 		D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3221DB803DC00E3485B /* BluetoothManager.swift */; };
 		D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */; };
@@ -125,6 +126,7 @@
 		D327E0A51DD3B5F500A66CAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D327E0AE1DD3B93F00A66CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D327E0B01DD3B93F00A66CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D32839EA1E78852E00B066AC /* ChartLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartLabel.xib; sourceTree = "<group>"; };
 		D328C3201DB8031400E3485B /* BluetoothState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothState.swift; path = Constants/BluetoothState.swift; sourceTree = "<group>"; };
 		D328C3221DB803DC00E3485B /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerTests.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */,
 				D327E0AF1DD3B93F00A66CAF /* Main.storyboard */,
 				D333888C1E5FA20F0003AD70 /* Event.storyboard */,
+				D32839EA1E78852E00B066AC /* ChartLabel.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */,
+				D32839EB1E78852E00B066AC /* ChartLabel.xib in Resources */,
 				D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */,
 				D33531081E37F5B600884E86 /* Assets.xcassets in Resources */,
 				D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */,

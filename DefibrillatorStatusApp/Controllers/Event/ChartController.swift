@@ -36,6 +36,11 @@ class ChartController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let markerPositon = chartView.getMarkerPosition(highlight: highlight)
+        
+    }
+    
     // MARK: Action Methods
     
     @IBAction func resizeTapped(_ sender: Any) {
