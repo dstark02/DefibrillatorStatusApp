@@ -266,8 +266,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8y-lj-npx">
+                                <rect key="frame" x="70" y="551" width="234" height="31"/>
+                                <connections>
+                                    <action selector="sliderInteraction:" destination="Hn9-mF-5eb" eventType="valueChanged" id="0Nd-Rr-y8a"/>
+                                </connections>
+                            </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TS6-tm-cEr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="1" width="375" height="542"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-cG-ICt">
                                         <rect key="frame" x="342" y="16" width="25" height="25"/>
@@ -280,31 +286,26 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="top" constant="16" id="dfj-h7-zcO"/>
-                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailingMargin" id="yto-7A-gcb"/>
+                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailingMargin" id="I33-Cv-DFF"/>
+                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="top" constant="16" id="Xuo-G6-nFe"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8y-lj-npx">
-                                <rect key="frame" x="45" y="551" width="284" height="31"/>
-                                <connections>
-                                    <action selector="sliderInteraction:" destination="Hn9-mF-5eb" eventType="valueChanged" id="0Nd-Rr-y8a"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L8y-lj-npx" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leadingMargin" constant="31" id="P7R-QG-chM"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="centerX" secondItem="L8y-lj-npx" secondAttribute="centerX" id="Y32-0F-GQS"/>
-                            <constraint firstItem="L8y-lj-npx" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="bottom" constant="8" symbolic="YES" id="pEm-hU-Thh"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="OnV-sJ-9Cf" secondAttribute="bottom" constant="1" id="sCp-hm-I1x"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leading" id="twF-ns-pcU"/>
-                            <constraint firstAttribute="bottom" secondItem="L8y-lj-npx" secondAttribute="bottom" constant="20" symbolic="YES" id="yE2-4Q-90p"/>
-                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="zqi-5V-0g2"/>
+                            <constraint firstItem="L8y-lj-npx" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leadingMargin" constant="56" id="ERf-vp-9Ek"/>
+                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="QyR-eA-Jbk"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="centerX" secondItem="L8y-lj-npx" secondAttribute="centerX" id="byE-pj-a46"/>
+                            <constraint firstItem="L8y-lj-npx" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="bottom" constant="10" id="fsm-OJ-w4O"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="OnV-sJ-9Cf" secondAttribute="bottom" id="jFz-1q-a1L"/>
+                            <constraint firstAttribute="bottom" secondItem="L8y-lj-npx" secondAttribute="bottom" constant="20" symbolic="YES" id="p8f-ug-ncn"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leading" id="us6-lW-ps9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="TS6-tm-cEr" id="FzC-FA-s91"/>
+                        <outlet property="expand" destination="YRH-cG-ICt" id="C4J-ky-5ak"/>
                         <outlet property="timeSlider" destination="L8y-lj-npx" id="1BQ-DF-Uec"/>
+                        <outlet property="traceView" destination="TS6-tm-cEr" id="9fV-5e-Gm2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCN-5J-XGi" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,7 +13,7 @@ class ChartLabel: UIView {
     
     @IBOutlet var view: UIView!
     @IBOutlet weak var shockLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    //@IBOutlet weak var timeLabel: UILabel!
     
     
     override init(frame: CGRect) {

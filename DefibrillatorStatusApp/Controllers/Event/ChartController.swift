@@ -13,56 +13,72 @@ import Charts
 class ChartController: UIViewController, ChartViewDelegate {
 
     // MARK: Properties
-    var chartLabel : ChartLabel!
-    @IBOutlet weak var chartView: LineChartView!
+    
+    var chartLabel: ChartLabel!
+    var existingVisisbleX: Double = 0
+    @IBOutlet weak var traceView: LineChartView!
+    @IBOutlet weak var expand: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
     
     // MARK: ViewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chartView.delegate = self
-        chartView.rightAxis.enabled = false
-        //chartView.xAxis.enabled = false
         chartLabel = ChartLabel()
-        chartView.dragEnabled = true
+        traceView.delegate = self
         guard let currentEvent = CurrentEventProvider.currentEvent else { return }
         let ecgPoints = DataParser.filterECG(event: currentEvent)
         CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
         setChartData(ecgPoints: ecgPoints)
-        timeSlider.maximumValue = Float(ecgPoints.count)
-        timeSlider.minimumValue = 0
-        timeSlider.value = 0
+        timeSliderSetup(dataPointsCount: ecgPoints.count)
     }
-    
-    
-    @IBAction func sliderInteraction(_ sender: UISlider) {
-        chartView.moveViewToX(Double(timeSlider.value))
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+    // MARK: Action Methods
+    
+    @IBAction func resizeTapped(_ sender: Any) {
+        resizeChart()
+    }
+    
+    @IBAction func sliderInteraction(_ sender: UISlider) {
+        chartLabel.isHidden = true
+        traceView.moveViewToX(Double(timeSlider.value))
+    }
+    
+    // MARK: Chart Delegate Methods
+    
+    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
         
-        var xPt = highlight.xPx
-        let yPt = highlight.yPx
-        //chartLabel.timeSlider.maximumValue = Float(CurrentEventProvider.duration!)
+        chartLabel.isHidden = true
         
+        if existingVisisbleX == traceView.lowestVisibleX { return }
         
-        chartLabel.timeLabel.text = "\(entry.x/ChartConstants.ECGSampleRate)"
-        
-        let actualWidth = xPt + 133
-        
-        if actualWidth > chartView.frame.width {
-            xPt = 200
+        if existingVisisbleX < traceView.lowestVisibleX {
+            timeSlider.setValue(Float(traceView.highestVisibleX), animated: true)
+        } else {
+            timeSlider.setValue(Float(traceView.lowestVisibleX), animated: true)
         }
         
-        timeSlider.setValue(Float(entry.x), animated: true)
+        existingVisisbleX = traceView.lowestVisibleX
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+
+        toggleComponents(off: false)
+        let time = entry.x/ChartConstants.ECGSampleRate
         
-        chartLabel.center = CGPoint(x: xPt, y : chartLabel.center.y)
+        if time > 12.0 && time < 12.8 {
+            chartLabel.shockLabel.text = "SHOCK"
+        } else {
+            chartLabel.shockLabel.text = ""
+        }
+        
+        let position = traceView.getPosition(entry: entry, axis:  YAxis.AxisDependency.left)
+        timeSlider.setValue(Float(entry.x), animated: true)
+        chartLabel.frame.origin = CGPoint(x: position.x, y : 20)
         chartLabel.isHidden = false
         self.view.addSubview(chartLabel)
     }
@@ -71,72 +87,67 @@ class ChartController: UIViewController, ChartViewDelegate {
         chartLabel.isHidden = true
     }
     
-    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
-        chartLabel.isHidden = true
-    }
-    
-//    func saveGraph() {
-//        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
-//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-//    }
-    
-    
-    // MARK: Action Methods
-    
-    @IBAction func resizeTapped(_ sender: Any) {
-        resizeChart()
-    }
-    
-    // MARK: Chart Methods
+    // MARK: Chart Setup
     
     func setChartData(ecgPoints: [UInt16]) {
-        
-        var yVals : [ChartDataEntry] = [ChartDataEntry]()
+        var chartValues = [ChartDataEntry]()
         for i in 0 ..< ecgPoints.count {
-            yVals.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
+            chartValues.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
-        let set1: LineChartDataSet = LineChartDataSet(values: yVals, label: "ECG Data")
-        set1.axisDependency = .left // Line will correlate with left axis values
-        set1.setColor(UIColor.black.withAlphaComponent(0.5)) // line's opacity is 50%
-        set1.lineWidth = 2.0
-        set1.drawCirclesEnabled = false
+        let ecgLine: LineChartDataSet = LineChartDataSet(values: chartValues, label: "ECG Data")
+        setupECGLine(ecgLine: ecgLine)
         
-        var dataSets : [LineChartDataSet] = [LineChartDataSet]()
-        dataSets.append(set1)
+        let lineData = LineChartData(dataSet: ecgLine)
+        setupTraceView(lineData: lineData)
         
-        let lineData: LineChartData = LineChartData(dataSets: dataSets)
-        lineData.setValueTextColor(UIColor.white)
-        
-        
+        if let event = CurrentEventProvider.currentEvent {
+            traceView.chartDescription?.text = ("ECG trace from " + event.date)
+            traceView.chartDescription?.font = .boldSystemFont(ofSize: 11)
+            traceView.chartDescription?.textColor = Colour.HeartSineBlue
+        }
+    }
+    
+    // MARK: Setup Helpers
+    
+    func setupECGLine(ecgLine: LineChartDataSet) {
+        ecgLine.axisDependency = .left
+        ecgLine.setColor(UIColor.black.withAlphaComponent(0.5))
+        ecgLine.lineWidth = 2.0
+        ecgLine.drawCirclesEnabled = false
+    }
+    
+    func setupTraceView(lineData: LineChartData) {
         let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
-        chartView.leftAxis.addLimitLine(limitLine)
-        
-        chartView.xAxis.valueFormatter = XAxisFormatter()
-        chartView.data = lineData
-        chartView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
-        chartView.drawBordersEnabled = false
+        traceView.leftAxis.addLimitLine(limitLine)
+        traceView.xAxis.valueFormatter = XAxisFormatter()
+        traceView.data = lineData
+        traceView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
+        traceView.drawBordersEnabled = false
+        traceView.rightAxis.enabled = false
+        traceView.dragEnabled = true
+    }
+    
+    func timeSliderSetup(dataPointsCount: Int) {
+        timeSlider.maximumValue = Float(dataPointsCount)
+        timeSlider.minimumValue = 0
+        timeSlider.value = 0
+        timeSlider.setThumbImage(#imageLiteral(resourceName: "Shock"), for: .normal)
     }
     
     func resizeChart() {
-        
-        if chartView.frame.size.height == view.frame.height {
-            UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
-                self.chartView.frame.size.height -= 59
-            }, completion: { finished in
-                self.timeSlider.isHidden = false
-            })
-        } else {
-            UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
-                self.chartView.frame.size.height = self.view.frame.height
-                self.timeSlider.isHidden = true
+        if traceView.frame.size.height != view.frame.height {
+            UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
+                self.traceView.frame.size.height = self.view.frame.height
+                self.toggleComponents(off: true)
             }, completion: { finished in
             })
         }
-    }    
+    }
     
+    func toggleComponents(off: Bool) {
+        timeSlider.isHidden = off
+        expand.isHidden = off
+    }
 }
