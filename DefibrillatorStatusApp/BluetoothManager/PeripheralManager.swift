@@ -57,14 +57,11 @@ extension BluetoothManager {
             if (fileLength != 0) {
                 readECGData(characteristic: characteristic, periperhral: peripheral)
             } else {
-                if let dataReceived = characteristic.value {
-                    if let dataAsString = String(data: dataReceived, encoding: .utf8) {
-                        if let length = UInt16(dataAsString) {
-                            fileLength = Float(length)
-                            peripheral.setNotifyValue(true, for: characteristic)
-                        }
-                    }
-                }
+                guard let dataReceived = characteristic.value else { return }
+                guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
+                guard let length = UInt16(dataAsString) else { return }
+                fileLength = Float(length)
+                peripheral.setNotifyValue(true, for: characteristic)
             }
         }
     }
@@ -73,30 +70,28 @@ extension BluetoothManager {
     // MARK : Helper Methods
     
     func formatStringToDisplay(characteristic: CBCharacteristic) {
-        if let dataReceived = characteristic.value {
-            if let dataAsString = String(data: dataReceived, encoding: .utf8) {
+        guard let dataReceived = characteristic.value else { return }
+        guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
                 
-                let dataFormatted = dataAsString.components(separatedBy: ",")
-                for item in dataFormatted {
-                    eventList.append(item)
-                }
-                characteristicState = .Updated
-            }
+        let dataFormatted = dataAsString.components(separatedBy: ",")
+        for item in dataFormatted {
+            eventList.append(item)
         }
+        characteristicState = .Updated
     }
     
     func readECGData(characteristic : CBCharacteristic, periperhral : CBPeripheral) {
-        if let dataReceived = characteristic.value {
-            let ecg = ECG()
-            ecg.ecg = dataReceived
-            event.ecgs.append(ecg)
-            downloadProgress += 1/fileLength
-        }
+        guard let dataReceived = characteristic.value else { return }
+        let ecg = ECG()
+        ecg.ecg = dataReceived
+        event.ecgs.append(ecg)
+        downloadProgress += 1/fileLength
         
         if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
             centralManager?.cancelPeripheralConnection(periperhral)
-            downloadComplete = AccessDatabase.write(event: event, date: date)
+            event.date = date
+            downloadComplete = AccessDatabase.writeEvent(event: event)
         }
     }
 

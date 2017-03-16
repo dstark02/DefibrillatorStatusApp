@@ -1,5 +1,5 @@
 //
-//  DataController.swift
+//  ChartController.swift
 //  DefibrillatorStatusApp
 //
 //  Created by David Stark on 13/01/2017.
@@ -13,8 +13,9 @@ import Charts
 class ChartController: UIViewController, ChartViewDelegate {
 
     // MARK: Properties
-    
+    var chartLabel : ChartLabel!
     @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet weak var timeSlider: UISlider!
     
     // MARK: ViewDidLoad Method
     
@@ -23,23 +24,65 @@ class ChartController: UIViewController, ChartViewDelegate {
         chartView.delegate = self
         chartView.rightAxis.enabled = false
         //chartView.xAxis.enabled = false
-    
+        chartLabel = ChartLabel()
         chartView.dragEnabled = true
-        if let currentEvent = CurrentEventProvider.currentEvent {
-            let ecgPoints = DataParser.filterECG(event: currentEvent)
-            CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
-            setChartData(ecgPoints: ecgPoints)
-        }
+        guard let currentEvent = CurrentEventProvider.currentEvent else { return }
+        let ecgPoints = DataParser.filterECG(event: currentEvent)
+        CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
+        setChartData(ecgPoints: ecgPoints)
+        timeSlider.maximumValue = Float(ecgPoints.count)
+        timeSlider.minimumValue = 0
+        timeSlider.value = 0
     }
-
+    
+    
+    @IBAction func sliderInteraction(_ sender: UISlider) {
+        chartView.moveViewToX(Double(timeSlider.value))
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        let markerPositon = chartView.getMarkerPosition(highlight: highlight)
         
+        var xPt = highlight.xPx
+        let yPt = highlight.yPx
+        //chartLabel.timeSlider.maximumValue = Float(CurrentEventProvider.duration!)
+        
+        
+        chartLabel.timeLabel.text = "\(entry.x/ChartConstants.ECGSampleRate)"
+        
+        let actualWidth = xPt + 133
+        
+        if actualWidth > chartView.frame.width {
+            xPt = 200
+        }
+        
+        timeSlider.setValue(Float(entry.x), animated: true)
+        
+        chartLabel.center = CGPoint(x: xPt, y : chartLabel.center.y)
+        chartLabel.isHidden = false
+        self.view.addSubview(chartLabel)
     }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        chartLabel.isHidden = true
+    }
+    
+    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
+        chartLabel.isHidden = true
+    }
+    
+//    func saveGraph() {
+//        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+//    }
+    
     
     // MARK: Action Methods
     
@@ -83,12 +126,14 @@ class ChartController: UIViewController, ChartViewDelegate {
         
         if chartView.frame.size.height == view.frame.height {
             UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
-                self.chartView.frame.size.height -= 159
+                self.chartView.frame.size.height -= 59
             }, completion: { finished in
+                self.timeSlider.isHidden = false
             })
         } else {
             UIView.transition(with: chartView, duration: 1.0, options: .curveEaseInOut, animations: {
                 self.chartView.frame.size.height = self.view.frame.height
+                self.timeSlider.isHidden = true
             }, completion: { finished in
             })
         }

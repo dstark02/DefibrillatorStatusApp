@@ -91,7 +91,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     
     func updateTimer() {
         scanProgress += 0.01
-        print(scanProgress)
         if scanProgress > Float(1){
             timer.invalidate()
             scanProgress = 0

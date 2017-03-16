@@ -11,18 +11,21 @@ import UIKit
 class PatientDetailsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
-    
+
     @IBOutlet weak var patientTable: UITableView!
     let patientDetails = "Patient Details"
-    var isDatePickerHidden = true
     let datePickerRow = 3
     let dobRow = 2
     let datePickerHeight : CGFloat = 188
+    var savedPatients : [Patient] = []
+    var isDatePickerHidden = true
     
     // MARK: ViewDidLoad Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        savedPatients = AccessDatabase.readPatients()
+        patientTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,6 +33,10 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     // MARK: Action Methods
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        savePatient()
+    }
     
     @IBAction func datePickerChanged(_ sender: Any) {
         datePickerChanged()
@@ -42,16 +49,25 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         switch indexPath.row {
         case 0:
             let cell = patientTable.dequeueReusableCell(withIdentifier: "nameCell") as! NameCell
+            if !savedPatients.isEmpty {
+                cell.nameTextField?.text = getCurrentPatient()?.name
+            }
             return cell
         case 1:
             let cell = patientTable.dequeueReusableCell(withIdentifier: "genderCell") as! GenderCell
+            if !savedPatients.isEmpty {
+                cell.genderSegControl.selectedSegmentIndex = getCurrentPatient()?.gender ?? 0
+            }
             return cell
         case 2:
             let cell = patientTable.dequeueReusableCell(withIdentifier: "dobCell") as! DOBCell
+            if !savedPatients.isEmpty {
+                cell.dobValue.text = getCurrentPatient()?.dob
+            }
             return cell
         default:
             let cell = patientTable.dequeueReusableCell(withIdentifier: "datePickerCell") as! DatePickerCell
@@ -82,7 +98,41 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         return 4
     }
     
-    // MARK: DatePicker Helper Methods
+    // MARK: Patient Methods
+    
+    func getCurrentPatient() -> Patient? {
+        if !savedPatients.isEmpty {
+            if let i = savedPatients.index(where: { $0.event == CurrentEventProvider.currentEvent }) {
+                return savedPatients[i]
+            }
+        }
+        return nil
+    }
+    
+    func savePatient() {
+        if !detailsValid() {
+            alertControllerHelper(title: "Details Invalid", message: "You have missed out some details")
+            return
+        }
+        
+        let nameCell = patientTable.cellForRow(at: IndexPath(row: 0, section: 0)) as! NameCell
+        let genderCell = patientTable.cellForRow(at: IndexPath(row: 1, section: 0)) as! GenderCell
+        let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
+        
+        let patient = Patient()
+        patient.name = nameCell.nameTextField.text!
+        patient.gender = genderCell.genderSegControl.selectedSegmentIndex
+        patient.dob = dobCell.dobValue.text!
+        if let event = CurrentEventProvider.currentEvent {
+           patient.event = event
+        } else { return }
+        
+        if AccessDatabase.writePatient(patient: patient) {
+            alertControllerHelper(title: "Save Complete", message: "Patient Details sucessfully saved")
+        }
+    }
+    
+    // MARK: Helper Methods
     
     func datePickerChanged() {
         let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
@@ -94,5 +144,21 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         isDatePickerHidden = !isDatePickerHidden
         patientTable.beginUpdates()
         patientTable.endUpdates()
+    }
+    
+    func detailsValid() -> Bool {
+        let nameCell = patientTable.cellForRow(at: IndexPath(row: 0, section: 0)) as! NameCell
+        let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
+        
+        if (nameCell.nameTextField.text?.isEmpty)! { return false }
+        if (dobCell.dobValue.text?.isEmpty)! { return false }
+        
+        return true
+    }
+    
+    func alertControllerHelper(title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(ac, animated: true)
     }
 }
