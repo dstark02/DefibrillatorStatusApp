@@ -14,4 +14,12 @@ class Patient : Object {
     dynamic var gender = 0
     dynamic var dob = ""
     dynamic var event: Event?
+    
+    convenience init(name: String, gender: Int, dob: String, event: Event?) {
+        self.init()
+        self.name = name
+        self.gender = gender
+        self.dob = dob
+        self.event = event
+    }
 }

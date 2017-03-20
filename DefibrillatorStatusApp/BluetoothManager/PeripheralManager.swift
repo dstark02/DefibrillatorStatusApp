@@ -82,8 +82,7 @@ extension BluetoothManager {
     
     func readECGData(characteristic : CBCharacteristic, periperhral : CBPeripheral) {
         guard let dataReceived = characteristic.value else { return }
-        let ecg = ECG()
-        ecg.ecg = dataReceived
+        let ecg = ECG(ecg: dataReceived)
         event.ecgs.append(ecg)
         downloadProgress += 1/fileLength
         

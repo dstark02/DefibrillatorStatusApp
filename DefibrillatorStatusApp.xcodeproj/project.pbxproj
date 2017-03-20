@@ -40,6 +40,12 @@
 		D33531081E37F5B600884E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33531071E37F5B600884E86 /* Assets.xcassets */; };
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
 		D34EB39D1E39302600735300 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB39C1E39302600735300 /* Colour.swift */; };
+		D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E79CE1E7C371300033BAC /* PatientTests.swift */; };
+		D389A29F1E7C474C00C854C3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D389A29D1E7C474C00C854C3 /* Realm.framework */; };
+		D389A2A01E7C474C00C854C3 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D389A29D1E7C474C00C854C3 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D389A2A11E7C474C00C854C3 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D389A29E1E7C474C00C854C3 /* RealmSwift.framework */; };
+		D389A2A21E7C474C00C854C3 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D389A29E1E7C474C00C854C3 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389A2A51E7EDA0A00C854C3 /* EventTests.swift */; };
 		D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A271E2E8E8C00C3B63F /* ECG.swift */; };
 		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
 		D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA891E5B94060017C0B7 /* TabBarController.swift */; };
@@ -47,10 +53,6 @@
 		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
 		D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; };
 		D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D3BD8A9F1E315C9900504F8D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; };
-		D3BD8AA01E315C9900504F8D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D3BD8AA11E315C9900504F8D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; };
-		D3BD8AA21E315C9900504F8D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38E3A1F1E2E8AE300C3B63F /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4721DDFC5670049358A /* EventListController.swift */; };
 		D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */; };
 		D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4771DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift */; };
@@ -112,9 +114,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D3BD8AA21E315C9900504F8D /* Realm.framework in Embed Frameworks */,
-				D3BD8AA01E315C9900504F8D /* RealmSwift.framework in Embed Frameworks */,
+				D389A2A01E7C474C00C854C3 /* Realm.framework in Embed Frameworks */,
 				D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */,
+				D389A2A21E7C474C00C854C3 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,8 +158,10 @@
 		D33531071E37F5B600884E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D34EB39C1E39302600735300 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
-		D38E3A1F1E2E8AE300C3B63F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		D37E79CE1E7C371300033BAC /* PatientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTests.swift; sourceTree = "<group>"; };
+		D389A29D1E7C474C00C854C3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		D389A29E1E7C474C00C854C3 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		D389A2A51E7EDA0A00C854C3 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		D38E3A271E2E8E8C00C3B63F /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECG.swift; sourceTree = "<group>"; };
 		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		D390FA891E5B94060017C0B7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -183,9 +187,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BD8AA11E315C9900504F8D /* Realm.framework in Frameworks */,
-				D3BD8A9F1E315C9900504F8D /* RealmSwift.framework in Frameworks */,
+				D389A29F1E7C474C00C854C3 /* Realm.framework in Frameworks */,
 				D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */,
+				D389A2A11E7C474C00C854C3 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,8 +416,8 @@
 		D3E0B0C51DB3FA4D00943F19 = {
 			isa = PBXGroup;
 			children = (
-				D38E3A221E2E8AF100C3B63F /* RealmSwift.framework */,
-				D38E3A1F1E2E8AE300C3B63F /* Realm.framework */,
+				D389A29D1E7C474C00C854C3 /* Realm.framework */,
+				D389A29E1E7C474C00C854C3 /* RealmSwift.framework */,
 				D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */,
 				D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusApp Tests */,
 				D3E0B0F01DB3FA4E00943F19 /* DefibrillatorStatusAppUITests */,
@@ -455,6 +459,8 @@
 			children = (
 				D3E0B0E81DB3FA4E00943F19 /* Info.plist */,
 				D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */,
+				D37E79CE1E7C371300033BAC /* PatientTests.swift */,
+				D389A2A51E7EDA0A00C854C3 /* EventTests.swift */,
 			);
 			name = "DefibrillatorStatusApp Tests";
 			path = DefibrillatorStatusAppTests;
@@ -704,6 +710,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */,
+				D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */,
+				D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +810,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -845,6 +854,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -857,6 +867,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch-Image";
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -875,6 +886,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch-Image";
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -893,6 +905,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusAppTests;
@@ -910,6 +926,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusAppTests;
