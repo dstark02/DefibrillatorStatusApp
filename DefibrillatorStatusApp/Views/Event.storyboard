@@ -266,7 +266,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8y-lj-npx">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8y-lj-npx">
                                 <rect key="frame" x="70" y="551" width="234" height="31"/>
                                 <connections>
                                     <action selector="sliderInteraction:" destination="Hn9-mF-5eb" eventType="valueChanged" id="0Nd-Rr-y8a"/>

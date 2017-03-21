@@ -11,4 +11,9 @@ import RealmSwift
 
 class ECG : Object {
     dynamic var ecg: Data = Data()
+    
+    convenience init(ecg: Data) {
+        self.init()
+        self.ecg = ecg
+    }
 }

@@ -11,16 +11,13 @@ import UIKit
 class DownloadEventController: UIViewController, DownloadDelegate {
     
     // MARK : Properties
-
-    var bluetoothManager : BluetoothManagerProtocol!
+    
     @IBOutlet weak var progressView: UIProgressView!
-    var startValue = Float(0)
-    var selectedEvent : Event?
+    var bluetoothManager : BluetoothManagerProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bluetoothManager.downloadDelegate = self
-        progressView.progress = startValue
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +27,6 @@ class DownloadEventController: UIViewController, DownloadDelegate {
     // MARK : Methods
     
     func progressHasUpdated(value: Float) {
-        startValue = value
         progressView.setProgress(value, animated: true)
     }
     

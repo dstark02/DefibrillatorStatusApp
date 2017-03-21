@@ -13,7 +13,7 @@ class EventDurationCalculator {
     static func getEventDuration() -> String {
         guard let eventDurationSeconds = CurrentEventProvider.duration else { return "" }
         let minutes = (eventDurationSeconds % 3600) / 60
-        let seconds = (eventDurationSeconds % 3600) % 60
+        let seconds = eventDurationSeconds % 60
             
         if minutes < 1 {
             return String(format:"%02i", seconds) + " secs"
