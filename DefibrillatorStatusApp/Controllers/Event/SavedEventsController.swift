@@ -22,7 +22,7 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         events = [Event]()
-        events = AccessDatabase.read()
+        events = AccessDatabase.readEvents()
         eventListTable.reloadData()
     }
 

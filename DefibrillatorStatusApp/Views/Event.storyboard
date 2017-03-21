@@ -87,20 +87,20 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" id="DII-X2-QOE" customClass="NameCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DII-X2-QOE" id="4Cd-mn-MoP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-nE-TUe">
-                                                    <rect key="frame" x="104.5" y="6" width="262.5" height="30"/>
+                                                    <rect key="frame" x="105" y="6" width="262" height="30"/>
                                                     <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acM-Sf-dlz">
-                                                    <rect key="frame" x="26" y="11.5" width="44.5" height="19.5"/>
+                                                    <rect key="frame" x="26" y="11" width="45" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -120,28 +120,36 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genderCell" id="c7O-wR-5VX" customClass="GenderCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c7O-wR-5VX" id="eJW-dv-tRN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWq-06-48g">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWq-06-48g">
                                                     <rect key="frame" x="26" y="12" width="60" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="cNT-Vn-D4p"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cqC-fz-qRb">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cqC-fz-qRb">
                                                     <rect key="frame" x="103" y="7" width="117" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
                                                         <segment title="Male"/>
                                                         <segment title="Female"/>
                                                     </segments>
                                                 </segmentedControl>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DWq-06-48g" firstAttribute="centerY" secondItem="cqC-fz-qRb" secondAttribute="centerY" id="3YT-ps-8kA"/>
+                                                <constraint firstItem="DWq-06-48g" firstAttribute="top" secondItem="eJW-dv-tRN" secondAttribute="topMargin" constant="4" id="7Kq-md-fKx"/>
+                                                <constraint firstItem="cqC-fz-qRb" firstAttribute="leading" secondItem="DWq-06-48g" secondAttribute="trailing" constant="17" id="LXn-Pp-mq7"/>
+                                                <constraint firstItem="DWq-06-48g" firstAttribute="centerY" secondItem="eJW-dv-tRN" secondAttribute="centerY" id="Mhi-QW-nKU"/>
+                                                <constraint firstItem="DWq-06-48g" firstAttribute="leading" secondItem="eJW-dv-tRN" secondAttribute="leadingMargin" constant="18" id="thq-w4-HQ7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="genderLabel" destination="DWq-06-48g" id="6pR-ZL-4Vj"/>
@@ -149,10 +157,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dobCell" id="HB6-Wv-4OM" customClass="DOBCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HB6-Wv-4OM" id="ucM-N3-bao">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D.O.B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChQ-oF-Qab">
@@ -186,15 +194,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePickerCell" rowHeight="189" id="cEF-7c-uZO" customClass="DatePickerCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="187.5" width="375" height="189"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cEF-7c-uZO" id="nTl-7p-IeW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EnX-vr-Qvm">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EnX-vr-Qvm">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="509480661.16009599">
                                                         <!--2017-02-22 18:24:21 +0000-->
                                                     </date>
@@ -204,6 +211,12 @@
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EnX-vr-Qvm" secondAttribute="bottom" id="6Nq-IJ-Nyz"/>
+                                                <constraint firstItem="EnX-vr-Qvm" firstAttribute="top" secondItem="nTl-7p-IeW" secondAttribute="top" id="7I2-CQ-FVZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="EnX-vr-Qvm" secondAttribute="trailing" id="QAN-N7-cjG"/>
+                                                <constraint firstItem="EnX-vr-Qvm" firstAttribute="leading" secondItem="nTl-7p-IeW" secondAttribute="leading" id="p2a-7M-cts"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="datePicker" destination="EnX-vr-Qvm" id="eUl-1g-ysZ"/>
@@ -215,13 +228,22 @@
                                     <outlet property="delegate" destination="M1C-MU-qwp" id="Lbq-ny-aYX"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BR9-Lf-GcF">
+                                <rect key="frame" x="329" y="27" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="M1C-MU-qwp" eventType="touchUpInside" id="DNJ-Yn-4He"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="leading" secondItem="o7E-8v-Qeo" secondAttribute="leading" id="Dqc-wd-3U2"/>
-                            <constraint firstAttribute="trailing" secondItem="JH6-Iz-LIj" secondAttribute="trailing" id="cWK-Or-HTO"/>
-                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="bottom" secondItem="ZCL-M2-E1p" secondAttribute="top" id="iCl-0t-bLw"/>
-                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="top" secondItem="U2V-7s-Ed4" secondAttribute="bottom" id="x2S-C0-F9r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BR9-Lf-GcF" secondAttribute="trailing" constant="-4" id="1bN-eC-KjX"/>
+                            <constraint firstAttribute="trailing" secondItem="JH6-Iz-LIj" secondAttribute="trailing" id="Dok-Af-A3e"/>
+                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="top" secondItem="U2V-7s-Ed4" secondAttribute="bottom" id="c4o-hN-fQ3"/>
+                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="bottom" secondItem="ZCL-M2-E1p" secondAttribute="top" id="dam-Ds-TZ6"/>
+                            <constraint firstItem="BR9-Lf-GcF" firstAttribute="top" secondItem="U2V-7s-Ed4" secondAttribute="bottom" constant="27" id="t7w-4z-TVi"/>
+                            <constraint firstItem="JH6-Iz-LIj" firstAttribute="leading" secondItem="o7E-8v-Qeo" secondAttribute="leading" id="wge-Uu-KnJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -244,8 +266,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8y-lj-npx">
+                                <rect key="frame" x="70" y="551" width="234" height="31"/>
+                                <connections>
+                                    <action selector="sliderInteraction:" destination="Hn9-mF-5eb" eventType="valueChanged" id="0Nd-Rr-y8a"/>
+                                </connections>
+                            </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TS6-tm-cEr" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="1" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-cG-ICt">
                                         <rect key="frame" x="342" y="16" width="25" height="25"/>
@@ -256,27 +284,33 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailingMargin" id="b6j-Jx-qzI"/>
-                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="top" constant="16" id="xRb-yL-LTg"/>
+                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailingMargin" id="I33-Cv-DFF"/>
+                                    <constraint firstItem="YRH-cG-ICt" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="top" constant="16" id="Xuo-G6-nFe"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="OnV-sJ-9Cf" secondAttribute="bottom" constant="1" id="GSl-lk-MYw"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="TS6-tm-cEr" secondAttribute="bottom" constant="-1" id="Q8Y-jX-PFE"/>
-                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="deR-UX-SHm"/>
-                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leading" id="nwd-OO-kUs"/>
+                            <constraint firstItem="L8y-lj-npx" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leadingMargin" constant="56" id="ERf-vp-9Ek"/>
+                            <constraint firstAttribute="trailing" secondItem="TS6-tm-cEr" secondAttribute="trailing" id="QyR-eA-Jbk"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="centerX" secondItem="L8y-lj-npx" secondAttribute="centerX" id="byE-pj-a46"/>
+                            <constraint firstItem="L8y-lj-npx" firstAttribute="top" secondItem="TS6-tm-cEr" secondAttribute="bottom" constant="10" id="fsm-OJ-w4O"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="top" secondItem="OnV-sJ-9Cf" secondAttribute="bottom" id="jFz-1q-a1L"/>
+                            <constraint firstAttribute="bottom" secondItem="L8y-lj-npx" secondAttribute="bottom" constant="20" symbolic="YES" id="p8f-ug-ncn"/>
+                            <constraint firstItem="TS6-tm-cEr" firstAttribute="leading" secondItem="sJj-aA-hcu" secondAttribute="leading" id="us6-lW-ps9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="TS6-tm-cEr" id="FzC-FA-s91"/>
+                        <outlet property="expand" destination="YRH-cG-ICt" id="C4J-ky-5ak"/>
+                        <outlet property="timeSlider" destination="L8y-lj-npx" id="1BQ-DF-Uec"/>
+                        <outlet property="traceView" destination="TS6-tm-cEr" id="9fV-5e-Gm2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCN-5J-XGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="313"/>
+            <point key="canvasLocation" x="1856.8" y="312.59370314842579"/>
         </scene>
         <!--Event Information Controller-->
         <scene sceneID="j24-Bm-9Z3">
@@ -295,10 +329,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventInfoCell" id="7Fc-eQ-giQ" customClass="EventInfoCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Fc-eQ-giQ" id="a7j-1d-41y">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-4C-tNP">
@@ -333,10 +367,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="patientCell" id="9gB-rH-4HM" customClass="PatientDetailsCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gB-rH-4HM" id="Pye-Gc-BtD">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-a4-96U">

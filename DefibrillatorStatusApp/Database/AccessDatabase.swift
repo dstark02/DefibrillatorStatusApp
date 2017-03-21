@@ -12,7 +12,7 @@ import RealmSwift
 
 class AccessDatabase {
     
-    static func read() -> [Event] {
+    static func readEvents() -> [Event] {
         do {
             let realm = try Realm()
             return Array(realm.objects(Event.self))
@@ -21,9 +21,8 @@ class AccessDatabase {
         }
     }
     
-    static func write(event: Event, date: String) -> Bool {
+    static func writeEvent(event: Event) -> Bool {
         var result = false
-        event.date = date
         do {
             let realm = try Realm()
             try realm.write {
@@ -36,4 +35,31 @@ class AccessDatabase {
         }
         return result
     }
+    
+    static func writePatient(patient: Patient) -> Bool {
+        var result = false
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(patient)
+                print("value wrote")
+                result = true
+            }
+        } catch let error as NSError {
+            fatalError(error.localizedDescription)
+        }
+        return result
+    }
+    
+    static func readPatients() -> [Patient] {
+        do {
+            let realm = try Realm()
+            return Array(realm.objects(Patient.self))
+        } catch let error as NSError {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    
+    
 }
