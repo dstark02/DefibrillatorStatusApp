@@ -9,7 +9,7 @@
 import XCTest
 @testable import DefibrillatorStatusApp
 
-class BluetoothManagerTests: XCTestCase {
+class DownloadTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,15 +22,10 @@ class BluetoothManagerTests: XCTestCase {
     
     func testDownloadProgressDelegateCalled() {
         let bluetoothManager = BluetoothManager()
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let downloadController = storyboard.instantiateViewController(withIdentifier: "DownloadEventController") as! DownloadEventController
         
         downloadController.bluetoothManager = bluetoothManager
-        
-        
-        downloadController.bluetoothManager.downloadDelegate = downloadController.self
         downloadController.loadView()
         downloadController.viewDidLoad()
         
@@ -39,24 +34,25 @@ class BluetoothManagerTests: XCTestCase {
         XCTAssertEqual(bluetoothManager.downloadProgress, downloadController.progressView.progress)
     }
     
-//    func testDownloadCompleteDelegateCalled() {
-//        let bluetoothManager = BluetoothManager()
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        let downloadController = storyboard.instantiateViewController(withIdentifier: "DownloadEventController") as! DownloadEventController
-//        
-//        downloadController.bluetoothManager = bluetoothManager
-//        
-//        
-//        downloadController.bluetoothManager.downloadDelegate = downloadController.self
-//        downloadController.loadView()
-//        downloadController.viewDidLoad()
-//        
-//        bluetoothManager.downloadComplete = true
-//        
-//        XCTAssertNotNil(downloadController.)
-//    }
+    func testDownloadCompleteDelegateCalled() {
+
+        class DownloadEventControllerMock : DownloadEventController {
+            
+            var functionCalled = false
+        
+            override func downloadComplete(event: Event) {
+                functionCalled = true
+            }
+        }
+        
+        let bluetoothManager = BluetoothManager()
+        let mockDownloadEventController = DownloadEventControllerMock()
+        mockDownloadEventController.bluetoothManager = bluetoothManager
+        mockDownloadEventController.bluetoothManager.downloadDelegate = mockDownloadEventController.self
+        bluetoothManager.downloadComplete = true
+        
+        XCTAssertTrue(mockDownloadEventController.functionCalled)
+    }
     
     
     

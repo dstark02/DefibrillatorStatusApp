@@ -14,17 +14,16 @@ class ChartController: UIViewController, ChartViewDelegate {
 
     // MARK: Properties
     
-    var chartLabel: ChartLabel!
     var existingVisisbleX: Double = 0
     @IBOutlet weak var traceView: LineChartView!
     @IBOutlet weak var expand: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
+    var difference : CGFloat = 54.0
     
     // MARK: ViewDidLoad Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chartLabel = ChartLabel()
         traceView.delegate = self
         guard let currentEvent = CurrentEventProvider.currentEvent else { return }
         let ecgPoints = DataParser.filterECG(event: currentEvent)
@@ -44,15 +43,12 @@ class ChartController: UIViewController, ChartViewDelegate {
     }
     
     @IBAction func sliderInteraction(_ sender: UISlider) {
-        chartLabel.isHidden = true
         traceView.moveViewToX(Double(timeSlider.value))
     }
     
     // MARK: Chart Delegate Methods
     
     func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
-        
-        chartLabel.isHidden = true
         
         if existingVisisbleX == traceView.lowestVisibleX { return }
         
@@ -68,23 +64,27 @@ class ChartController: UIViewController, ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
 
         toggleComponents(off: false)
-        let time = entry.x/ChartConstants.ECGSampleRate
         
-        if time > 12.0 && time < 12.8 {
-            chartLabel.shockLabel.text = "SHOCK"
+        if (entry.y > 45000) {
+            let marker = BalloonMarker(color: Colour.HeartSineBlue, font: UIFont(name: "Helvetica", size: 12)!, textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
+            marker.minimumSize = CGSize (width: 50, height: 50)
+            chartView.marker = marker
         } else {
-            chartLabel.shockLabel.text = ""
+            chartView.marker = nil
         }
-        
-        let position = traceView.getPosition(entry: entry, axis:  YAxis.AxisDependency.left)
         timeSlider.setValue(Float(entry.x), animated: true)
-        chartLabel.frame.origin = CGPoint(x: position.x, y : 20)
-        chartLabel.isHidden = false
-        self.view.addSubview(chartLabel)
+        
+
+//        
+//        let position = traceView.getPosition(entry: entry, axis:  YAxis.AxisDependency.left)
+//        timeSlider.setValue(Float(entry.x), animated: true)
+//        chartLabel.frame.origin = CGPoint(x: position.x, y : 20)
+//        chartLabel.isHidden = false
+//        self.view.addSubview(chartLabel)
     }
     
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        chartLabel.isHidden = true
+        //chartLabel.isHidden = true
     }
     
     // MARK: Chart Setup
@@ -139,15 +139,22 @@ class ChartController: UIViewController, ChartViewDelegate {
     func resizeChart() {
         if traceView.frame.size.height != view.frame.height {
             UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
+                self.difference = self.view.frame.size.height - self.traceView.frame.height
                 self.traceView.frame.size.height = self.view.frame.height
                 self.toggleComponents(off: true)
             }, completion: { finished in
+            })
+        } else {
+            
+            UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
+                self.traceView.frame.size.height -= self.difference
+            }, completion: { finished in
+                self.toggleComponents(off: false)
             })
         }
     }
     
     func toggleComponents(off: Bool) {
         timeSlider.isHidden = off
-        expand.isHidden = off
     }
 }
