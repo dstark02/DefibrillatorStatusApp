@@ -24,13 +24,16 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
         events = [Event]()
         events = AccessDatabase.readEvents()
         eventListTable.reloadData()
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: view)
+        } else {
+            print("3D Touch Not Available")
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
     
     // MARK: TableView Methods
     
@@ -51,6 +54,7 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Make sure you set the current event that was selected
         CurrentEventProvider.currentEvent = events[indexPath.row]
         performSegue(withIdentifier: "eventListToChartSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
