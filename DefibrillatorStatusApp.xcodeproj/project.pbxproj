@@ -38,6 +38,7 @@
 		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
 		D33531081E37F5B600884E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33531071E37F5B600884E86 /* Assets.xcassets */; };
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
+		D34376091E81EA2100BE228E /* SegmentedControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */; };
 		D34EB39D1E39302600735300 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB39C1E39302600735300 /* Colour.swift */; };
 		D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E79CE1E7C371300033BAC /* PatientTests.swift */; };
 		D389A29F1E7C474C00C854C3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D389A29D1E7C474C00C854C3 /* Realm.framework */; };
@@ -155,6 +156,7 @@
 		D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDelegate.swift; path = Protocols/DownloadDelegate.swift; sourceTree = "<group>"; };
 		D33531071E37F5B600884E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerPreview.swift; sourceTree = "<group>"; };
 		D34EB39C1E39302600735300 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		D37E79CE1E7C371300033BAC /* PatientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTests.swift; sourceTree = "<group>"; };
 		D389A29D1E7C474C00C854C3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 		D333886D1E5F92BC0003AD70 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				D34376051E81E8F200BE228E /* Preview */,
 				D333886E1E5F92E60003AD70 /* Patient */,
 				D320DDB11E2901E700916D28 /* ChartController.swift */,
 				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
@@ -351,6 +354,14 @@
 				D34EB39C1E39302600735300 /* Colour.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		D34376051E81E8F200BE228E /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		D38E3A261E2E8E2000C3B63F /* Models */ = {
@@ -689,6 +700,7 @@
 				D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */,
 				D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */,
 				D31C784F1E816F090042FE08 /* BalloonMarker.swift in Sources */,
+				D34376091E81EA2100BE228E /* SegmentedControllerPreview.swift in Sources */,
 				D34EB39D1E39302600735300 /* Colour.swift in Sources */,
 				D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */,
 				D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */,

@@ -10,7 +10,6 @@ import Charts
 
 class XAxisFormatter: NSObject, IAxisValueFormatter {
     
-    
     func stringForValue(_ value: Double,
                         axis: AxisBase?) -> String {
         

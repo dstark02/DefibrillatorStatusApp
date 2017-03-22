@@ -45,7 +45,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
         
         state = bluetoothState
-        print(state ?? "")
         switch bluetoothState {
             
         case .Scanning:

@@ -20,15 +20,23 @@ extension BluetoothManager {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("Discovered Service")
-        for service in peripheral.services! {
+        
+        guard let peripheralServices = peripheral.services else { return }
+        for service in peripheralServices {
             characteristicState = .Searching
             peripheral.discoverCharacteristics([BluetoothConstants.eventListCharacteristicUUID], for: service)
         }
     }
     
+    func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+        // empty
+    }
+    
     func downloadEvent(peripheral: CBPeripheral, date: String) {
         self.date = date
-        for service in peripheral.services! {
+        guard let peripheralServices = peripheral.services else { return }
+        
+        for service in peripheralServices {
             peripheral.discoverCharacteristics([BluetoothConstants.ecgDataCharacteristicUUID], for: service)
         }
     }
@@ -37,7 +45,10 @@ extension BluetoothManager {
         print("Discovered Characteristic")
         characteristicState = .Found
         
-        for characteristic in service.characteristics! {
+
+        guard let characteristics = service.characteristics else { return }
+        
+        for characteristic in characteristics {
             if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
                 peripheral.readValue(for: characteristic)
             }
@@ -65,7 +76,6 @@ extension BluetoothManager {
             }
         }
     }
-    
     
     // MARK : Helper Methods
     

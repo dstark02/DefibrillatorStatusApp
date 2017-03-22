@@ -24,7 +24,6 @@ class EventInformationController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
     }
     
-    
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
