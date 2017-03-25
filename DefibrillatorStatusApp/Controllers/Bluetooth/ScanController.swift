@@ -14,7 +14,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Properties
     
     var bluetoothManager : BluetoothManagerProtocol!
-    var state : BluetoothState?
     let titleForHeaderInSection = "Defibrillators"
     let titleForFooterInSection = "Select Device to see Events on it"
     @IBOutlet weak var bluetoothScanView: UITableView!
@@ -26,10 +25,9 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(Realm.Configuration.defaultConfiguration.description)
+        print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.scanDelegate = self
-        progressView.progress = 0
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +42,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
         
-        state = bluetoothState
         switch bluetoothState {
             
         case .Scanning:
@@ -62,6 +59,10 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func progressHasUpdated(value: Float) {
         progressView.setProgress(value, animated: true)
+    }
+    
+    func passwordReceived(password: String) {
+        enterSerial(password: password)
     }
     
     // MARK: TableView Methods
@@ -87,7 +88,8 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        enterSerial(indexPath: indexPath)
+        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
+        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -124,7 +126,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func enterSerial(indexPath: IndexPath) {
+    func enterSerial(password: String) {
         
             var serialNoTextField: UITextField?
             let ac = UIAlertController(title: "Serial Number", message: "Please enter the Serial Number of the HeartSine AED",
@@ -135,11 +137,12 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 (_)in
                 if let serialNo = serialNoTextField?.text {
-                    if serialNo == BluetoothConstants.deviceSerialNumber {
-                        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
-                        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+                    if serialNo == password {
+//                        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
+//                        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
                         self.performSegue(withIdentifier: "eventListSegue", sender: self)
                     } else {
+                        self.bluetoothManager.disconnectFromDefibrillator()
                         self.incorrectSerialNo()
                     }
                 }

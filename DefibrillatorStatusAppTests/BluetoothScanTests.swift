@@ -7,11 +7,20 @@
 //
 
 import XCTest
+@testable import DefibrillatorStatusApp
 
 class BluetoothScanTests: XCTestCase {
     
+    
+    var bluetoothManager: BluetoothManager!
+    var scanControllerMock: ScanControllerMock!
+    
     override func setUp() {
         super.setUp()
+        bluetoothManager = BluetoothManager()
+        scanControllerMock = ScanControllerMock()
+        scanControllerMock.bluetoothManager = bluetoothManager
+        bluetoothManager.scanDelegate = scanControllerMock
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -20,16 +29,58 @@ class BluetoothScanTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    class ScanControllerMock : ScanController {
+        
+        var bluetoothState: BluetoothState?
+        
+        override func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
+            self.bluetoothState = bluetoothState
         }
     }
+    
+    func testBluetoothStateDelegateForStartedCalled() {
+        bluetoothManager.bluetoothState = .Started
+        XCTAssertEqual(bluetoothManager.bluetoothState, scanControllerMock.bluetoothState)
+    }
+    
+    func testBluetoothStateDelegateForScanningCalled() {
+        bluetoothManager.bluetoothState = .Scanning
+        XCTAssertEqual(bluetoothManager.bluetoothState, scanControllerMock.bluetoothState)
+    }
+    
+    func testBluetoothStateDelegateForStoppedCalled() {
+        bluetoothManager.bluetoothState = .Stopped
+        XCTAssertEqual(bluetoothManager.bluetoothState, scanControllerMock.bluetoothState)
+    }
+    
+    func testBluetoothStateDelegateForFoundDefibrillatorCalled() {
+        bluetoothManager.bluetoothState = .FoundDefibrillator
+        XCTAssertEqual(bluetoothManager.bluetoothState, scanControllerMock.bluetoothState)
+    }
+    
+    func testBluetoothStateDelegateForConnectedCalled() {
+        bluetoothManager.bluetoothState = .ConnectedToDefibrillator
+        XCTAssertEqual(bluetoothManager.bluetoothState, scanControllerMock.bluetoothState)
+    }
+    
+    func testDownloadProgressDelegateCalled() {
+        let bluetoothManager = BluetoothManager()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let scanController = storyboard.instantiateViewController(withIdentifier: "ScanController") as! ScanController
+        
+        scanController.bluetoothManager = bluetoothManager
+        scanController.loadView()
+        scanController.viewDidLoad()
+        scanController.progressView.progress = 0
+        
+        bluetoothManager.scanProgress = 0.5
+        
+        XCTAssertEqual(bluetoothManager.downloadProgress, scanController.progressView.progress)
+    }
+    
+    
+    
+    
+    
     
 }

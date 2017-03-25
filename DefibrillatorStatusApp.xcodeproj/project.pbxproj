@@ -51,6 +51,7 @@
 		D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA891E5B94060017C0B7 /* TabBarController.swift */; };
 		D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */; };
 		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
+		D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */; };
 		D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; };
 		D3BD8A9C1E315B9800504F8D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4721DDFC5670049358A /* EventListController.swift */; };
@@ -60,6 +61,7 @@
 		D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */; };
 		D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */; };
 		D3E0B0F21DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */; };
+		D3F4452C1E82EAEA00233DA1 /* BluetoothScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,7 @@
 		D390FA891E5B94060017C0B7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessRights.swift; sourceTree = "<group>"; };
 		D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDatabase.swift; sourceTree = "<group>"; };
+		D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListTests.swift; sourceTree = "<group>"; };
 		D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.1/Charts.xcodeproj"; sourceTree = "<group>"; };
 		D3CEB4721DDFC5670049358A /* EventListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListController.swift; sourceTree = "<group>"; };
 		D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothConstants.swift; path = Constants/BluetoothConstants.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		D3E0B0ED1DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefibrillatorStatusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefibrillatorStatusAppUITests.swift; sourceTree = "<group>"; };
 		D3E0B0F31DB3FA4E00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothScanTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +473,8 @@
 				D328C3241DB80B3200E3485B /* DownloadTests.swift */,
 				D37E79CE1E7C371300033BAC /* PatientTests.swift */,
 				D389A2A51E7EDA0A00C854C3 /* EventTests.swift */,
+				D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */,
+				D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */,
 			);
 			path = DefibrillatorStatusAppTests;
 			sourceTree = "<group>";
@@ -716,7 +722,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */,
 				D328C3251DB80B3200E3485B /* DownloadTests.swift in Sources */,
+				D3F4452C1E82EAEA00233DA1 /* BluetoothScanTests.swift in Sources */,
 				D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */,
 				D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */,
 			);
@@ -877,12 +885,12 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -896,12 +904,12 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

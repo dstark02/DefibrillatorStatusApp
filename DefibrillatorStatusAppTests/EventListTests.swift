@@ -7,11 +7,19 @@
 //
 
 import XCTest
+@testable import DefibrillatorStatusApp
 
 class EventListTests: XCTestCase {
     
+    var bluetoothManager : BluetoothManager!
+    var eventListControllerMock: EventListControllerMock!
+    
     override func setUp() {
         super.setUp()
+        bluetoothManager = BluetoothManager()
+        eventListControllerMock = EventListControllerMock()
+        eventListControllerMock.bluetoothManager = bluetoothManager
+        bluetoothManager.characteristicDelegate = eventListControllerMock
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -20,16 +28,33 @@ class EventListTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    class EventListControllerMock : EventListController {
+        
+        var characteristicState : CharacteristicState?
+        
+        override func characteristicStateHasChanged(characteristicState: CharacteristicState) {
+            self.characteristicState = characteristicState
+        }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testCharacteristicStateDelegateForNotFoundCalled() {
+        bluetoothManager.characteristicState = .NotFound
+        XCTAssertEqual(bluetoothManager.characteristicState, eventListControllerMock.characteristicState)
+    }
+    
+    func testCharacteristicStateDelegateForSearchingCalled() {
+        bluetoothManager.characteristicState = .Searching
+        XCTAssertEqual(bluetoothManager.characteristicState, eventListControllerMock.characteristicState)
+    }
+    
+    func testCharacteristicStateDelegateForFoundCalled() {
+        bluetoothManager.characteristicState = .Found
+        XCTAssertEqual(bluetoothManager.characteristicState, eventListControllerMock.characteristicState)
+    }
+    
+    func testCharacteristicStateDelegateForUpdatedCalled() {
+        bluetoothManager.characteristicState = .Updated
+        XCTAssertEqual(bluetoothManager.characteristicState, eventListControllerMock.characteristicState)
     }
     
 }

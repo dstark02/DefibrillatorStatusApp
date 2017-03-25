@@ -113,10 +113,14 @@ open class BalloonMarker: MarkerImage
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight)
     {
-        if (entry.y > 45000) {
+        if (entry.x > 390 && entry.x < 3075) {
+            setLabel("Monitor Mode")
+        } else if (entry.x >= 3075.0 && entry.x < 3119) {
             setLabel("SHOCK\n Time: " + String(entry.x/ChartConstants.ECGSampleRate))
+        } else if (entry.x >= 3393 ) {
+            setLabel("CPR Mode")
         } else {
-            setLabel(String(entry.y))
+    
         }
         
     }

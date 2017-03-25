@@ -46,7 +46,7 @@ class EventInformationController: UIViewController, UITableViewDelegate, UITable
         case 2:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "eventInfoCell") as! EventInfoCell
             cell.cellTitle.text = "Number of Shocks"
-            cell.cellValue.text = ""
+            cell.cellValue.text = "1"
             return cell
         default:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "patientCell") as! PatientDetailsCell

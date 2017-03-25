@@ -20,5 +20,6 @@ protocol BluetoothManagerProtocol {
     func isBluetoothOn() -> Bool
     func scanForDefibrillators()
     func connectToDefibrillator(peripheral : CBPeripheral)
+    func disconnectFromDefibrillator()
     func downloadEvent(peripheral: CBPeripheral, date: String)
 }

@@ -12,4 +12,5 @@ protocol ScanDelegate {
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState)
     func progressHasUpdated(value: Float)
+    func passwordReceived(password: String)
 }
