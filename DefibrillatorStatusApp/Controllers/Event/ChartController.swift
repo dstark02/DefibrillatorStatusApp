@@ -26,9 +26,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         traceView.delegate = self
         guard let currentEvent = CurrentEventProvider.currentEvent else { return }
-        let ecgPoints = DataParser.filterECG(event: currentEvent)
+        let (ecgPoints, markers) = DataParser.filter(event: currentEvent)
         CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
-        setChartData(ecgPoints: ecgPoints)
+        setChartData(ecgPoints: ecgPoints, markers: markers)
         timeSliderSetup(dataPointsCount: ecgPoints.count)
     }
     
@@ -64,15 +64,6 @@ class ChartController: UIViewController, ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
 
         toggleComponents(off: false)
-        
-//        if (entry.y > 45000) {
-//            let marker = BalloonMarker(color: Colour.HeartSineBlue, font: UIFont(name: "Helvetica", size: 12)!, textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
-//            marker.minimumSize = CGSize (width: 50, height: 50)
-//            chartView.marker = marker
-            print(entry.x)
-            print(entry.y)
-//        }
-////        } else {
 ////            chartView.marker = nil
 ////        }
         timeSlider.setValue(Float(entry.x), animated: true)
@@ -92,7 +83,7 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Chart Setup
     
-    func setChartData(ecgPoints: [UInt16]) {
+    func setChartData(ecgPoints: [UInt16], markers: [Marker]) {
         var chartValues = [ChartDataEntry]()
         for i in 0 ..< ecgPoints.count {
             chartValues.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
@@ -103,8 +94,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         
         
         
+        
         let lineData = LineChartData(dataSet: ecgLine)
-        setupTraceView(lineData: lineData)
+        setupTraceView(lineData: lineData, markers: markers, data: chartValues)
         
         if let event = CurrentEventProvider.currentEvent {
             traceView.chartDescription?.text = ("ECG trace from " + event.date)
@@ -124,7 +116,7 @@ class ChartController: UIViewController, ChartViewDelegate {
         
     }
     
-    func setupTraceView(lineData: LineChartData) {
+    func setupTraceView(lineData: LineChartData, markers: [Marker], data: [ChartDataEntry]) {
         let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
         traceView.leftAxis.addLimitLine(limitLine)
@@ -134,17 +126,27 @@ class ChartController: UIViewController, ChartViewDelegate {
         marker.minimumSize = CGSize (width: 50, height: 50)
         traceView.marker = marker
         var highlights = [Highlight]()
-        let monitorHighlight = Highlight(x: 391, y: 39477, dataSetIndex: 0)
-        highlights.append(monitorHighlight)
-        let shockHighlight = Highlight(x: 3089.0, y: 52982, dataSetIndex: 0)
-        highlights.append(shockHighlight)
-        let cprHighlight = Highlight(x: 3393.0, y: 42263, dataSetIndex: 0)
-        highlights.append(cprHighlight)
+       
+        
+        
+        
+        for marker in markers {
+            
+            highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: Marker.markerDictionary[marker.markerCode]!))
+        }
+//        let monitorHighlight = Highlight(x: 391, y: 39477, dataSetIndex: 0)
+//        highlights.append(monitorHighlight)
+//        let shockHighlight = Highlight(x: 3089.0, y: 52982, dataSetIndex: 0)
+//        highlights.append(shockHighlight)
+//        let cprHighlight = Highlight(x: 3393.0, y: 42263, dataSetIndex: 0)
+//        highlights.append(cprHighlight)
         traceView.highlightValues(highlights)
-        traceView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
+        traceView.setVisibleXRange(minXRange: 800, maxXRange: 800);
         traceView.drawBordersEnabled = false
         traceView.rightAxis.enabled = false
         traceView.dragEnabled = true
+        traceView.highlightPerTapEnabled = false
+        
     }
     
     func timeSliderSetup(dataPointsCount: Int) {

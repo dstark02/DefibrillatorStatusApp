@@ -106,6 +106,7 @@ extension BluetoothManager {
         let ecg = ECG(ecg: dataReceived)
         event.ecgs.append(ecg)
         downloadProgress += 1/fileLength
+        print(downloadProgress)
         
         if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)

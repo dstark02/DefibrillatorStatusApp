@@ -50,6 +50,7 @@
 		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
 		D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA891E5B94060017C0B7 /* TabBarController.swift */; };
 		D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */; };
+		D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A35DF81E9561DF00D036EB /* Marker.swift */; };
 		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
 		D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */; };
 		D3BD8A9B1E315B9800504F8D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BD8A961E315B8B00504F8D /* Charts.framework */; };
@@ -168,6 +169,7 @@
 		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		D390FA891E5B94060017C0B7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessRights.swift; sourceTree = "<group>"; };
+		D3A35DF81E9561DF00D036EB /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDatabase.swift; sourceTree = "<group>"; };
 		D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListTests.swift; sourceTree = "<group>"; };
 		D3BD8A8F1E315B8B00504F8D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.1/Charts.xcodeproj"; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				D38E3A271E2E8E8C00C3B63F /* ECG.swift */,
 				D33DCCB01E2FFF25002C4D11 /* Event.swift */,
 				D3312DA11E79F85F009D39C3 /* Patient.swift */,
+				D3A35DF81E9561DF00D036EB /* Marker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */,
 				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
 				D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */,
+				D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */,
 				D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */,
 				D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */,
 				D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */,
