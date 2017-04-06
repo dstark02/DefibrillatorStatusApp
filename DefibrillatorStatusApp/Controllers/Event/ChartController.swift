@@ -15,10 +15,10 @@ class ChartController: UIViewController, ChartViewDelegate {
     // MARK: Properties
     
     var existingVisisbleX: Double = 0
+    var difference : CGFloat = 54.0
     @IBOutlet weak var traceView: LineChartView!
     @IBOutlet weak var expand: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
-    var difference : CGFloat = 54.0
     
     // MARK: ViewDidLoad Method
     
@@ -28,6 +28,7 @@ class ChartController: UIViewController, ChartViewDelegate {
         guard let currentEvent = CurrentEventProvider.currentEvent else { return }
         let (ecgPoints, markers) = DataParser.filter(event: currentEvent)
         CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
+        CurrentEventProvider.markers = markers
         setChartData(ecgPoints: ecgPoints, markers: markers)
         timeSliderSetup(dataPointsCount: ecgPoints.count)
     }
@@ -50,6 +51,8 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
         
+        if timeSlider.isTouchInside { return }
+        
         if existingVisisbleX == traceView.lowestVisibleX { return }
         
         if existingVisisbleX < traceView.lowestVisibleX {
@@ -62,23 +65,8 @@ class ChartController: UIViewController, ChartViewDelegate {
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-
         toggleComponents(off: false)
-////            chartView.marker = nil
-////        }
-        timeSlider.setValue(Float(entry.x), animated: true)
-        
-
-//        
-//        let position = traceView.getPosition(entry: entry, axis:  YAxis.AxisDependency.left)
-//        timeSlider.setValue(Float(entry.x), animated: true)
-//        chartLabel.frame.origin = CGPoint(x: position.x, y : 20)
-//        chartLabel.isHidden = false
-//        self.view.addSubview(chartLabel)
-    }
-    
-    func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        //chartLabel.isHidden = true
+        //timeSlider.setValue(Float(entry.x), animated: true)
     }
     
     // MARK: Chart Setup
@@ -91,9 +79,6 @@ class ChartController: UIViewController, ChartViewDelegate {
         
         let ecgLine = LineChartDataSet(values: chartValues, label: "ECG Data")
         setupECGLine(ecgLine: ecgLine)
-        
-        
-        
         
         let lineData = LineChartData(dataSet: ecgLine)
         setupTraceView(lineData: lineData, markers: markers, data: chartValues)
@@ -113,7 +98,6 @@ class ChartController: UIViewController, ChartViewDelegate {
         ecgLine.setColor(UIColor.black.withAlphaComponent(0.5))
         ecgLine.lineWidth = 2.0
         ecgLine.drawCirclesEnabled = false
-        
     }
     
     func setupTraceView(lineData: LineChartData, markers: [Marker], data: [ChartDataEntry]) {
@@ -127,26 +111,18 @@ class ChartController: UIViewController, ChartViewDelegate {
         traceView.marker = marker
         var highlights = [Highlight]()
        
-        
-        
-        
         for marker in markers {
             
-            highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: Marker.markerDictionary[marker.markerCode]!))
+            if let labelText = Marker.markerDictionary[marker.markerCode] {
+                highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: labelText[0]))
+            }
         }
-//        let monitorHighlight = Highlight(x: 391, y: 39477, dataSetIndex: 0)
-//        highlights.append(monitorHighlight)
-//        let shockHighlight = Highlight(x: 3089.0, y: 52982, dataSetIndex: 0)
-//        highlights.append(shockHighlight)
-//        let cprHighlight = Highlight(x: 3393.0, y: 42263, dataSetIndex: 0)
-//        highlights.append(cprHighlight)
         traceView.highlightValues(highlights)
-        traceView.setVisibleXRange(minXRange: 800, maxXRange: 800);
+        traceView.setVisibleXRange(minXRange: 0, maxXRange: 800);
         traceView.drawBordersEnabled = false
         traceView.rightAxis.enabled = false
         traceView.dragEnabled = true
         traceView.highlightPerTapEnabled = false
-        
     }
     
     func timeSliderSetup(dataPointsCount: Int) {
@@ -164,7 +140,6 @@ class ChartController: UIViewController, ChartViewDelegate {
             }, completion: { finished in
             })
         } else {
-            
             UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
                 self.traceView.frame.size.height -= self.difference
             }, completion: { finished in

@@ -19,6 +19,7 @@
 		D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */; };
 		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
 		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
+		D32C7CEC1E967B3400E01007 /* EventLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C7CEB1E967B3400E01007 /* EventLogCell.swift */; };
 		D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */; };
 		D32DC02C1E5E13D4009C54B6 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02B1E5E13D4009C54B6 /* NameCell.swift */; };
 		D32DC02E1E5E1500009C54B6 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02D1E5E1500009C54B6 /* GenderCell.swift */; };
@@ -28,7 +29,7 @@
 		D32DC03C1E5F4A55009C54B6 /* SegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */; };
 		D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */; };
 		D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */; };
-		D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */; };
+		D32DC0431E5F6240009C54B6 /* TimeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */; };
 		D3312DA21E79F85F009D39C3 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3312DA11E79F85F009D39C3 /* Patient.swift */; };
 		D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33388691E5F88120003AD70 /* PatientDetailsCell.swift */; };
 		D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D333888C1E5FA20F0003AD70 /* Event.storyboard */; };
@@ -50,6 +51,8 @@
 		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
 		D390FA8A1E5B94060017C0B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA891E5B94060017C0B7 /* TabBarController.swift */; };
 		D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */; };
+		D39864C81E967E3200B0A451 /* EventLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39864C71E967E3200B0A451 /* EventLogController.swift */; };
+		D39864CA1E96842400B0A451 /* EventLogPlaceholderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */; };
 		D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A35DF81E9561DF00D036EB /* Marker.swift */; };
 		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
 		D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */; };
@@ -140,6 +143,7 @@
 		D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanDelegate.swift; path = Protocols/ScanDelegate.swift; sourceTree = "<group>"; };
 		D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManagerProtocol.swift; path = Protocols/BluetoothManagerProtocol.swift; sourceTree = "<group>"; };
 		D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
+		D32C7CEB1E967B3400E01007 /* EventLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogCell.swift; sourceTree = "<group>"; };
 		D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsController.swift; sourceTree = "<group>"; };
 		D32DC02B1E5E13D4009C54B6 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		D32DC02D1E5E1500009C54B6 /* GenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
@@ -149,7 +153,7 @@
 		D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedController.swift; sourceTree = "<group>"; };
 		D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationController.swift; sourceTree = "<group>"; };
 		D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventProvider.swift; sourceTree = "<group>"; };
-		D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDurationCalculator.swift; sourceTree = "<group>"; };
+		D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCalculator.swift; sourceTree = "<group>"; };
 		D3312DA11E79F85F009D39C3 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		D33388691E5F88120003AD70 /* PatientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsCell.swift; sourceTree = "<group>"; };
 		D333888C1E5FA20F0003AD70 /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		D390FA891E5B94060017C0B7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D390FA8C1E5B9DE20017C0B7 /* UserAccessRights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessRights.swift; sourceTree = "<group>"; };
+		D39864C71E967E3200B0A451 /* EventLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogController.swift; sourceTree = "<group>"; };
+		D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogPlaceholderCell.swift; sourceTree = "<group>"; };
 		D3A35DF81E9561DF00D036EB /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDatabase.swift; sourceTree = "<group>"; };
 		D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListTests.swift; sourceTree = "<group>"; };
@@ -276,9 +282,27 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		D32C7CE81E967AFC00E01007 /* EventLog */ = {
+			isa = PBXGroup;
+			children = (
+				D32C7CEB1E967B3400E01007 /* EventLogCell.swift */,
+			);
+			path = EventLog;
+			sourceTree = "<group>";
+		};
+		D32C7CEF1E967BFE00E01007 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
+				D39864C71E967E3200B0A451 /* EventLogController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				D32C7CE81E967AFC00E01007 /* EventLog */,
 				D33388671E5F86640003AD70 /* PatientDetails */,
 				D33388681E5F872F0003AD70 /* EventInformation */,
 			);
@@ -309,6 +333,7 @@
 			children = (
 				D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */,
 				D33388691E5F88120003AD70 /* PatientDetailsCell.swift */,
+				D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */,
 			);
 			path = EventInformation;
 			sourceTree = "<group>";
@@ -340,7 +365,7 @@
 				D320DDB11E2901E700916D28 /* ChartController.swift */,
 				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
 				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
-				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
+				D32C7CEF1E967BFE00E01007 /* Information */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -386,7 +411,7 @@
 			children = (
 				D38E3A2A1E2EA62300C3B63F /* DataParser.swift */,
 				D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */,
-				D32DC0421E5F6240009C54B6 /* EventDurationCalculator.swift */,
+				D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */,
 				D31C784E1E816F090042FE08 /* BalloonMarker.swift */,
 			);
 			path = Helpers;
@@ -683,9 +708,10 @@
 				D320DDB21E2901E700916D28 /* ChartController.swift in Sources */,
 				D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */,
 				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
-				D32DC0431E5F6240009C54B6 /* EventDurationCalculator.swift in Sources */,
+				D32DC0431E5F6240009C54B6 /* TimeCalculator.swift in Sources */,
 				D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */,
 				D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */,
+				D39864CA1E96842400B0A451 /* EventLogPlaceholderCell.swift in Sources */,
 				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
 				D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */,
 				D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */,
@@ -700,6 +726,7 @@
 				D3CEB4781DDFD27B0049358A /* BluetoothCharacteristicDelegate.swift in Sources */,
 				D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */,
 				D32DC0301E5E15BE009C54B6 /* DOBCell.swift in Sources */,
+				D39864C81E967E3200B0A451 /* EventLogController.swift in Sources */,
 				D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */,
 				D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */,
 				D390FA8D1E5B9DE20017C0B7 /* UserAccessRights.swift in Sources */,
@@ -718,6 +745,7 @@
 				D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */,
 				D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */,
 				D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */,
+				D32C7CEC1E967B3400E01007 /* EventLogCell.swift in Sources */,
 				D32DC0331E5F05F4009C54B6 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

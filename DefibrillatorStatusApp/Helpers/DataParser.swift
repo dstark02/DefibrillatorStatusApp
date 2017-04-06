@@ -11,129 +11,69 @@ import RealmSwift
 
 class DataParser {
     
-    static func filterECG(event: Event) -> [UInt16] {
-        var isNewPage = true
-        var isECGData = true
-        var ecgData = [UInt16]()
-        
-        for i in 0 ..< event.ecgs.count {
-            
-            if i % 4 == 0 {
-                isNewPage = true
-            } else {
-                isNewPage = false
-            }
-            
-            for j in (0..<event.ecgs[i].ecg.count) where j % 2 == 0 {
-                
-                var value = UInt16(0)
-                (event.ecgs[i].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
-                
-                if isNewPage && j <= 2 {}
-                else {
-                    if isECGData {
-                        if value == 65535 { break }
-                        ecgData.append(value)
-                        isECGData = false
-                    } else {
-                        //icgData.append(value)
-                        isECGData = true
-                    }
-                }
-            }
-        }
-        return ecgData
-    }
-    
     static func filter(event: Event) -> ([UInt16], [Marker]) {
         
+        var ecgData = [UInt16]()
+        var markerData = [Marker]()
         var isNewPage = true
         var isECGData = true
-        var ecgData = [UInt16]()
         var dataIndex = 0
-        var pageValue: UInt16 = 0
-        var indexChecker = 0
-        var markers = [Marker]()
-        
-        print(event.ecgs.count / 4)
-        
-        
+        var pageChecker = 0
         
         while dataIndex < event.ecgs.count {
             
-            var valueAtFirstRead = UInt16(0)
-            var firstVal = UInt16(0)
-            (event.ecgs[dataIndex].ecg as NSData).getBytes(&valueAtFirstRead, range: NSMakeRange(3, 1))
-            (event.ecgs[dataIndex].ecg as NSData).getBytes(&firstVal, range: NSMakeRange(0, 1))
+            var markerByte = UInt16(0)
+            var pageByte = UInt16(0)
+            (event.ecgs[dataIndex].ecg as NSData).getBytes(&markerByte, range: NSMakeRange(3, 1))
+            (event.ecgs[dataIndex].ecg as NSData).getBytes(&pageByte, range: NSMakeRange(0, 1))
             
-            
-            
-            if valueAtFirstRead == UInt16(128) && firstVal == 0 {
+            if markerByte == UInt16(128) && pageByte == 0 {
                 
                 print("MarkerData")
-                var byteIndex = 0
+                var byteIndex = 4
                 
-                let markerData = event.ecgs[dataIndex].ecg + event.ecgs[dataIndex + 1].ecg + event.ecgs[dataIndex + 2].ecg + event.ecgs[dataIndex + 3].ecg
-            
-
-
+                let markerPage = (event.ecgs[dataIndex].ecg + event.ecgs[dataIndex + 1].ecg
+                    + event.ecgs[dataIndex + 2].ecg + event.ecgs[dataIndex + 3].ecg)
+                
+                while byteIndex < markerPage.count {
                     
-                    
-                while byteIndex < markerData.count {
-                    
-                    
-                    if byteIndex == 0 {
-                        byteIndex += 4
-                    }
-                    
-                    if byteIndex + 10 > markerData.count {
+                    if byteIndex + 10 > markerPage.count {
                         break
                     }
                     var markerCode = UInt16(0)
-                    (markerData as NSData).getBytes(&markerCode, range: NSMakeRange(byteIndex, 2))
+                    (markerPage as NSData).getBytes(&markerCode, range: NSMakeRange(byteIndex, 2))
                     let biMarkerCode = CFSwapInt16HostToBig(markerCode)
                     byteIndex += 2
                     var markerValue = UInt32(0)
-                    (markerData as NSData).getBytes(&markerValue, range: NSMakeRange(byteIndex, 4))
+                    (markerPage as NSData).getBytes(&markerValue, range: NSMakeRange(byteIndex, 4))
                     let biMarkerValue = CFSwapInt32HostToBig(markerValue)
                     byteIndex += 4
                     var markerSample = UInt32(0)
-                    (markerData as NSData).getBytes(&markerSample, range: NSMakeRange(byteIndex, 4))
+                    (markerPage as NSData).getBytes(&markerSample, range: NSMakeRange(byteIndex, 4))
                     let biMarkerSample = CFSwapInt32HostToBig(markerSample)
                     byteIndex += 4
                     
                     if Marker.markerDictionary.index(forKey: biMarkerCode) != nil {
-                        markers.append(Marker(markerCode: biMarkerCode, markerValue: biMarkerValue, markerSample: biMarkerSample))
-                        
+                        markerData.append(Marker(markerCode: biMarkerCode, markerValue: biMarkerValue, markerSample: biMarkerSample))
                     }
-                    
-                    
-            
                 }
-                dataIndex += 4
                 
+                dataIndex += 4
                 
             } else {
                 
-                if indexChecker % 4 == 0 {
+                if pageChecker % 4 == 0 {
                     isNewPage = true
-                    //print(pageValue)
-                    pageValue += 1
-                    indexChecker += 1
+                    pageChecker += 1
                 } else {
                     isNewPage = false
-                    indexChecker += 1
+                    pageChecker += 1
                 }
                 
                 for j in (0..<event.ecgs[dataIndex].ecg.count) where j % 2 == 0 {
                     
                     var value = UInt16(0)
                     (event.ecgs[dataIndex].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
-                    
-                    
-                    
-                    
-                    
                     
                     if isNewPage && j <= 2 {}
                     else {
@@ -152,7 +92,7 @@ class DataParser {
             }
             
         }
-        return (ecgData, markers)
+        return (ecgData, markerData)
     }
     
     

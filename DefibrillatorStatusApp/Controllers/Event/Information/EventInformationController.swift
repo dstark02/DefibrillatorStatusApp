@@ -41,28 +41,32 @@ class EventInformationController: UIViewController, UITableViewDelegate, UITable
         case 1:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "eventInfoCell") as! EventInfoCell
             cell.cellTitle.text = "Duration"
-            cell.cellValue.text = EventDurationCalculator.getEventDuration()
+            cell.cellValue.text = TimeCalculator.getEventDuration()
             return cell
         case 2:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "eventInfoCell") as! EventInfoCell
             cell.cellTitle.text = "Number of Shocks"
             cell.cellValue.text = "1"
             return cell
-        default:
+        case 3:
             let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "patientCell") as! PatientDetailsCell
             cell.cellTitle.text = "Patient Information"
+            return cell
+        default:
+            let cell = eventInfoTable.dequeueReusableCell(withIdentifier: "eventLogPlaceholderCell") as! EventLogPlaceholderCell
+            cell.cellTitle.text = "Event Log"
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 3 {
+        if indexPath.row == 3 || indexPath.row == 4 {
             eventInfoTable.deselectRow(at: indexPath, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
 }
