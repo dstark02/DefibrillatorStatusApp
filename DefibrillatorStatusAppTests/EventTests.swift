@@ -22,16 +22,16 @@ class EventTests: XCTestCase {
     
     func testEventDuration() {
         CurrentEventProvider.duration = 300 // seconds
-        XCTAssertEqual("05 mins 00 secs", EventDurationCalculator.getEventDuration())
+        XCTAssertEqual("05 mins 00 secs", TimeCalculator.getEventDuration())
     }
     
     func testDurationLessThanMinute() {
         CurrentEventProvider.duration = 59
-        XCTAssertEqual("59 secs", EventDurationCalculator.getEventDuration())
+        XCTAssertEqual("59 secs", TimeCalculator.getEventDuration())
     }
     
     func testDurationNotSet() {
-        XCTAssertEqual("", EventDurationCalculator.getEventDuration())
+        XCTAssertEqual("", TimeCalculator.getEventDuration())
     }
     
     
