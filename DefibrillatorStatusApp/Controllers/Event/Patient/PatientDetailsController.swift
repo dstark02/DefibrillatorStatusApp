@@ -11,7 +11,7 @@ import UIKit
 class PatientDetailsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
-
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var patientTable: UITableView!
     let patientDetails = "Patient Details"
     let datePickerRow = 3
@@ -25,6 +25,10 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         savedPatients = AccessDatabase.readPatients()
+        if !savedPatients.isEmpty {
+            patientTable.isUserInteractionEnabled = false
+            saveButton.isHidden = true
+        }
         patientTable.reloadData()
     }
     
@@ -80,6 +84,8 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         if indexPath.row == dobRow {
             toggleDatepicker()
             patientTable.deselectRow(at: indexPath, animated: true)
+        } else if indexPath.row == 1 {
+            patientTable.deselectRow(at: indexPath, animated: true)
         }
     }
     
@@ -128,6 +134,8 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         } else { return }
         
         if AccessDatabase.writePatient(patient: patient) {
+            saveButton.isHidden = true
+            patientTable.isUserInteractionEnabled = false
             alertControllerHelper(title: "Save Complete", message: "Patient Details sucessfully saved")
         }
     }

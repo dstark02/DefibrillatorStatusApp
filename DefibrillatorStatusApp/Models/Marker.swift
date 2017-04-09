@@ -10,7 +10,8 @@ import Foundation
 
 class Marker {
     
-    static let markerDictionary: [UInt16:[String]] = [2: ["Monitor Mode", "AED has entered Monitor Mode"], 3: ["CPR Mode", "AED has entered CPR Mode"]]
+    static let markerDictionary: [UInt16:[String]] = [2: ["Monitor Mode", "AED has entered Monitor Mode"],
+                                                      3: ["CPR Mode", "AED has entered CPR Mode"]]
     
     var markerCode: UInt16 = 0
     var markerValue: UInt32 = 0
