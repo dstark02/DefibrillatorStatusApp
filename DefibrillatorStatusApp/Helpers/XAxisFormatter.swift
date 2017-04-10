@@ -13,7 +13,7 @@ class XAxisFormatter: NSObject, IAxisValueFormatter {
     func stringForValue(_ value: Double,
                         axis: AxisBase?) -> String {
         
-        return String(round(value/ChartConstants.ECGSampleRate))
+        return String(value/ChartConstants.ECGSampleRate)
     }
     
     

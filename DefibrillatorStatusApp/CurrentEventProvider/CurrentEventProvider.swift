@@ -11,4 +11,5 @@ import Foundation
 class CurrentEventProvider {
     public static var currentEvent : Event?
     public static var duration : Int?
+    public static var markers : [Marker]?
 }

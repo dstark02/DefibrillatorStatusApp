@@ -113,12 +113,7 @@ open class BalloonMarker: MarkerImage
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight)
     {
-        if (entry.y > 45000) {
-            setLabel("SHOCK\n Time: " + String(entry.x/ChartConstants.ECGSampleRate))
-        } else {
-            setLabel(String(entry.y))
-        }
-        
+        setLabel(highlight.label)
     }
     
     open func setLabel(_ label: String)

@@ -15,10 +15,10 @@ class ChartController: UIViewController, ChartViewDelegate {
     // MARK: Properties
     
     var existingVisisbleX: Double = 0
+    var difference : CGFloat = 54.0
     @IBOutlet weak var traceView: LineChartView!
     @IBOutlet weak var expand: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
-    var difference : CGFloat = 54.0
     
     // MARK: ViewDidLoad Method
     
@@ -26,9 +26,10 @@ class ChartController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         traceView.delegate = self
         guard let currentEvent = CurrentEventProvider.currentEvent else { return }
-        let ecgPoints = DataParser.filterECG(event: currentEvent)
+        let (ecgPoints, markers) = DataParser.filter(event: currentEvent)
         CurrentEventProvider.duration = ecgPoints.count / Int(ChartConstants.ECGSampleRate)
-        setChartData(ecgPoints: ecgPoints)
+        CurrentEventProvider.markers = markers
+        setChartData(ecgPoints: ecgPoints, markers: markers)
         timeSliderSetup(dataPointsCount: ecgPoints.count)
     }
     
@@ -50,6 +51,8 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
         
+        if timeSlider.isTouchInside { return }
+        
         if existingVisisbleX == traceView.lowestVisibleX { return }
         
         if existingVisisbleX < traceView.lowestVisibleX {
@@ -62,44 +65,22 @@ class ChartController: UIViewController, ChartViewDelegate {
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-
         toggleComponents(off: false)
-        
-        if (entry.y > 45000) {
-            let marker = BalloonMarker(color: Colour.HeartSineBlue, font: UIFont(name: "Helvetica", size: 12)!, textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
-            marker.minimumSize = CGSize (width: 50, height: 50)
-            chartView.marker = marker
-        } else {
-            chartView.marker = nil
-        }
-        timeSlider.setValue(Float(entry.x), animated: true)
-        
-
-//        
-//        let position = traceView.getPosition(entry: entry, axis:  YAxis.AxisDependency.left)
-//        timeSlider.setValue(Float(entry.x), animated: true)
-//        chartLabel.frame.origin = CGPoint(x: position.x, y : 20)
-//        chartLabel.isHidden = false
-//        self.view.addSubview(chartLabel)
-    }
-    
-    func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        //chartLabel.isHidden = true
+        //timeSlider.setValue(Float(entry.x), animated: true)
     }
     
     // MARK: Chart Setup
     
-    func setChartData(ecgPoints: [UInt16]) {
+    func setChartData(ecgPoints: [UInt16], markers: [Marker]) {
         var chartValues = [ChartDataEntry]()
         for i in 0 ..< ecgPoints.count {
             chartValues.append(ChartDataEntry(x: Double(i), y: Double(ecgPoints[i])))
         }
         
-        let ecgLine: LineChartDataSet = LineChartDataSet(values: chartValues, label: "ECG Data")
-        setupECGLine(ecgLine: ecgLine)
-        
+        let ecgLine = LineChartDataSet(values: chartValues, label: "ECG Data")
         let lineData = LineChartData(dataSet: ecgLine)
-        setupTraceView(lineData: lineData)
+        
+        setupTraceView(lineData: lineData, markers: markers, ecgLine: ecgLine)
         
         if let event = CurrentEventProvider.currentEvent {
             traceView.chartDescription?.text = ("ECG trace from " + event.date)
@@ -111,27 +92,60 @@ class ChartController: UIViewController, ChartViewDelegate {
     // MARK: Setup Helpers
     
     func setupECGLine(ecgLine: LineChartDataSet) {
+        
+    }
+    
+    func setupTraceView(lineData: LineChartData, markers: [Marker], ecgLine: LineChartDataSet) {
+        
+        ecgLine.setDrawHighlightIndicators(false)
         ecgLine.axisDependency = .left
         ecgLine.setColor(UIColor.black.withAlphaComponent(0.5))
         ecgLine.lineWidth = 2.0
         ecgLine.drawCirclesEnabled = false
-    }
-    
-    func setupTraceView(lineData: LineChartData) {
+        let data = ecgLine.values
+        
+        
+        
+        
         let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
         traceView.leftAxis.addLimitLine(limitLine)
         traceView.xAxis.valueFormatter = XAxisFormatter()
         traceView.data = lineData
-        traceView.setVisibleXRange(minXRange: 1000, maxXRange: 1000);
+        let marker = BalloonMarker(color: Colour.HeartSineBlue, font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
+        marker.minimumSize = CGSize (width: 50, height: 50)
+        traceView.marker = marker
+        var highlights = [Highlight]()
+       
+        for marker in markers {
+            
+            if let labelText = Marker.markerDictionary[marker.markerCode] {
+                highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: labelText[0]))
+            }
+        }
+        
+        let index = data.index(where: { $0.y == ecgLine.yMax })
+        
+        if let x = index {
+            highlights.append(Highlight(x: Double(x), y: ecgLine.yMax, dataSetIndex: 0, label: "SHOCK\nTime: " + TimeCalculator.calculateTime(sample: UInt32(x))))
+            CurrentEventProvider.markers?.append(Marker(markerCode: 4, markerValue: 0, markerSample: UInt32(x)))
+            CurrentEventProvider.markers?.sort {
+                return $0.markerSample < $1.markerSample
+            }
+        }
+        
+       
+        
+        traceView.highlightValues(highlights)
+        traceView.setVisibleXRange(minXRange: 0, maxXRange: 1000);
         traceView.drawBordersEnabled = false
         traceView.rightAxis.enabled = false
         traceView.dragEnabled = true
+        traceView.highlightPerTapEnabled = false
     }
     
     func timeSliderSetup(dataPointsCount: Int) {
         timeSlider.maximumValue = Float(dataPointsCount)
-        timeSlider.minimumValue = 0
         timeSlider.value = 0
         timeSlider.setThumbImage(#imageLiteral(resourceName: "Shock"), for: .normal)
     }
@@ -145,7 +159,6 @@ class ChartController: UIViewController, ChartViewDelegate {
             }, completion: { finished in
             })
         } else {
-            
             UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
                 self.traceView.frame.size.height -= self.difference
             }, completion: { finished in

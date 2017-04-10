@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y1G-o7-lFZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y1G-o7-lFZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -249,11 +249,88 @@
                     </view>
                     <connections>
                         <outlet property="patientTable" destination="JH6-Iz-LIj" id="3S9-aA-VS7"/>
+                        <outlet property="saveButton" destination="BR9-Lf-GcF" id="aup-RJ-RSE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hmx-w1-QXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2708" y="933.28335832083962"/>
+        </scene>
+        <!--Event Log Controller-->
+        <scene sceneID="3Li-i3-HOp">
+            <objects>
+                <viewController id="wcc-22-dHa" customClass="EventLogController" customModule="DefibrillatorStatusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nNs-Lv-3XU"/>
+                        <viewControllerLayoutGuide type="bottom" id="YmQ-4G-gx8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v42-fx-ycm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Gwa-px-XBb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventLogCell" id="8Ey-uC-cKu" customClass="EventLogCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ey-uC-cKu" id="Bt9-2r-3Eh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYn-dP-6MT">
+                                                    <rect key="frame" x="12" y="13" width="243" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0v-pL-ART">
+                                                    <rect key="frame" x="259" y="13" width="108" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="108" id="VTs-TN-wgm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RYn-dP-6MT" firstAttribute="centerY" secondItem="Bt9-2r-3Eh" secondAttribute="centerY" id="A0z-DO-P1S"/>
+                                                <constraint firstItem="RYn-dP-6MT" firstAttribute="leading" secondItem="Bt9-2r-3Eh" secondAttribute="leadingMargin" constant="4" id="Oxp-Z9-JAb"/>
+                                                <constraint firstItem="RYn-dP-6MT" firstAttribute="top" secondItem="X0v-pL-ART" secondAttribute="top" id="XVb-UJ-VXa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="X0v-pL-ART" secondAttribute="bottom" constant="2" id="eua-kT-iiL"/>
+                                                <constraint firstItem="X0v-pL-ART" firstAttribute="leading" secondItem="RYn-dP-6MT" secondAttribute="trailing" constant="4" id="h4k-Vn-OLf"/>
+                                                <constraint firstItem="X0v-pL-ART" firstAttribute="trailing" secondItem="Bt9-2r-3Eh" secondAttribute="trailingMargin" id="hbD-4K-GIt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="markerDescription" destination="RYn-dP-6MT" id="YkD-la-DIB"/>
+                                            <outlet property="markerTime" destination="X0v-pL-ART" id="MnH-zx-UOn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wcc-22-dHa" id="S3X-VV-lOC"/>
+                                    <outlet property="delegate" destination="wcc-22-dHa" id="nA6-eW-Ngt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gwa-px-XBb" firstAttribute="bottom" secondItem="YmQ-4G-gx8" secondAttribute="top" id="Byr-71-h5A"/>
+                            <constraint firstItem="Gwa-px-XBb" firstAttribute="top" secondItem="nNs-Lv-3XU" secondAttribute="bottom" id="NRo-Sz-OvH"/>
+                            <constraint firstAttribute="trailing" secondItem="Gwa-px-XBb" secondAttribute="trailing" id="ay6-jh-suN"/>
+                            <constraint firstItem="Gwa-px-XBb" firstAttribute="leading" secondItem="v42-fx-ycm" secondAttribute="leading" id="k9B-h6-NtJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="eventLogTable" destination="Gwa-px-XBb" id="kRs-gx-RZO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Wd-BU-hca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="1636.7316341829087"/>
         </scene>
         <!--Chart Controller-->
         <scene sceneID="IBN-Jw-SYL">
@@ -396,6 +473,34 @@
                                                 <segue key="commit" destination="M1C-MU-qwp" kind="show" id="k6C-pQ-OE7"/>
                                                 <segue key="preview" inheritsFrom="commit" id="hBv-BJ-Pw2"/>
                                             </segue>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventLogPlaceholderCell" id="rMA-fO-WJ0" customClass="EventLogPlaceholderCell" customModule="DefibrillatorStatusApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rMA-fO-WJ0" id="Zgh-Q8-RO3">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOH-IW-CIt">
+                                                    <rect key="frame" x="26" y="11" width="185" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="dbo-0c-IfK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kOH-IW-CIt" firstAttribute="centerY" secondItem="Zgh-Q8-RO3" secondAttribute="centerY" id="0oZ-DB-lze"/>
+                                                <constraint firstItem="kOH-IW-CIt" firstAttribute="top" secondItem="Zgh-Q8-RO3" secondAttribute="topMargin" constant="3" id="Qj5-9A-Wyg"/>
+                                                <constraint firstItem="kOH-IW-CIt" firstAttribute="leading" secondItem="Zgh-Q8-RO3" secondAttribute="leadingMargin" constant="18" id="qWn-ey-vt8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellTitle" destination="kOH-IW-CIt" id="745-Rc-kZ7"/>
+                                            <segue destination="wcc-22-dHa" kind="show" id="PWT-xH-LId"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

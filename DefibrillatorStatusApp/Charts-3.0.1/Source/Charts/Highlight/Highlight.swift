@@ -37,6 +37,8 @@ open class Highlight: NSObject
     /// **default**: -1
     fileprivate var _stackIndex = Int(-1)
     
+    fileprivate var _label = ""
+    
     /// the axis the highlighted value belongs to
     fileprivate var _axis: YAxis.AxisDependency = YAxis.AxisDependency.left
     
@@ -127,11 +129,12 @@ open class Highlight: NSObject
     /// - parameter x: the x-value of the highlighted value
     /// - parameter y: the y-value of the highlighted value
     /// - parameter dataSetIndex: the index of the DataSet the highlighted value belongs to
-    public init(x: Double, y: Double, dataSetIndex: Int)
+    public init(x: Double, y: Double, dataSetIndex: Int, label: String)
     {
         _x = x
         _y = y
         _dataSetIndex = dataSetIndex
+        _label = label
     }
     
     /// - parameter x: the x-value of the highlighted value
@@ -139,8 +142,9 @@ open class Highlight: NSObject
     /// - parameter stackIndex: references which value of a stacked-bar entry has been selected
     public convenience init(x: Double, dataSetIndex: Int, stackIndex: Int)
     {
-        self.init(x: x, y: Double.nan, dataSetIndex: dataSetIndex)
+        self.init(x: x, y: Double.nan, dataSetIndex: dataSetIndex, label: "")
         _stackIndex = stackIndex
+        _label = label
     }
     
     open var x: Double { return _x }
@@ -150,6 +154,7 @@ open class Highlight: NSObject
     open var dataSetIndex: Int { return _dataSetIndex }
     open var stackIndex: Int { return _stackIndex }
     open var axis: YAxis.AxisDependency { return _axis }
+    open var label: String { return _label }
     
     open var isStacked: Bool { return _stackIndex >= 0 }
     

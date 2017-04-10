@@ -116,6 +116,18 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         centralManager?.connect(peripheral, options: nil)
     }
     
+    func disconnectFromDefibrillator() {
+        
+        guard let peripherals =  centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
+        
+        if !peripherals.isEmpty {
+            eventList.removeAll()
+            centralManager?.cancelPeripheralConnection(peripherals[0])
+        }
+        
+    }
+    
+    
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         currentPeripheral = peripheral
         currentPeripheral?.delegate = self
@@ -128,7 +140,9 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
                         didDisconnectPeripheral peripheral: CBPeripheral,
                         error: Error?){
         print("Disconnected")
-        bluetoothState = .Stopped
+        if scanProgress == 0 {
+           bluetoothState = .Stopped
+        }
     }
 
     // MARK: CBCentral required method

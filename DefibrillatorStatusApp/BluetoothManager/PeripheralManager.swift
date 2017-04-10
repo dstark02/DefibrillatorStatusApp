@@ -24,6 +24,7 @@ extension BluetoothManager {
         guard let peripheralServices = peripheral.services else { return }
         for service in peripheralServices {
             characteristicState = .Searching
+            peripheral.discoverCharacteristics([BluetoothConstants.passwordCharacteristicUUID], for: service)
             peripheral.discoverCharacteristics([BluetoothConstants.eventListCharacteristicUUID], for: service)
         }
     }
@@ -49,6 +50,10 @@ extension BluetoothManager {
         guard let characteristics = service.characteristics else { return }
         
         for characteristic in characteristics {
+            if characteristic.uuid == BluetoothConstants.passwordCharacteristicUUID {
+                peripheral.readValue(for: characteristic)
+            }
+            
             if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
                 peripheral.readValue(for: characteristic)
             }
@@ -60,6 +65,12 @@ extension BluetoothManager {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
+        if characteristic.uuid == BluetoothConstants.passwordCharacteristicUUID {
+            guard let dataReceived = characteristic.value else { return }
+            guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
+            scanDelegate?.passwordReceived(password: dataAsString)
+        }
+        
         if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
             formatStringToDisplay(characteristic: characteristic)
         }
@@ -70,8 +81,8 @@ extension BluetoothManager {
             } else {
                 guard let dataReceived = characteristic.value else { return }
                 guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
-                guard let length = UInt16(dataAsString) else { return }
-                fileLength = Float(length)
+                guard let length = Float(dataAsString) else { return }
+                fileLength = length
                 peripheral.setNotifyValue(true, for: characteristic)
             }
         }
@@ -95,6 +106,7 @@ extension BluetoothManager {
         let ecg = ECG(ecg: dataReceived)
         event.ecgs.append(ecg)
         downloadProgress += 1/fileLength
+        //print(downloadProgress)
         
         if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)

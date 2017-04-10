@@ -519,7 +519,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         }
         else
         {
-            highlightValue(Highlight(x: x, y: y, dataSetIndex: dataSetIndex), callDelegate: callDelegate)
+            highlightValue(Highlight(x: x, y: y, dataSetIndex: dataSetIndex, label: ""), callDelegate: callDelegate)
         }
     }
     
