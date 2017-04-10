@@ -43,6 +43,7 @@ class DataParser {
                     var markerCode = UInt16(0)
                     (markerPage as NSData).getBytes(&markerCode, range: NSMakeRange(byteIndex, 2))
                     let biMarkerCode = CFSwapInt16HostToBig(markerCode)
+                    print(biMarkerCode)
                     byteIndex += 2
                     var markerValue = UInt32(0)
                     (markerPage as NSData).getBytes(&markerValue, range: NSMakeRange(byteIndex, 4))
@@ -74,13 +75,14 @@ class DataParser {
                     
                     var value = UInt16(0)
                     (event.ecgs[dataIndex].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
+                    let biValue = CFSwapInt16HostToBig(value)
                     
                     if isNewPage && j <= 2 {}
                     else {
                         if isECGData {
-                            if value != 65535 && value != 0 {
+                            if biValue != 65535 && biValue != 0 {
                                 //print(value)
-                                ecgData.append(CFSwapInt16HostToBig(value))
+                                ecgData.append(biValue)
                             }
                             isECGData = false
                         } else {

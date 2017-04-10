@@ -78,10 +78,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         }
         
         let ecgLine = LineChartDataSet(values: chartValues, label: "ECG Data")
-        setupECGLine(ecgLine: ecgLine)
-        
         let lineData = LineChartData(dataSet: ecgLine)
-        setupTraceView(lineData: lineData, markers: markers, data: chartValues)
+        
+        setupTraceView(lineData: lineData, markers: markers, ecgLine: ecgLine)
         
         if let event = CurrentEventProvider.currentEvent {
             traceView.chartDescription?.text = ("ECG trace from " + event.date)
@@ -93,14 +92,21 @@ class ChartController: UIViewController, ChartViewDelegate {
     // MARK: Setup Helpers
     
     func setupECGLine(ecgLine: LineChartDataSet) {
+        
+    }
+    
+    func setupTraceView(lineData: LineChartData, markers: [Marker], ecgLine: LineChartDataSet) {
+        
         ecgLine.setDrawHighlightIndicators(false)
         ecgLine.axisDependency = .left
         ecgLine.setColor(UIColor.black.withAlphaComponent(0.5))
         ecgLine.lineWidth = 2.0
         ecgLine.drawCirclesEnabled = false
-    }
-    
-    func setupTraceView(lineData: LineChartData, markers: [Marker], data: [ChartDataEntry]) {
+        let data = ecgLine.values
+        
+        
+        
+        
         let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
         traceView.leftAxis.addLimitLine(limitLine)
@@ -117,8 +123,21 @@ class ChartController: UIViewController, ChartViewDelegate {
                 highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: labelText[0]))
             }
         }
+        
+        let index = data.index(where: { $0.y == ecgLine.yMax })
+        
+        if let x = index {
+            highlights.append(Highlight(x: Double(x), y: ecgLine.yMax, dataSetIndex: 0, label: "SHOCK\nTime: " + TimeCalculator.calculateTime(sample: UInt32(x))))
+            CurrentEventProvider.markers?.append(Marker(markerCode: 4, markerValue: 0, markerSample: UInt32(x)))
+            CurrentEventProvider.markers?.sort {
+                return $0.markerSample < $1.markerSample
+            }
+        }
+        
+       
+        
         traceView.highlightValues(highlights)
-        traceView.setVisibleXRange(minXRange: 0, maxXRange: 800);
+        traceView.setVisibleXRange(minXRange: 0, maxXRange: 1000);
         traceView.drawBordersEnabled = false
         traceView.rightAxis.enabled = false
         traceView.dragEnabled = true
