@@ -67,6 +67,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D38D18391EA1365700F7BC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		D38D183B1EA1365700F7BC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
 		D3E0B0E31DB3FA4E00943F19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E0B0C61DB3FA4D00943F19 /* Project object */;
@@ -363,6 +377,15 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
+		D38D18351EA1365700F7BC13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D38D183A1EA1365700F7BC13 /* Charts.framework */,
+				D38D183C1EA1365700F7BC13 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D38E3A261E2E8E2000C3B63F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +588,12 @@
 			mainGroup = D3E0B0C51DB3FA4D00943F19;
 			productRefGroup = D3E0B0CF1DB3FA4D00943F19 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D38D18351EA1365700F7BC13 /* Products */;
+					ProjectRef = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D3E0B0CD1DB3FA4D00943F19 /* DefibrillatorStatusApp */,
@@ -573,6 +602,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D38D183A1EA1365700F7BC13 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = D38D18391EA1365700F7BC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D38D183C1EA1365700F7BC13 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = D38D183B1EA1365700F7BC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D327E0B41DD3E06500A66CAF /* Resources */ = {
@@ -763,7 +809,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -809,7 +855,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
