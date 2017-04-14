@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     

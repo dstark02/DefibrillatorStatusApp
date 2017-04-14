@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Charts
 
 class ChartController: UIViewController, ChartViewDelegate {
