@@ -25,7 +25,7 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         savedPatients = AccessDatabase.readPatients()
-        if !savedPatients.isEmpty {
+        if getCurrentPatient() != nil {
             patientTable.isUserInteractionEnabled = false
             saveButton.isHidden = true
         }
