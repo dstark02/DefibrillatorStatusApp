@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OpG-Kr-7oJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OpG-Kr-7oJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -289,27 +289,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-oR-tUc">
-                                <rect key="frame" x="112.5" y="332.5" width="150" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="iic-DD-KL9"/>
-                                </constraints>
+                                <rect key="frame" x="113" y="332.5" width="149" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-pR-w6j">
-                                <rect key="frame" x="112.5" y="303.5" width="156" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Event..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-pR-w6j">
+                                <rect key="frame" x="69" y="294" width="237" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="8NC-O8-QjY"/>
+                                    <constraint firstAttribute="width" constant="237" id="rtA-DL-xQd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                                 <color key="textColor" red="0.0057003595870000002" green="0.43234264849999998" blue="0.73546582459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XBw-oR-tUc" firstAttribute="centerY" secondItem="oR8-Xu-6Ty" secondAttribute="centerY" id="0Dl-FS-c2s"/>
-                            <constraint firstItem="uhO-pR-w6j" firstAttribute="leading" secondItem="XBw-oR-tUc" secondAttribute="leading" id="3xc-mL-Gta"/>
-                            <constraint firstItem="XBw-oR-tUc" firstAttribute="top" secondItem="uhO-pR-w6j" secondAttribute="bottom" constant="8" symbolic="YES" id="UHw-wu-2gn"/>
-                            <constraint firstItem="XBw-oR-tUc" firstAttribute="centerX" secondItem="oR8-Xu-6Ty" secondAttribute="centerX" id="pda-TC-bYk"/>
+                            <constraint firstItem="uhO-pR-w6j" firstAttribute="centerX" secondItem="oR8-Xu-6Ty" secondAttribute="centerX" id="LK1-08-9rj"/>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="top" secondItem="uhO-pR-w6j" secondAttribute="bottom" constant="8.5" id="Loc-LF-XQ4"/>
+                            <constraint firstItem="uhO-pR-w6j" firstAttribute="centerX" secondItem="XBw-oR-tUc" secondAttribute="centerX" id="Q4p-L3-o5i"/>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="leading" secondItem="oR8-Xu-6Ty" secondAttribute="leadingMargin" constant="97" id="nl1-Vf-mSH"/>
+                            <constraint firstItem="XBw-oR-tUc" firstAttribute="centerY" secondItem="oR8-Xu-6Ty" secondAttribute="centerY" id="raL-5d-fbR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -319,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8D-PS-jmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="-143"/>
+            <point key="canvasLocation" x="980" y="-145.27736131934034"/>
         </scene>
         <!--Saved Events-->
         <scene sceneID="AgJ-bk-JVX">
@@ -410,6 +408,6 @@
         <image name="Saved" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9vZ-sP-378"/>
+        <segue reference="W7N-CF-Lk8"/>
     </inferredMetricsTieBreakers>
 </document>

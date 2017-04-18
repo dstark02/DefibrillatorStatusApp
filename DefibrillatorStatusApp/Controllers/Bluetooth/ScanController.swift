@@ -140,7 +140,9 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if serialNo == password {
 //                        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
 //                        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+                        ac.dismiss(animated: false, completion: nil)
                         self.performSegue(withIdentifier: "eventListSegue", sender: self)
+                        
                     } else {
                         self.bluetoothManager.disconnectFromDefibrillator()
                         self.incorrectSerialNo()
@@ -156,7 +158,9 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         
             ac.addAction(enterAction)
-            self.present(ac, animated: true, completion: nil)
+            DispatchQueue.main.async(execute: {
+                self.present(ac, animated: true, completion: nil)
+            })
     }
     
     func emptyDefibrillatorList() {
@@ -172,7 +176,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(ac, animated: true)
     }
-    
     
     // MARK: Segue
     

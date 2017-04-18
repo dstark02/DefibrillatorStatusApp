@@ -10,7 +10,6 @@ import UIKit
 
 extension SavedEventsController : UIViewControllerPreviewingDelegate {
     
-    
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
         guard let indexPath = eventListTable.indexPathForRow(at: location),
@@ -25,7 +24,6 @@ extension SavedEventsController : UIViewControllerPreviewingDelegate {
         let segmentedController = storyboard.instantiateViewController(withIdentifier: "SegmentedController") as! SegmentedController
     
         segmentedController.preferredContentSize = CGSize(width: 0.0, height: 600)
-        
         previewingContext.sourceRect = cell.frame
         
         return segmentedController
