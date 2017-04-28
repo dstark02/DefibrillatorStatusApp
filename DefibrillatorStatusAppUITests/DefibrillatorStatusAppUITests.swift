@@ -11,9 +11,7 @@ import XCTest
 class DefibrillatorStatusAppUITests: XCTestCase {
         
     var app : XCUIApplication!
-    
-    
-    
+
     override func setUp() {
         super.setUp()
         app = XCUIApplication()
@@ -38,7 +36,6 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         app.buttons["Log In"].tap()
         
         XCTAssert(app.navigationBars["Find Defibrillator"].staticTexts["Find Defibrillator"].exists)
-        
     }
     
     
@@ -54,12 +51,17 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(app.alerts["Login failed"].staticTexts["Login failed"].exists)
     }
     
+    func testBluetoothIsOffAndUserIsAlerted() {
+        testLoginNavigation()
+        app.switches["0"].tap()        
+        XCTAssert(app.alerts["Bluetooth"].exists)
+    }
+    
     
     func testSavedEventControllerExists() {
         testLoginNavigation()
         app.tabBars.buttons["Saved Events"].tap()
         XCTAssert(app.navigationBars["Saved Events"].staticTexts["Saved Events"].exists)
-        
     }
     
     func testChartControllerExists() {
@@ -73,7 +75,7 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(eventInfoButton.exists)
     }
     
-    func testEventInformationExist() {
+    func testEventInformationNavigationAndExists() {
         testChartControllerExists()
         
         app.buttons["Event Information"].tap()
@@ -85,6 +87,23 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(tablesQuery.staticTexts["Event Information"].exists)
         XCTAssert(tablesQuery.staticTexts["Event Log"].exists)
         XCTAssert(tablesQuery.staticTexts["Patient Information"].exists)
+    }
+    
+    func testPatientNavigationAndExists() {
+        
+        testEventInformationNavigationAndExists()
+        
+        app.tables.staticTexts["Patient Information"].tap()
+        let tablesQuery = app.tables
+        XCTAssert(tablesQuery.staticTexts["Name"].exists)
+        XCTAssert(tablesQuery.staticTexts["Gender"].exists)
+        XCTAssert(tablesQuery.staticTexts["D.O.B"].exists)
+    }
+    
+    func testEventLogNavigationAndExists() {
+        testEventInformationNavigationAndExists()
+        app.tables.staticTexts["Event Log"].tap()
+        XCTAssert(app.tables.staticTexts["Event Log"].exists)
     }
     
 }
