@@ -13,7 +13,7 @@ protocol BluetoothManagerProtocol {
     
     var scanDelegate: ScanDelegate? { get set }
     var currentPeripheral : CBPeripheral? { get set }
-    var characteristicDelegate : BluetoothCharacteristicDelegate? { get set }
+    var characteristicDelegate : CharacteristicDelegate? { get set }
     var downloadDelegate : DownloadDelegate? { get set }
     var defibrillatorList : [CBPeripheral] { get set }
     var eventList : [String] { get set }

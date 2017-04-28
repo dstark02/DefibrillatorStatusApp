@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EventListController: UIViewController, UITableViewDelegate, UITableViewDataSource, BluetoothCharacteristicDelegate {
+class EventListController: UIViewController, UITableViewDelegate, UITableViewDataSource, CharacteristicDelegate {
 
     // MARK: Properties
     
     var bluetoothManager : BluetoothManagerProtocol!
     let eventList = "Event List"
-    let selectEvent = "Select an Event to view"
+    let selectEvent = "Select an Event to Download"
     @IBOutlet weak var eventListTable: UITableView!
     
     // MARK: viewDidLoad Method

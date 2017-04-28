@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Charts
 
 class ChartController: UIViewController, ChartViewDelegate {
@@ -64,11 +63,6 @@ class ChartController: UIViewController, ChartViewDelegate {
         existingVisisbleX = traceView.lowestVisibleX
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        toggleComponents(off: false)
-        //timeSlider.setValue(Float(entry.x), animated: true)
-    }
-    
     // MARK: Chart Setup
     
     func setChartData(ecgPoints: [UInt16], markers: [Marker]) {
@@ -91,40 +85,50 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Setup Helpers
     
-    func setupECGLine(ecgLine: LineChartDataSet) {
-        
-    }
-    
     func setupTraceView(lineData: LineChartData, markers: [Marker], ecgLine: LineChartDataSet) {
         
+        // Line formatting
         ecgLine.setDrawHighlightIndicators(false)
         ecgLine.axisDependency = .left
         ecgLine.setColor(UIColor.black.withAlphaComponent(0.5))
         ecgLine.lineWidth = 2.0
         ecgLine.drawCirclesEnabled = false
-        let data = ecgLine.values
         
-        
-        
-        
+        // Add ECG baseline to trace
         let limitLine = ChartLimitLine(limit: ChartConstants.ECGBaseline)
         limitLine.lineWidth = 1.0
         traceView.leftAxis.addLimitLine(limitLine)
+        
+        // Custom X-Axis
         traceView.xAxis.valueFormatter = XAxisFormatter()
+        
+        // Data to display on chart
         traceView.data = lineData
+        
+        setupMarkers(markers: markers, ecgLine: ecgLine)
+        
+        // TraceView formatting
+        traceView.setVisibleXRange(minXRange: 0, maxXRange: 1000);
+        traceView.drawBordersEnabled = false
+        traceView.rightAxis.enabled = false
+        traceView.dragEnabled = true
+        traceView.highlightPerTapEnabled = false
+    }
+    
+    func setupMarkers(markers: [Marker], ecgLine: LineChartDataSet) {
         let marker = BalloonMarker(color: Colour.HeartSineBlue, font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
         marker.minimumSize = CGSize (width: 50, height: 50)
         traceView.marker = marker
         var highlights = [Highlight]()
-       
+        
         for marker in markers {
             
             if let labelText = Marker.markerDictionary[marker.markerCode] {
-                highlights.append(Highlight(x: Double(marker.markerSample), y: Double(data[Int(marker.markerSample)].y), dataSetIndex: 0, label: labelText[0]))
+                highlights.append(Highlight(x: Double(marker.markerSample), y: Double(ecgLine.values[Int(marker.markerSample)].y), dataSetIndex: 0, label: labelText[0]))
             }
         }
         
-        let index = data.index(where: { $0.y == ecgLine.yMax })
+        let index = ecgLine.values.index(where: { $0.y == ecgLine.yMax })
         
         if let x = index {
             highlights.append(Highlight(x: Double(x), y: ecgLine.yMax, dataSetIndex: 0, label: "SHOCK\nTime: " + TimeCalculator.calculateTime(sample: UInt32(x))))
@@ -133,15 +137,7 @@ class ChartController: UIViewController, ChartViewDelegate {
                 return $0.markerSample < $1.markerSample
             }
         }
-        
-       
-        
         traceView.highlightValues(highlights)
-        traceView.setVisibleXRange(minXRange: 0, maxXRange: 1000);
-        traceView.drawBordersEnabled = false
-        traceView.rightAxis.enabled = false
-        traceView.dragEnabled = true
-        traceView.highlightPerTapEnabled = false
     }
     
     func timeSliderSetup(dataPointsCount: Int) {
@@ -149,6 +145,8 @@ class ChartController: UIViewController, ChartViewDelegate {
         timeSlider.value = 0
         timeSlider.setThumbImage(#imageLiteral(resourceName: "Shock"), for: .normal)
     }
+    
+    // MARK: Resize Chart
     
     func resizeChart() {
         if traceView.frame.size.height != view.frame.height {

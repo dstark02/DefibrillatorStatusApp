@@ -16,6 +16,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var bluetoothManager : BluetoothManagerProtocol!
     let titleForHeaderInSection = "Defibrillators"
     let titleForFooterInSection = "Select Device to see Events on it"
+    let titleForSerialAlert = "Please enter the Serial Number of the HeartSine AED"
     @IBOutlet weak var bluetoothScanView: UITableView!
     @IBOutlet weak var bluetoothSwitch: UISwitch!
     @IBOutlet weak var scanLabel: UILabel!
@@ -25,7 +26,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.description)
+        // print(Realm.Configuration.defaultConfiguration.description)
         bluetoothManager = BluetoothManager()
         bluetoothManager.scanDelegate = self
     }
@@ -39,6 +40,22 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func switchToggled(_ sender: Any) {
         bluetoothInteraction()
     }
+    
+    func bluetoothInteraction() {
+        if bluetoothManager.isBluetoothOn() {
+            bluetoothSwitch.isUserInteractionEnabled = false
+            emptyDefibrillatorList()
+            bluetoothScanView.reloadData()
+            bluetoothManager.scanForDefibrillators()
+        } else {
+            if !bluetoothSwitch.isOn { return }
+            alertControllerHelper(title: "Bluetooth", message: "Turn Bluetooth On")
+            print("bluetooth is off")
+            bluetoothSwitch.setOn(false, animated: true)
+        }
+    }
+    
+    // MARK: Delegate Callbacks
     
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
         
@@ -62,7 +79,35 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func passwordReceived(password: String) {
-        enterSerial(password: password)
+        var serialNoTextField: UITextField?
+        let ac = UIAlertController(title: "Serial Number", message: titleForSerialAlert, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let enterAction = UIAlertAction(title: "Enter", style: UIAlertActionStyle.default, handler: {
+                
+                (_)in
+                if let serialNo = serialNoTextField?.text {
+                    if serialNo == password {
+                        // let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
+                        // self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+                        ac.dismiss(animated: false, completion: nil)
+                        self.performSegue(withIdentifier: "eventListSegue", sender: self)
+                        
+                    } else {
+                        self.bluetoothManager.disconnectFromDefibrillator()
+                        self.incorrectSerialNo()
+                    }
+                }
+                
+        })
+        
+        ac.addTextField {
+            (txtSerialNo) -> Void in
+            serialNoTextField = txtSerialNo
+            serialNoTextField!.placeholder = "Enter Serial Number here"
+        }
+        
+        ac.addAction(enterAction)
+        self.present(ac, animated: true, completion: nil)
     }
     
     // MARK: TableView Methods
@@ -88,12 +133,25 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
-        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
+        let defibrillator = bluetoothManager.defibrillatorList[indexPath.row]
+        bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Helper Methods
+    
+    func incorrectSerialNo() {
+        emptyDefibrillatorList()
+        bluetoothScanView.isHidden = true
+        bluetoothScanView.reloadData()
+        alertControllerHelper(title: "Incorrect Serial", message: "Please Wait for the Scan in Progress to Complete")
+    }
+    
+    func emptyDefibrillatorList() {
+        if(!bluetoothManager.defibrillatorList.isEmpty) {
+            bluetoothManager.defibrillatorList.removeAll()
+        }
+    }
     
     func updateScanningView() {
         scanLabel.text = "SCANNING"
@@ -105,66 +163,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         scanLabel.text = "FINISHED SCAN, RETRY IF NO DEVICES LISTED"
     }
     
-    func incorrectSerialNo() {
-        emptyDefibrillatorList()
-        bluetoothScanView.isHidden = true
-        bluetoothScanView.reloadData()
-        alertControllerHelper(title: "Incorrect Serial", message: "Please Wait for the Scan in Progress to Complete")
-    }
-    
-    func bluetoothInteraction() {
-        if bluetoothManager.isBluetoothOn() {
-            bluetoothSwitch.isUserInteractionEnabled = false
-            emptyDefibrillatorList()
-            bluetoothScanView.reloadData()
-            bluetoothManager.scanForDefibrillators()
-        } else {
-            if !bluetoothSwitch.isOn { return }
-            alertControllerHelper(title: "Bluetooth", message: "Turn Bluetooth On")
-            print("bluetooth is off")
-            bluetoothSwitch.setOn(false, animated: true)
-        }
-    }
-    
-    func enterSerial(password: String) {
-        
-            var serialNoTextField: UITextField?
-            let ac = UIAlertController(title: "Serial Number", message: "Please enter the Serial Number of the HeartSine AED",
-                preferredStyle: UIAlertControllerStyle.alert)
-        
-            let enterAction = UIAlertAction(
-            title: "Enter", style: UIAlertActionStyle.default, handler: {
-                
-                (_)in
-                if let serialNo = serialNoTextField?.text {
-                    if serialNo == password {
-//                        let defibrillator = self.bluetoothManager.defibrillatorList[indexPath.row]
-//                        self.bluetoothManager.connectToDefibrillator(peripheral: defibrillator)
-                        self.performSegue(withIdentifier: "eventListSegue", sender: self)
-                    } else {
-                        self.bluetoothManager.disconnectFromDefibrillator()
-                        self.incorrectSerialNo()
-                    }
-                }
-                
-            })
-        
-            ac.addTextField {
-                (txtSerialNo) -> Void in
-                serialNoTextField = txtSerialNo
-                serialNoTextField!.placeholder = "Enter Serial Number here"
-            }
-        
-            ac.addAction(enterAction)
-            self.present(ac, animated: true, completion: nil)
-    }
-    
-    func emptyDefibrillatorList() {
-        if(!bluetoothManager.defibrillatorList.isEmpty) {
-            bluetoothManager.defibrillatorList.removeAll()
-        }
-    }
-    
     // MARK: AlertController Helper
     
     func alertControllerHelper(title: String, message: String) {
@@ -172,7 +170,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(ac, animated: true)
     }
-    
     
     // MARK: Segue
     

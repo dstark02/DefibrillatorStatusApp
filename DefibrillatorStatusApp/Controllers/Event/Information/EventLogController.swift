@@ -14,6 +14,8 @@ class EventLogController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var eventLogTable: UITableView!
     
+    // MARK: ViewDidLoad Method
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,7 +31,6 @@ class EventLogController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ cellForRowAttableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = eventLogTable.dequeueReusableCell(withIdentifier: "eventLogCell") as! EventLogCell
         guard let markers = CurrentEventProvider.markers else { return cell }
         guard let markerText = Marker.markerDictionary[markers[indexPath.row].markerCode] else { return cell }

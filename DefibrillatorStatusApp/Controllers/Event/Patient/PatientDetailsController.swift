@@ -121,14 +121,18 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
+        // Table Cells
         let nameCell = patientTable.cellForRow(at: IndexPath(row: 0, section: 0)) as! NameCell
         let genderCell = patientTable.cellForRow(at: IndexPath(row: 1, section: 0)) as! GenderCell
         let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
         
+        // Create Patient Object
         let patient = Patient()
         patient.name = nameCell.nameTextField.text!
         patient.gender = genderCell.genderSegControl.selectedSegmentIndex
         patient.dob = dobCell.dobValue.text!
+        
+        // Retrieve current event to save patient to
         if let event = CurrentEventProvider.currentEvent {
            patient.event = event
         } else { return }

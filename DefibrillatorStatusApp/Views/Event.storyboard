@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y1G-o7-lFZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y1G-o7-lFZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
@@ -500,7 +500,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellTitle" destination="kOH-IW-CIt" id="745-Rc-kZ7"/>
-                                            <segue destination="wcc-22-dHa" kind="show" id="PWT-xH-LId"/>
+                                            <segue destination="wcc-22-dHa" kind="show" id="PWT-xH-LId">
+                                                <segue key="commit" destination="wcc-22-dHa" kind="show" id="zR8-8I-sOi"/>
+                                                <segue key="preview" inheritsFrom="commit" id="BeY-Pv-9XA"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -532,5 +535,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mKH-Sg-K8H"/>
+        <segue reference="PWT-xH-LId"/>
     </inferredMetricsTieBreakers>
 </document>

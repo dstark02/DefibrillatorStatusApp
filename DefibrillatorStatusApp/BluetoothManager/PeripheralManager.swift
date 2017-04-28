@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 import CoreBluetooth
 
 extension BluetoothManager {
@@ -24,8 +23,7 @@ extension BluetoothManager {
         guard let peripheralServices = peripheral.services else { return }
         for service in peripheralServices {
             characteristicState = .Searching
-            peripheral.discoverCharacteristics([BluetoothConstants.passwordCharacteristicUUID], for: service)
-            peripheral.discoverCharacteristics([BluetoothConstants.eventListCharacteristicUUID], for: service)
+            peripheral.discoverCharacteristics([BluetoothConstants.passwordCharacteristicUUID, BluetoothConstants.eventListCharacteristicUUID], for: service)
         }
     }
     
@@ -45,8 +43,6 @@ extension BluetoothManager {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print("Discovered Characteristic")
         characteristicState = .Found
-        
-
         guard let characteristics = service.characteristics else { return }
         
         for characteristic in characteristics {
@@ -68,7 +64,9 @@ extension BluetoothManager {
         if characteristic.uuid == BluetoothConstants.passwordCharacteristicUUID {
             guard let dataReceived = characteristic.value else { return }
             guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
-            scanDelegate?.passwordReceived(password: dataAsString)
+            if date == nil {
+                scanDelegate?.passwordReceived(password: dataAsString)
+            }
         }
         
         if characteristic.uuid == BluetoothConstants.eventListCharacteristicUUID {
@@ -105,13 +103,17 @@ extension BluetoothManager {
         guard let dataReceived = characteristic.value else { return }
         let ecg = ECG(ecg: dataReceived)
         event.ecgs.append(ecg)
+        // update variable for progress bar
         downloadProgress += 1/fileLength
-        //print(downloadProgress)
         
         if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
+            // finished with peripheral
             centralManager?.cancelPeripheralConnection(periperhral)
-            event.date = date
+            if let eventDate = date {
+                event.date = eventDate
+            } else { event.date = "01/Jan/2017 12:00" }
+            
             downloadComplete = AccessDatabase.writeEvent(event: event)
         }
     }

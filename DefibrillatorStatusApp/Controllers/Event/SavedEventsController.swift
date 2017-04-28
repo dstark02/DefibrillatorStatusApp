@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
+    
     let eventList = "Event List"
     let selectEvent = "Select an Event to view"
     var events : [Event] = []
@@ -61,6 +61,6 @@ class SavedEventsController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (events.count)
+        return events.count
     }
 }

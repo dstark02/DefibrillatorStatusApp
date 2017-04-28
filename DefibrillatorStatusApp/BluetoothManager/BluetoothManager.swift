@@ -19,7 +19,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var eventList: [String]
     var fileLength : Float
     let event : Event
-    var date : String
+    var date : String?
     var timer = Timer()
     var scanDelegate : ScanDelegate?
     var bluetoothState : BluetoothState {
@@ -32,7 +32,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             scanDelegate?.progressHasUpdated(value: scanProgress)
         }
     }
-    var characteristicDelegate : BluetoothCharacteristicDelegate?
+    var characteristicDelegate : CharacteristicDelegate?
     var characteristicState : CharacteristicState {
         didSet {
             characteristicDelegate?.characteristicStateHasChanged(characteristicState: characteristicState)
@@ -41,12 +41,14 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var downloadDelegate : DownloadDelegate?
     var downloadProgress : Float {
         didSet {
+            // Update progress for UI
             downloadDelegate?.progressHasUpdated(value: downloadProgress)
         }
     }
     var downloadComplete : Bool {
         didSet {
             if (downloadComplete) {
+                // Let Controller know download has completed
                 downloadDelegate?.downloadComplete(event: event)
             }
         }
@@ -61,7 +63,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         downloadComplete = false
         downloadProgress = 0
         fileLength = 0
-        date = "18/Jan/2016 12:00"
+        //date = nil
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
         event = Event()
@@ -117,14 +119,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func disconnectFromDefibrillator() {
-        
-        guard let peripherals =  centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
+        guard let peripherals = centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
         
         if !peripherals.isEmpty {
             eventList.removeAll()
             centralManager?.cancelPeripheralConnection(peripherals[0])
         }
-        
     }
     
     

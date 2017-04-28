@@ -41,7 +41,7 @@ open class BalloonMarker: MarkerImage
     {
         let size = self.size
         var point = point
-        point.x -= size.width / 2.0
+        point.x = size.width / 2.0
         point.y -= size.height
         return super.offsetForDrawing(atPoint: point)
     }
