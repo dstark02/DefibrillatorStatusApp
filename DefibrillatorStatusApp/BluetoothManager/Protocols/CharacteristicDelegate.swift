@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BluetoothCharacteristicDelegate {
+protocol CharacteristicDelegate {
     
     func characteristicStateHasChanged(characteristicState: CharacteristicState)
 }

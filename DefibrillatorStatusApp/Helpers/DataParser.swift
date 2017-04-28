@@ -20,6 +20,7 @@ class DataParser {
         var dataIndex = 0
         var pageChecker = 0
         
+        // while index is less than the amount of data packets
         while dataIndex < event.ecgs.count {
             
             var markerByte = UInt16(0)
@@ -71,17 +72,20 @@ class DataParser {
                     pageChecker += 1
                 }
                 
+                // Iterate through packet of data
                 for j in (0..<event.ecgs[dataIndex].ecg.count) where j % 2 == 0 {
                     
                     var value = UInt16(0)
+                    
                     (event.ecgs[dataIndex].ecg as NSData).getBytes(&value, range: NSMakeRange(j, 2))
+                    // Convert value to Big-Endian
                     let biValue = CFSwapInt16HostToBig(value)
                     
+                    // Skip first 4 bytes if packet is a new page
                     if isNewPage && j <= 2 {}
                     else {
                         if isECGData {
                             if biValue != 65535 && biValue != 0 {
-                                //print(value)
                                 ecgData.append(biValue)
                             }
                             isECGData = false
@@ -90,6 +94,7 @@ class DataParser {
                         }
                     }
                 }
+                // Increment to next packet
                 dataIndex += 1
             }
             

@@ -32,7 +32,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
             scanDelegate?.progressHasUpdated(value: scanProgress)
         }
     }
-    var characteristicDelegate : BluetoothCharacteristicDelegate?
+    var characteristicDelegate : CharacteristicDelegate?
     var characteristicState : CharacteristicState {
         didSet {
             characteristicDelegate?.characteristicStateHasChanged(characteristicState: characteristicState)
@@ -41,12 +41,14 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     var downloadDelegate : DownloadDelegate?
     var downloadProgress : Float {
         didSet {
+            // Update progress for UI
             downloadDelegate?.progressHasUpdated(value: downloadProgress)
         }
     }
     var downloadComplete : Bool {
         didSet {
             if (downloadComplete) {
+                // Let Controller know download has completed
                 downloadDelegate?.downloadComplete(event: event)
             }
         }
@@ -117,14 +119,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     func disconnectFromDefibrillator() {
-        
-        guard let peripherals =  centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
+        guard let peripherals = centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
         
         if !peripherals.isEmpty {
             eventList.removeAll()
             centralManager?.cancelPeripheralConnection(peripherals[0])
         }
-        
     }
     
     

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OpG-Kr-7oJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OpG-Kr-7oJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,14 +34,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="j87-dM-ph9" kind="show" identifier="loginSuccess" id="9vZ-sP-378"/>
+                                    <action selector="didTapLogin:" destination="OpG-Kr-7oJ" eventType="touchUpInside" id="rJw-i2-pnL"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-Oq-9bb">
                                 <rect key="frame" x="30" y="290" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQ4-2b-P5b">
                                 <rect key="frame" x="30" y="346" width="315" height="30"/>
@@ -69,6 +69,7 @@
                     <connections>
                         <outlet property="password" destination="uQ4-2b-P5b" id="0r5-Qc-k0J"/>
                         <outlet property="username" destination="t3i-Oq-9bb" id="Xm8-wb-xj6"/>
+                        <segue destination="j87-dM-ph9" kind="show" identifier="loginSuccess" id="7vc-M1-ebi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xk6-mi-2M9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +409,6 @@
         <image name="Saved" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W7N-CF-Lk8"/>
+        <segue reference="7vc-M1-ebi"/>
     </inferredMetricsTieBreakers>
 </document>

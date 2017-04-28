@@ -146,6 +146,8 @@ class ChartController: UIViewController, ChartViewDelegate {
         timeSlider.setThumbImage(#imageLiteral(resourceName: "Shock"), for: .normal)
     }
     
+    // MARK: Resize Chart
+    
     func resizeChart() {
         if traceView.frame.size.height != view.frame.height {
             UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {

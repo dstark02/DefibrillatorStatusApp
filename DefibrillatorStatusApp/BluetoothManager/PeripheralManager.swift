@@ -43,8 +43,6 @@ extension BluetoothManager {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print("Discovered Characteristic")
         characteristicState = .Found
-        
-
         guard let characteristics = service.characteristics else { return }
         
         for characteristic in characteristics {
@@ -105,11 +103,12 @@ extension BluetoothManager {
         guard let dataReceived = characteristic.value else { return }
         let ecg = ECG(ecg: dataReceived)
         event.ecgs.append(ecg)
+        // update variable for progress bar
         downloadProgress += 1/fileLength
-        //print(downloadProgress)
         
         if (downloadProgress > 0.998) {
             periperhral.setNotifyValue(false, for: characteristic)
+            // finished with peripheral
             centralManager?.cancelPeripheralConnection(periperhral)
             if let eventDate = date {
                 event.date = eventDate

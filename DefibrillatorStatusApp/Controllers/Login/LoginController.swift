@@ -25,6 +25,16 @@ class LoginController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func didTapLogin(_ sender: Any) {
+        if isCorrectCredentials() {
+            performSegue(withIdentifier: "loginSuccess", sender: nil)
+        } else {
+            let ac = UIAlertController(title: "Login failed", message: "Invalid Credentails", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
@@ -48,13 +58,20 @@ class LoginController: UIViewController, UITextFieldDelegate {
                     if success {
                         self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                     } else {
-                        let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
+                        let ac = UIAlertController(title: "Authentication failed", message: "Invalid User", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
                         self.present(ac, animated: true)
                     }
                 }
             }
         }
+    }
+    
+    func isCorrectCredentials() -> Bool {
+        if username.text == "testuser" && password.text == "password" {
+            return true
+        }
+        return false
     }
 
 }
