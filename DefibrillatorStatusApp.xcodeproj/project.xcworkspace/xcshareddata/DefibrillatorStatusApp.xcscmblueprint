@@ -5,17 +5,24 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9" : 9223372036854775807,
-    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : 9223372036854775807
+    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : 9223372036854775807,
+    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "28455F07-5FD3-49CA-B220-B94B24BD4DF1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "CFB5B64CEBA4FED0EFF4FD53012AC23D7D1688F9" : "DefibrillatorStatusApp\/",
-    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : ""
+    "CB584C1F715F3768F4EC43696D5A369C216B8B39" : "",
+    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : "..\/Charts"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "DefibrillatorStatusApp",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DefibrillatorStatusApp.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/danielgindi\/Charts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9025163822AAEA7A2D8AC9210D0874A56F62B462"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.eeecs.qub.ac.uk:40103947\/DefibrillatorStatusApp.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

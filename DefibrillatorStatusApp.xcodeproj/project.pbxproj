@@ -7,18 +7,80 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31C784F1E816F090042FE08 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31C784E1E816F090042FE08 /* BalloonMarker.swift */; };
+		D320DDB21E2901E700916D28 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320DDB11E2901E700916D28 /* ChartController.swift */; };
+		D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32380B01E5B836600A8BE27 /* LoginController.swift */; };
+		D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */; };
+		D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */; };
+		D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D327E0AF1DD3B93F00A66CAF /* Main.storyboard */; };
 		D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3201DB8031400E3485B /* BluetoothState.swift */; };
 		D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3221DB803DC00E3485B /* BluetoothManager.swift */; };
-		D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */; };
-		D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */; };
-		D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */; };
-		D3E0B0D71DB3FA4D00943F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */; };
-		D3E0B0D91DB3FA4D00943F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */; };
-		D3E0B0DC1DB3FA4D00943F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */; };
+		D328C3251DB80B3200E3485B /* DownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328C3241DB80B3200E3485B /* DownloadTests.swift */; };
+		D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */; };
+		D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */; };
+		D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */; };
+		D32C7CEC1E967B3400E01007 /* EventLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C7CEB1E967B3400E01007 /* EventLogCell.swift */; };
+		D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */; };
+		D32DC02C1E5E13D4009C54B6 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02B1E5E13D4009C54B6 /* NameCell.swift */; };
+		D32DC02E1E5E1500009C54B6 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02D1E5E1500009C54B6 /* GenderCell.swift */; };
+		D32DC0301E5E15BE009C54B6 /* DOBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */; };
+		D32DC0331E5F05F4009C54B6 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */; };
+		D32DC0381E5F37E3009C54B6 /* EventInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */; };
+		D32DC03C1E5F4A55009C54B6 /* SegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */; };
+		D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */; };
+		D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */; };
+		D32DC0431E5F6240009C54B6 /* TimeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */; };
+		D3312DA21E79F85F009D39C3 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3312DA11E79F85F009D39C3 /* Patient.swift */; };
+		D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33388691E5F88120003AD70 /* PatientDetailsCell.swift */; };
+		D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D333888C1E5FA20F0003AD70 /* Event.storyboard */; };
+		D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */; };
+		D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33395A81E55C3EC0081E9BD /* ChartConstants.swift */; };
+		D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9641E2F88C000C8B004 /* DownloadEventController.swift */; };
+		D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */; };
+		D33531081E37F5B600884E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33531071E37F5B600884E86 /* Assets.xcassets */; };
+		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
+		D34376091E81EA2100BE228E /* SegmentedControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */; };
+		D34EB39D1E39302600735300 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB39C1E39302600735300 /* Colour.swift */; };
+		D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E79CE1E7C371300033BAC /* PatientTests.swift */; };
+		D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389A2A51E7EDA0A00C854C3 /* EventTests.swift */; };
+		D38D18241EA12EC300F7BC13 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18221EA12EC300F7BC13 /* Realm.framework */; };
+		D38D18251EA12EC300F7BC13 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18221EA12EC300F7BC13 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D38D18261EA12EC300F7BC13 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18231EA12EC300F7BC13 /* RealmSwift.framework */; };
+		D38D18271EA12EC300F7BC13 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18231EA12EC300F7BC13 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D38D18331EA1312000F7BC13 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18321EA1312000F7BC13 /* Charts.framework */; };
+		D38D18341EA1312000F7BC13 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18321EA1312000F7BC13 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A271E2E8E8C00C3B63F /* ECG.swift */; };
+		D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E3A2A1E2EA62300C3B63F /* DataParser.swift */; };
+		D39864C81E967E3200B0A451 /* EventLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39864C71E967E3200B0A451 /* EventLogController.swift */; };
+		D39864CA1E96842400B0A451 /* EventLogPlaceholderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */; };
+		D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A35DF81E9561DF00D036EB /* Marker.swift */; };
+		D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */; };
+		D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */; };
+		D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4721DDFC5670049358A /* EventListController.swift */; };
+		D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */; };
+		D3CEB4781DDFD27B0049358A /* CharacteristicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4771DDFD27B0049358A /* CharacteristicDelegate.swift */; };
+		D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CEB4791DDFD2C40049358A /* CharacteristicState.swift */; };
+		D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */; };
+		D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */; };
 		D3E0B0F21DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */; };
+		D3F4452C1E82EAEA00233DA1 /* BluetoothScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D38D18391EA1365700F7BC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		D38D183B1EA1365700F7BC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
 		D3E0B0E31DB3FA4E00943F19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E0B0C61DB3FA4D00943F19 /* Project object */;
@@ -35,22 +97,84 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D38E3A1E1E2E3CF300C3B63F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D38D18341EA1312000F7BC13 /* Charts.framework in Embed Frameworks */,
+				D38D18251EA12EC300F7BC13 /* Realm.framework in Embed Frameworks */,
+				D38D18271EA12EC300F7BC13 /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		D328C3201DB8031400E3485B /* BluetoothState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothState.swift; sourceTree = "<group>"; };
+		D31C784E1E816F090042FE08 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		D320DDB11E2901E700916D28 /* ChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
+		D32380B01E5B836600A8BE27 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D327E0A51DD3B5F500A66CAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D327E0AE1DD3B93F00A66CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D327E0B01DD3B93F00A66CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D328C3201DB8031400E3485B /* BluetoothState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothState.swift; path = Constants/BluetoothState.swift; sourceTree = "<group>"; };
 		D328C3221DB803DC00E3485B /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManagerTests.swift; sourceTree = "<group>"; };
+		D328C3241DB80B3200E3485B /* DownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTests.swift; sourceTree = "<group>"; };
+		D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanDelegate.swift; path = Protocols/ScanDelegate.swift; sourceTree = "<group>"; };
+		D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManagerProtocol.swift; path = Protocols/BluetoothManagerProtocol.swift; sourceTree = "<group>"; };
+		D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
+		D32C7CEB1E967B3400E01007 /* EventLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogCell.swift; sourceTree = "<group>"; };
+		D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsController.swift; sourceTree = "<group>"; };
+		D32DC02B1E5E13D4009C54B6 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		D32DC02D1E5E1500009C54B6 /* GenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
+		D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOBCell.swift; sourceTree = "<group>"; };
+		D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoCell.swift; sourceTree = "<group>"; };
+		D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedController.swift; sourceTree = "<group>"; };
+		D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInformationController.swift; sourceTree = "<group>"; };
+		D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventProvider.swift; sourceTree = "<group>"; };
+		D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCalculator.swift; sourceTree = "<group>"; };
+		D3312DA11E79F85F009D39C3 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		D33388691E5F88120003AD70 /* PatientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailsCell.swift; sourceTree = "<group>"; };
+		D333888C1E5FA20F0003AD70 /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
+		D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
+		D33395A81E55C3EC0081E9BD /* ChartConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConstants.swift; sourceTree = "<group>"; };
+		D334C9641E2F88C000C8B004 /* DownloadEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEventController.swift; sourceTree = "<group>"; };
+		D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadDelegate.swift; path = Protocols/DownloadDelegate.swift; sourceTree = "<group>"; };
+		D33531071E37F5B600884E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerPreview.swift; sourceTree = "<group>"; };
+		D34EB39C1E39302600735300 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		D37E79CE1E7C371300033BAC /* PatientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTests.swift; sourceTree = "<group>"; };
+		D389A2A51E7EDA0A00C854C3 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
+		D38D18221EA12EC300F7BC13 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		D38D18231EA12EC300F7BC13 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-3.0.2/Charts.xcodeproj"; sourceTree = "<group>"; };
+		D38D18321EA1312000F7BC13 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D38E3A271E2E8E8C00C3B63F /* ECG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECG.swift; sourceTree = "<group>"; };
+		D38E3A2A1E2EA62300C3B63F /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		D39864C71E967E3200B0A451 /* EventLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogController.swift; sourceTree = "<group>"; };
+		D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogPlaceholderCell.swift; sourceTree = "<group>"; };
+		D3A35DF81E9561DF00D036EB /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDatabase.swift; sourceTree = "<group>"; };
+		D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListTests.swift; sourceTree = "<group>"; };
+		D3CEB4721DDFC5670049358A /* EventListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListController.swift; sourceTree = "<group>"; };
+		D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothConstants.swift; path = Constants/BluetoothConstants.swift; sourceTree = "<group>"; };
+		D3CEB4771DDFD27B0049358A /* CharacteristicDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacteristicDelegate.swift; path = Protocols/CharacteristicDelegate.swift; sourceTree = "<group>"; };
+		D3CEB4791DDFD2C40049358A /* CharacteristicState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacteristicState.swift; path = Constants/CharacteristicState.swift; sourceTree = "<group>"; };
+		D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedEventsController.swift; sourceTree = "<group>"; };
 		D3E0B0CE1DB3FA4D00943F19 /* DefibrillatorStatusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DefibrillatorStatusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D3E0B0D61DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D3E0B0DB1DB3FA4D00943F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D3E0B0DD1DB3FA4D00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 		D3E0B0E21DB3FA4E00943F19 /* DefibrillatorStatusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefibrillatorStatusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0E81DB3FA4E00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E0B0ED1DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DefibrillatorStatusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E0B0F11DB3FA4E00943F19 /* DefibrillatorStatusAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefibrillatorStatusAppUITests.swift; sourceTree = "<group>"; };
 		D3E0B0F31DB3FA4E00943F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothScanTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +182,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D38D18331EA1312000F7BC13 /* Charts.framework in Frameworks */,
+				D38D18241EA12EC300F7BC13 /* Realm.framework in Frameworks */,
+				D38D18261EA12EC300F7BC13 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,20 +205,235 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D327E0AA1DD3B60800A66CAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D33531071E37F5B600884E86 /* Assets.xcassets */,
+				D327E0A21DD3B5F500A66CAF /* AppDelegate.swift */,
+				D327E0A51DD3B5F500A66CAF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D327E0AB1DD3B78400A66CAF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */,
+				D327E0AF1DD3B93F00A66CAF /* Main.storyboard */,
+				D333888C1E5FA20F0003AD70 /* Event.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D327E0AC1DD3B7DB00A66CAF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D333886C1E5F924F0003AD70 /* Bluetooth */,
+				D333886D1E5F92BC0003AD70 /* Event */,
+				D333886B1E5F92110003AD70 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D32839EF1E78874A00B066AC /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		D328C31F1DB8008B00E3485B /* BluetoothManager */ = {
 			isa = PBXGroup;
 			children = (
-				D328C3201DB8031400E3485B /* BluetoothState.swift */,
 				D328C3221DB803DC00E3485B /* BluetoothManager.swift */,
+				D32BE8661DE0BD5A006C19A7 /* PeripheralManager.swift */,
+				D32BE8681DE0C144006C19A7 /* Protocols */,
+				D3CEB4761DDFCAEC0049358A /* Constants */,
 			);
 			path = BluetoothManager;
+			sourceTree = "<group>";
+		};
+		D32BE8681DE0C144006C19A7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D32B2FAD1DBBB80B00302434 /* ScanDelegate.swift */,
+				D32B2FAF1DBBBAD100302434 /* BluetoothManagerProtocol.swift */,
+				D3CEB4771DDFD27B0049358A /* CharacteristicDelegate.swift */,
+				D334C9681E2F89FA00C8B004 /* DownloadDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		D32C7CE81E967AFC00E01007 /* EventLog */ = {
+			isa = PBXGroup;
+			children = (
+				D32C7CEB1E967B3400E01007 /* EventLogCell.swift */,
+			);
+			path = EventLog;
+			sourceTree = "<group>";
+		};
+		D32C7CEF1E967BFE00E01007 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC03D1E5F4D54009C54B6 /* EventInformationController.swift */,
+				D39864C71E967E3200B0A451 /* EventLogController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		D32DC02A1E5E1371009C54B6 /* CustomTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				D32C7CE81E967AFC00E01007 /* EventLog */,
+				D33388671E5F86640003AD70 /* PatientDetails */,
+				D33388681E5F872F0003AD70 /* EventInformation */,
+			);
+			path = CustomTableViewCells;
+			sourceTree = "<group>";
+		};
+		D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0401E5F53CC009C54B6 /* CurrentEventProvider.swift */,
+			);
+			path = CurrentEventProvider;
+			sourceTree = "<group>";
+		};
+		D33388671E5F86640003AD70 /* PatientDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC02B1E5E13D4009C54B6 /* NameCell.swift */,
+				D32DC02D1E5E1500009C54B6 /* GenderCell.swift */,
+				D32DC02F1E5E15BE009C54B6 /* DOBCell.swift */,
+				D32DC0321E5F05F4009C54B6 /* DatePickerCell.swift */,
+			);
+			path = PatientDetails;
+			sourceTree = "<group>";
+		};
+		D33388681E5F872F0003AD70 /* EventInformation */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0371E5F37E3009C54B6 /* EventInfoCell.swift */,
+				D33388691E5F88120003AD70 /* PatientDetailsCell.swift */,
+				D39864C91E96842400B0A451 /* EventLogPlaceholderCell.swift */,
+			);
+			path = EventInformation;
+			sourceTree = "<group>";
+		};
+		D333886B1E5F92110003AD70 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D32380B01E5B836600A8BE27 /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D333886C1E5F924F0003AD70 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0B0D31DB3FA4D00943F19 /* ScanController.swift */,
+				D3CEB4721DDFC5670049358A /* EventListController.swift */,
+				D334C9641E2F88C000C8B004 /* DownloadEventController.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		D333886D1E5F92BC0003AD70 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D34376051E81E8F200BE228E /* Preview */,
+				D333886E1E5F92E60003AD70 /* Patient */,
+				D320DDB11E2901E700916D28 /* ChartController.swift */,
+				D3D6F4C11E328BA000EC262C /* SavedEventsController.swift */,
+				D32DC03B1E5F4A55009C54B6 /* SegmentedController.swift */,
+				D32C7CEF1E967BFE00E01007 /* Information */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		D333886E1E5F92E60003AD70 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				D32DC0261E5E11B6009C54B6 /* PatientDetailsController.swift */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
+		D33395A51E55C3760081E9BD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D33395A81E55C3EC0081E9BD /* ChartConstants.swift */,
+				D34EB39C1E39302600735300 /* Colour.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		D34376051E81E8F200BE228E /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		D38D18351EA1365700F7BC13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D38D183A1EA1365700F7BC13 /* Charts.framework */,
+				D38D183C1EA1365700F7BC13 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D38E3A261E2E8E2000C3B63F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D38E3A271E2E8E8C00C3B63F /* ECG.swift */,
+				D33DCCB01E2FFF25002C4D11 /* Event.swift */,
+				D3312DA11E79F85F009D39C3 /* Patient.swift */,
+				D3A35DF81E9561DF00D036EB /* Marker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D38E3A291E2EA5D000C3B63F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D38E3A2A1E2EA62300C3B63F /* DataParser.swift */,
+				D33395A21E54C53B0081E9BD /* XAxisFormatter.swift */,
+				D32DC0421E5F6240009C54B6 /* TimeCalculator.swift */,
+				D31C784E1E816F090042FE08 /* BalloonMarker.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D3B680D11E38BF1B0048FF7D /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D3B680D41E38BF5B0048FF7D /* AccessDatabase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		D3CEB4761DDFCAEC0049358A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D328C3201DB8031400E3485B /* BluetoothState.swift */,
+				D3CEB4741DDFCA630049358A /* BluetoothConstants.swift */,
+				D3CEB4791DDFD2C40049358A /* CharacteristicState.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		D3E0B0C51DB3FA4D00943F19 = {
 			isa = PBXGroup;
 			children = (
+				D38D18321EA1312000F7BC13 /* Charts.framework */,
+				D38D18221EA12EC300F7BC13 /* Realm.framework */,
+				D38D18231EA12EC300F7BC13 /* RealmSwift.framework */,
 				D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */,
-				D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusApp Tests */,
+				D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusAppTests */,
 				D3E0B0F01DB3FA4E00943F19 /* DefibrillatorStatusAppUITests */,
 				D3E0B0CF1DB3FA4D00943F19 /* Products */,
 			);
@@ -110,24 +452,31 @@
 		D3E0B0D01DB3FA4D00943F19 /* DefibrillatorStatusApp */ = {
 			isa = PBXGroup;
 			children = (
+				D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */,
+				D32839EF1E78874A00B066AC /* CustomViews */,
+				D32DC03F1E5F53A4009C54B6 /* CurrentEventProvider */,
+				D33395A51E55C3760081E9BD /* Constants */,
+				D3B680D11E38BF1B0048FF7D /* Database */,
+				D38E3A291E2EA5D000C3B63F /* Helpers */,
+				D38E3A261E2E8E2000C3B63F /* Models */,
+				D327E0AA1DD3B60800A66CAF /* Supporting Files */,
 				D328C31F1DB8008B00E3485B /* BluetoothManager */,
-				D3E0B0D11DB3FA4D00943F19 /* AppDelegate.swift */,
-				D3E0B0D31DB3FA4D00943F19 /* ViewController.swift */,
-				D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */,
-				D3E0B0D81DB3FA4D00943F19 /* Assets.xcassets */,
-				D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */,
-				D3E0B0DD1DB3FA4D00943F19 /* Info.plist */,
+				D327E0AC1DD3B7DB00A66CAF /* Controllers */,
+				D327E0AB1DD3B78400A66CAF /* Views */,
 			);
 			path = DefibrillatorStatusApp;
 			sourceTree = "<group>";
 		};
-		D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusApp Tests */ = {
+		D3E0B0E51DB3FA4E00943F19 /* DefibrillatorStatusAppTests */ = {
 			isa = PBXGroup;
 			children = (
 				D3E0B0E81DB3FA4E00943F19 /* Info.plist */,
-				D328C3241DB80B3200E3485B /* BluetoothManagerTests.swift */,
+				D328C3241DB80B3200E3485B /* DownloadTests.swift */,
+				D37E79CE1E7C371300033BAC /* PatientTests.swift */,
+				D389A2A51E7EDA0A00C854C3 /* EventTests.swift */,
+				D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */,
+				D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */,
 			);
-			name = "DefibrillatorStatusApp Tests";
 			path = DefibrillatorStatusAppTests;
 			sourceTree = "<group>";
 		};
@@ -149,7 +498,9 @@
 			buildPhases = (
 				D3E0B0CA1DB3FA4D00943F19 /* Sources */,
 				D3E0B0CB1DB3FA4D00943F19 /* Frameworks */,
-				D3E0B0CC1DB3FA4D00943F19 /* Resources */,
+				D327E0B41DD3E06500A66CAF /* Resources */,
+				D38E3A1E1E2E3CF300C3B63F /* Embed Frameworks */,
+				D38E3A251E2E8CE000C3B63F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -203,7 +554,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "David Stark";
 				TargetAttributes = {
 					D3E0B0CD1DB3FA4D00943F19 = {
@@ -237,6 +588,12 @@
 			mainGroup = D3E0B0C51DB3FA4D00943F19;
 			productRefGroup = D3E0B0CF1DB3FA4D00943F19 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D38D18351EA1365700F7BC13 /* Products */;
+					ProjectRef = D38D18291EA1308E00F7BC13 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D3E0B0CD1DB3FA4D00943F19 /* DefibrillatorStatusApp */,
@@ -246,14 +603,32 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		D38D183A1EA1365700F7BC13 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = D38D18391EA1365700F7BC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D38D183C1EA1365700F7BC13 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = D38D183B1EA1365700F7BC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
-		D3E0B0CC1DB3FA4D00943F19 /* Resources */ = {
+		D327E0B41DD3E06500A66CAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0B0DC1DB3FA4D00943F19 /* LaunchScreen.storyboard in Resources */,
-				D3E0B0D91DB3FA4D00943F19 /* Assets.xcassets in Resources */,
-				D3E0B0D71DB3FA4D00943F19 /* Main.storyboard in Resources */,
+				D327E0B51DD3E06F00A66CAF /* LaunchScreen.storyboard in Resources */,
+				D333888D1E5FA20F0003AD70 /* Event.storyboard in Resources */,
+				D33531081E37F5B600884E86 /* Assets.xcassets in Resources */,
+				D327E0B61DD3E06F00A66CAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,15 +648,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D38E3A251E2E8CE000C3B63F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D3E0B0CA1DB3FA4D00943F19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E0B0D41DB3FA4D00943F19 /* ViewController.swift in Sources */,
+				D327E0A61DD3B5F500A66CAF /* AppDelegate.swift in Sources */,
+				D320DDB21E2901E700916D28 /* ChartController.swift in Sources */,
+				D333886A1E5F88120003AD70 /* PatientDetailsCell.swift in Sources */,
+				D32B2FB01DBBBAD100302434 /* BluetoothManagerProtocol.swift in Sources */,
+				D32DC0431E5F6240009C54B6 /* TimeCalculator.swift in Sources */,
+				D3CEB47A1DDFD2C40049358A /* CharacteristicState.swift in Sources */,
+				D33395A31E54C53B0081E9BD /* XAxisFormatter.swift in Sources */,
+				D39864CA1E96842400B0A451 /* EventLogPlaceholderCell.swift in Sources */,
+				D334C9691E2F89FA00C8B004 /* DownloadDelegate.swift in Sources */,
+				D32DC0271E5E11B6009C54B6 /* PatientDetailsController.swift in Sources */,
+				D3A35DF91E9561DF00D036EB /* Marker.swift in Sources */,
+				D32B2FAE1DBBB80B00302434 /* ScanDelegate.swift in Sources */,
+				D3D6F4C21E328BA000EC262C /* SavedEventsController.swift in Sources */,
+				D33395A91E55C3EC0081E9BD /* ChartConstants.swift in Sources */,
+				D32BE8671DE0BD5A006C19A7 /* PeripheralManager.swift in Sources */,
+				D32DC02E1E5E1500009C54B6 /* GenderCell.swift in Sources */,
+				D32DC03E1E5F4D54009C54B6 /* EventInformationController.swift in Sources */,
+				D3B680D51E38BF5B0048FF7D /* AccessDatabase.swift in Sources */,
+				D3CEB4781DDFD27B0049358A /* CharacteristicDelegate.swift in Sources */,
+				D32380B11E5B836600A8BE27 /* LoginController.swift in Sources */,
+				D32DC0301E5E15BE009C54B6 /* DOBCell.swift in Sources */,
+				D39864C81E967E3200B0A451 /* EventLogController.swift in Sources */,
+				D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */,
+				D3E0B0D41DB3FA4D00943F19 /* ScanController.swift in Sources */,
+				D32DC03C1E5F4A55009C54B6 /* SegmentedController.swift in Sources */,
+				D32DC02C1E5E13D4009C54B6 /* NameCell.swift in Sources */,
+				D38E3A281E2E8E8C00C3B63F /* ECG.swift in Sources */,
+				D32DC0381E5F37E3009C54B6 /* EventInfoCell.swift in Sources */,
+				D334C9651E2F88C000C8B004 /* DownloadEventController.swift in Sources */,
 				D328C3211DB8031400E3485B /* BluetoothState.swift in Sources */,
+				D31C784F1E816F090042FE08 /* BalloonMarker.swift in Sources */,
+				D34376091E81EA2100BE228E /* SegmentedControllerPreview.swift in Sources */,
+				D34EB39D1E39302600735300 /* Colour.swift in Sources */,
 				D328C3231DB803DC00E3485B /* BluetoothManager.swift in Sources */,
-				D3E0B0D21DB3FA4D00943F19 /* AppDelegate.swift in Sources */,
+				D3CEB4751DDFCA630049358A /* BluetoothConstants.swift in Sources */,
+				D3312DA21E79F85F009D39C3 /* Patient.swift in Sources */,
+				D38E3A2B1E2EA62300C3B63F /* DataParser.swift in Sources */,
+				D32DC0411E5F53CC009C54B6 /* CurrentEventProvider.swift in Sources */,
+				D3CEB4731DDFC5670049358A /* EventListController.swift in Sources */,
+				D32C7CEC1E967B3400E01007 /* EventLogCell.swift in Sources */,
+				D32DC0331E5F05F4009C54B6 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +717,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D328C3251DB80B3200E3485B /* BluetoothManagerTests.swift in Sources */,
+				D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */,
+				D328C3251DB80B3200E3485B /* DownloadTests.swift in Sources */,
+				D3F4452C1E82EAEA00233DA1 /* BluetoothScanTests.swift in Sources */,
+				D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */,
+				D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,20 +749,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D3E0B0D51DB3FA4D00943F19 /* Main.storyboard */ = {
+		D327E0AD1DD3B93F00A66CAF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D3E0B0D61DB3FA4D00943F19 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D3E0B0DA1DB3FA4D00943F19 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D3E0B0DB1DB3FA4D00943F19 /* Base */,
+				D327E0AE1DD3B93F00A66CAF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D327E0AF1DD3B93F00A66CAF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D327E0B01DD3B93F00A66CAF /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -354,6 +786,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -376,12 +809,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -404,6 +838,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -420,10 +855,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -432,26 +868,38 @@
 		D3E0B0F71DB3FA4E00943F19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch-Image";
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D3E0B0F81DB3FA4E00943F19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch-Image";
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = DefibrillatorStatusApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -462,6 +910,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusAppTests;
@@ -479,6 +931,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 353TD9TL6M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DefibrillatorStatusAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DavidStark.DefibrillatorStatusAppTests;
