@@ -35,7 +35,7 @@ class EventLogController: UIViewController, UITableViewDelegate, UITableViewData
         guard let markers = CurrentEventProvider.markers else { return cell }
         guard let markerText = Marker.markerDictionary[markers[indexPath.row].markerCode] else { return cell }
         cell.markerDescription.text = markerText[1]
-        cell.markerTime.text = TimeCalculator.calculateTime(sample: markers[indexPath.row].markerSample)
+        cell.markerTime.text = TimeCalculator.calculateTime(sampleIndex: markers[indexPath.row].markerSample)
         return cell
     }
     

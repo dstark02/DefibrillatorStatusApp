@@ -10,6 +10,9 @@ import Foundation
 
 class TimeCalculator {
     
+    /// Gets the duration of the current event
+    /// that is being viewed
+    /// - Returns: A string of the time in minutes and seconds
     static func getEventDuration() -> String {
         guard let eventDurationSeconds = CurrentEventProvider.duration else { return "" }
         let minutes = (eventDurationSeconds % 3600) / 60
@@ -22,8 +25,13 @@ class TimeCalculator {
         }
     }
     
-    static func calculateTime(sample: UInt32) -> String {
-        let timeInSeconds = sample/UInt32(ChartConstants.ECGSampleRate)
+    
+    /// Calculates the time for a given ECG sample
+    ///
+    /// - Parameter sample: the index of the ECG
+    /// - Returns: A string of the time in minutes and seconds
+    static func calculateTime(sampleIndex: UInt32) -> String {
+        let timeInSeconds = sampleIndex/UInt32(ChartConstants.ECGSampleRate)
         let minutes = (timeInSeconds % 3600) / 60
         let seconds = timeInSeconds % 60
         

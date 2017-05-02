@@ -13,10 +13,17 @@ extension BluetoothManager {
     
     // MARK : Peripheral Methods
     
+    
+    /// Discover services from connected Defibrillator
     func discoverDefibrillatorServices() {
         currentPeripheral?.discoverServices([BluetoothConstants.serviceUUID])
     }
     
+    /// Invoked when discovered the defibrillator's available services
+    ///
+    /// - Parameters:
+    ///   - peripheral: defibrillator
+    ///   - error: If an error occurred, the cause of the failure
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("Discovered Service")
         
@@ -31,6 +38,11 @@ extension BluetoothManager {
         // empty
     }
     
+    /// Initiates an event download from the connected defibrillator
+    ///
+    /// - Parameters:
+    ///   - peripheral: defibrillator
+    ///   - date: date of event
     func downloadEvent(peripheral: CBPeripheral, date: String) {
         self.date = date
         guard let peripheralServices = peripheral.services else { return }
@@ -40,6 +52,12 @@ extension BluetoothManager {
         }
     }
     
+    /// Invoked when discovered the characteristics of specified service
+    ///
+    /// - Parameters:
+    ///   - peripheral: defibrillator
+    ///   - service: The service that the characteristics belong to
+    ///   - error: If an error occurred, the cause of the failure
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print("Discovered Characteristic")
         characteristicState = .Found
@@ -60,6 +78,12 @@ extension BluetoothManager {
         }
     }
     
+    /// Invoked when a specified characteristic’s value has been retrieved
+    ///
+    /// - Parameters:
+    ///   - peripheral: defibrillator
+    ///   - characteristic: The characteristic the value belongs to
+    ///   - error: If an error occurred, the cause of the failure
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
         if characteristic.uuid == BluetoothConstants.passwordCharacteristicUUID {
             guard let dataReceived = characteristic.value else { return }
@@ -88,6 +112,8 @@ extension BluetoothManager {
     
     // MARK : Helper Methods
     
+    /// Creates a String array from data received for the event list
+    /// - Parameter characteristic: value returned from defibrillator
     func formatStringToDisplay(characteristic: CBCharacteristic) {
         guard let dataReceived = characteristic.value else { return }
         guard let dataAsString = String(data: dataReceived, encoding: .utf8) else { return }
@@ -99,6 +125,12 @@ extension BluetoothManager {
         characteristicState = .Updated
     }
     
+    
+    /// Takes event data received from defibrillator and appends it to ECG array
+    /// Updates download progress and will write event to database on completion
+    /// - Parameters:
+    ///   - characteristic: value returned from defibrillator
+    ///   - periperhral: connected defibrillator
     func readECGData(characteristic : CBCharacteristic, periperhral : CBPeripheral) {
         guard let dataReceived = characteristic.value else { return }
         let ecg = ECG(ecg: dataReceived)

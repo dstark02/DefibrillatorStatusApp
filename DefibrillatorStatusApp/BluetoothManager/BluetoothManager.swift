@@ -73,6 +73,8 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     
     //MARK: Central Methods
     
+    /// Initiates a Bluetooth scan for defibrillators
+    /// with the the same UUID as is in BluetoothConstants class
     func scanForDefibrillators() {
         if bluetoothState != .Scanning {
             centralManager?.scanForPeripherals(withServices: [BluetoothConstants.serviceUUID], options: nil)
@@ -82,6 +84,13 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     
+    /// Invoked when the central manager discovers a defibrillator while scanning
+    ///
+    /// - Parameters:
+    ///   - central: <#central description#>
+    ///   - peripheral: Defibrillator found
+    ///   - advertisementData: Defibrillator advertisement data
+    ///   - RSSI: RSSI
     func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
@@ -91,6 +100,8 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         print("Found")
     }
     
+    
+    /// Update Bluetooth scan timer, scans for 10 seconds
     func updateTimer() {
         scanProgress += 0.01
         if scanProgress > Float(1){
@@ -100,6 +111,10 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     
+    
+    /// Check if device Bluetooth is on
+    ///
+    /// - Returns: if true Bluetooth is on
     func isBluetoothOn() -> Bool {
         if centralManager?.state == .poweredOn {
             return true
@@ -107,6 +122,7 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         return false
     }
     
+    /// Used to stop the current Bluetooth scan
     func stopScan() {
         if (isBluetoothOn()) {
             centralManager?.stopScan()
@@ -114,10 +130,15 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         }
     }
     
+    
+    /// Connect to defibrillator retrieved from Bluetooth scan
+    ///
+    /// - Parameter peripheral: peripheral to connect to
     func connectToDefibrillator(peripheral : CBPeripheral) {
         centralManager?.connect(peripheral, options: nil)
     }
     
+    /// Disconnect from currently connected Defibrillator
     func disconnectFromDefibrillator() {
         guard let peripherals = centralManager?.retrieveConnectedPeripherals(withServices: [BluetoothConstants.serviceUUID]) else { return }
         
@@ -128,6 +149,11 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
     }
     
     
+    /// Invoked when a connection is successfully created with a defibrillator
+    ///
+    /// - Parameters:
+    ///   - central: central manager providing this information
+    ///   - peripheral: defibrillator that has been connected to the system
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         currentPeripheral = peripheral
         currentPeripheral?.delegate = self
@@ -136,6 +162,12 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         discoverDefibrillatorServices()
     }
     
+    /// Invoked when an existing connection with a defibrillator is torn dow
+    ///
+    /// - Parameters:
+    ///   - central: central manager providing this information
+    ///   - peripheral: defibrillator that has been disconnected from the system
+    ///   - error: Description if error occurred
     func centralManager(_ central: CBCentralManager,
                         didDisconnectPeripheral peripheral: CBPeripheral,
                         error: Error?){

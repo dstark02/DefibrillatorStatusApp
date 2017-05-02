@@ -37,10 +37,15 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: Bluetooth Methods
     
+    /// Invoked when user toggles switch
+    ///
+    /// - Parameter sender: user tap
     @IBAction func switchToggled(_ sender: Any) {
         bluetoothInteraction()
     }
     
+    /// Begins bluetooth interactions, so scans for devices
+    /// If Bluetooth is off, user will be alerted to turn it on
     func bluetoothInteraction() {
         if bluetoothManager.isBluetoothOn() {
             bluetoothSwitch.isUserInteractionEnabled = false
@@ -57,6 +62,9 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: Delegate Callbacks
     
+    /// Invoked when the bluetooth state has changed
+    /// Used to update the view
+    /// - Parameter bluetoothState: i.e scanning, stopped, found device
     func bluetoothStateHasChanged(bluetoothState: BluetoothState) {
         
         switch bluetoothState {
@@ -74,10 +82,18 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    /// Invoked when the scan progress has updated
+    /// Updates the the progress bar on the view
+    /// - Parameter value: scan progress value
     func progressHasUpdated(value: Float) {
         progressView.setProgress(value, animated: true)
     }
     
+    /// Invoked when the password/serial has been retrieved from
+    /// the connected defibrillator, user must enter correct serial
+    /// to gain access to the data on the defibrillator
+    /// if incorrect user will be disconnected from device
+    /// - Parameter password: the password received from the device
     func passwordReceived(password: String) {
         var serialNoTextField: UITextField?
         let ac = UIAlertController(title: "Serial Number", message: titleForSerialAlert, preferredStyle: UIAlertControllerStyle.alert)
@@ -140,6 +156,7 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: Helper Methods
     
+    /// Helper method called when serial entered incorrectly, to update the view
     func incorrectSerialNo() {
         emptyDefibrillatorList()
         bluetoothScanView.isHidden = true
@@ -147,17 +164,20 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alertControllerHelper(title: "Incorrect Serial", message: "Please Wait for the Scan in Progress to Complete")
     }
     
+    /// Removes all defibrillators found from array that is used for the table
     func emptyDefibrillatorList() {
         if(!bluetoothManager.defibrillatorList.isEmpty) {
             bluetoothManager.defibrillatorList.removeAll()
         }
     }
     
+    /// Updates the view when scanning
     func updateScanningView() {
         scanLabel.text = "SCANNING"
         scanLabel.isHidden = false
     }
     
+    /// Updates the view when scanning has stopped
     func updateStoppedScanningView() {
         bluetoothSwitch.setOn(false, animated: true)
         scanLabel.text = "FINISHED SCAN, RETRY IF NO DEVICES LISTED"
@@ -165,6 +185,16 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: AlertController Helper
     
+    /// Helper method to present alerts to the user, i.e message box
+    ///
+    /// - Parameters:
+    ///   - title: title of alert
+    ///   - message: message of alert
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - title: <#title description#>
+    ///   - message: <#message description#>
     func alertControllerHelper(title: String, message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -173,6 +203,11 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: Segue
     
+    /// Takes user to event list screen
+    /// Passes the bluetoothManager object to the next controller
+    /// - Parameters:
+    ///   - segue: segue
+    ///   - sender: user entered correct serial
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "eventListSegue") {
             let svc = segue.destination as! EventListController;

@@ -25,11 +25,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    /// Invoked when user taps login button
+    /// Attempts to log user in, if fails it will alert the user
+    /// - Parameter sender: <#sender description#>
     @IBAction func didTapLogin(_ sender: Any) {
         if isCorrectCredentials() {
             performSegue(withIdentifier: "loginSuccess", sender: nil)
         } else {
-            let ac = UIAlertController(title: "Login failed", message: "Invalid Credentails", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Login failed", message: "Invalid Credentials", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         }
@@ -44,6 +47,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    /// Attempts to authenticate user, if it can it will take user into application
+    /// If not user will be alerted that the login has failed
     func authenticateUser() {
         let context = LAContext()
         var error: NSError?
@@ -67,6 +72,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    /// Checks if users credentials are valid
+    ///
+    /// - Returns: True if valid, false if invalid
     func isCorrectCredentials() -> Bool {
         if username.text == "testuser" && password.text == "password" {
             return true

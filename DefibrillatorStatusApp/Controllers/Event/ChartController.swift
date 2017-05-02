@@ -38,16 +38,28 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Action Methods
     
+    /// Invoked when user taps resize chart button
+    ///
+    /// - Parameter sender: user tap
     @IBAction func resizeTapped(_ sender: Any) {
         resizeChart()
     }
     
+    /// Invoked when user interacts with slider
+    /// Moves the chart with the approriate slider value
+    /// - Parameter sender: slider that user is interacting view
     @IBAction func sliderInteraction(_ sender: UISlider) {
         traceView.moveViewToX(Double(timeSlider.value))
     }
     
     // MARK: Chart Delegate Methods
     
+    /// Invoked when chart has been moved
+    /// Updates slider
+    /// - Parameters:
+    ///   - chartView: chartView
+    ///   - dX: x co-ordinate
+    ///   - dY: y co-ordinate
     func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
         
         if timeSlider.isTouchInside { return }
@@ -65,6 +77,11 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Chart Setup
     
+    /// Sets the data for the chart to display
+    ///
+    /// - Parameters:
+    ///   - ecgPoints: An array of ECG samples to place on the charts
+    ///   - markers: An array of markers to place on the charts
     func setChartData(ecgPoints: [UInt16], markers: [Marker]) {
         var chartValues = [ChartDataEntry]()
         for i in 0 ..< ecgPoints.count {
@@ -85,6 +102,12 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Setup Helpers
     
+    /// Helper method to customize the chart
+    ///
+    /// - Parameters:
+    ///   - lineData: data for the ECG line
+    ///   - markers: Array of markers
+    ///   - ecgLine: Actual ECG line
     func setupTraceView(lineData: LineChartData, markers: [Marker], ecgLine: LineChartDataSet) {
         
         // Line formatting
@@ -115,6 +138,11 @@ class ChartController: UIViewController, ChartViewDelegate {
         traceView.highlightPerTapEnabled = false
     }
     
+    /// Helper method to place markers on chart
+    ///
+    /// - Parameters:
+    ///   - markers: Array of markers to place on chart
+    ///   - ecgLine: ECG Line that markers will be placed on
     func setupMarkers(markers: [Marker], ecgLine: LineChartDataSet) {
         let marker = BalloonMarker(color: Colour.HeartSineBlue, font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 20.0))
         marker.minimumSize = CGSize (width: 50, height: 50)
@@ -131,7 +159,7 @@ class ChartController: UIViewController, ChartViewDelegate {
         let index = ecgLine.values.index(where: { $0.y == ecgLine.yMax })
         
         if let x = index {
-            highlights.append(Highlight(x: Double(x), y: ecgLine.yMax, dataSetIndex: 0, label: "SHOCK\nTime: " + TimeCalculator.calculateTime(sample: UInt32(x))))
+            highlights.append(Highlight(x: Double(x), y: ecgLine.yMax, dataSetIndex: 0, label: "SHOCK\nTime: " + TimeCalculator.calculateTime(sampleIndex: UInt32(x))))
             CurrentEventProvider.markers?.append(Marker(markerCode: 4, markerValue: 0, markerSample: UInt32(x)))
             CurrentEventProvider.markers?.sort {
                 return $0.markerSample < $1.markerSample
@@ -140,6 +168,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         traceView.highlightValues(highlights)
     }
     
+    /// Helper method to set the image and maximum value of the the slider
+    ///
+    /// - Parameter dataPointsCount: Maximum amount of data points
     func timeSliderSetup(dataPointsCount: Int) {
         timeSlider.maximumValue = Float(dataPointsCount)
         timeSlider.value = 0
@@ -148,6 +179,8 @@ class ChartController: UIViewController, ChartViewDelegate {
     
     // MARK: Resize Chart
     
+    /// Resizes chart, if chart is original size it will expand
+    /// Else, it will shrink the chart
     func resizeChart() {
         if traceView.frame.size.height != view.frame.height {
             UIView.transition(with: traceView, duration: 1.0, options: .curveEaseInOut, animations: {
@@ -165,6 +198,9 @@ class ChartController: UIViewController, ChartViewDelegate {
         }
     }
     
+    /// Toggles visibility of slider when chart is resized
+    ///
+    /// - Parameter off: if true hide, false = show
     func toggleComponents(off: Bool) {
         timeSlider.isHidden = off
     }

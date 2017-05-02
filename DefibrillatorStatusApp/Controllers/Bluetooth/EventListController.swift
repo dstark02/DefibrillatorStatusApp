@@ -30,6 +30,10 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: CharacteristicState Method
     
+    /// Invoked when characteristic state has updated
+    /// If app has discovered data from defibrillator
+    /// Used to update view
+    /// - Parameter characteristicState: state i.e found data, data has updated
     func characteristicStateHasChanged(characteristicState: CharacteristicState) {
         
         switch characteristicState {
@@ -72,6 +76,11 @@ class EventListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK : Segue
     
+    /// Takes user to download screen
+    /// Passes the bluetoothManager object to the next controller
+    /// - Parameters:
+    ///   - segue: segue
+    ///   - sender: user selected event
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "downloadSegue") {
             let svc = segue.destination as! DownloadEventController;

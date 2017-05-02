@@ -11,6 +11,10 @@ import RealmSwift
 
 class DataParser {
     
+    /// Filter the event data received from defibrillator
+    /// Parses the data to plot on the chart
+    /// - Parameter event: Event object
+    /// - Returns: UInt16 array of ECG samples to plot and an array of markers, to place on chart
     static func filter(event: Event) -> ([UInt16], [Marker]) {
         
         var ecgData = [UInt16]()
