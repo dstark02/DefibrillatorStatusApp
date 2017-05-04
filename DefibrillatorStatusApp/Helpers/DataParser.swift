@@ -34,9 +34,11 @@ class DataParser {
             
             if markerByte == UInt16(128) && pageByte == 0 {
                 
-                print("MarkerData")
+                // Parse Marker Data
+                
                 var byteIndex = 4
                 
+                // Marker Page = 256 Bytes
                 let markerPage = (event.ecgs[dataIndex].ecg + event.ecgs[dataIndex + 1].ecg
                     + event.ecgs[dataIndex + 2].ecg + event.ecgs[dataIndex + 3].ecg)
                 
@@ -45,28 +47,41 @@ class DataParser {
                     if byteIndex + 10 > markerPage.count {
                         break
                     }
+                    // Marker = 10 bytes
+                    
+                    // 2 Bytes
                     var markerCode = UInt16(0)
                     (markerPage as NSData).getBytes(&markerCode, range: NSMakeRange(byteIndex, 2))
+                    // Value must be converted to Big-Endian
                     let biMarkerCode = CFSwapInt16HostToBig(markerCode)
                     print(biMarkerCode)
                     byteIndex += 2
+                    
+                    // 4 Bytes
                     var markerValue = UInt32(0)
                     (markerPage as NSData).getBytes(&markerValue, range: NSMakeRange(byteIndex, 4))
+                    // Value must be converted to Big-Endian
                     let biMarkerValue = CFSwapInt32HostToBig(markerValue)
                     byteIndex += 4
+                    
+                    // 4 Bytes
                     var markerSample = UInt32(0)
                     (markerPage as NSData).getBytes(&markerSample, range: NSMakeRange(byteIndex, 4))
+                    // Value must be converted to Big-Endian
                     let biMarkerSample = CFSwapInt32HostToBig(markerSample)
                     byteIndex += 4
                     
+                    // If Marker exists in marker dictionary, add it to the array of markers
                     if Marker.markerDictionary.index(forKey: biMarkerCode) != nil {
                         markerData.append(Marker(markerCode: biMarkerCode, markerValue: biMarkerValue, markerSample: biMarkerSample))
                     }
                 }
-                
+                // Move onto next page of data
                 dataIndex += 4
                 
             } else {
+                
+                // Parse ECG Data
                 
                 if pageChecker % 4 == 0 {
                     isNewPage = true

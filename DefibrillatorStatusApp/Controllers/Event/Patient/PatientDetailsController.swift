@@ -38,10 +38,16 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Action Methods
     
+    /// Invoked when user taps save button
+    ///
+    /// - Parameter sender: user tap
     @IBAction func saveButtonTapped(_ sender: Any) {
         savePatient()
     }
     
+    /// Invoked when used has interacted with datePicker
+    ///
+    /// - Parameter sender: user interaction
     @IBAction func datePickerChanged(_ sender: Any) {
         datePickerChanged()
     }
@@ -106,6 +112,9 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Patient Methods
     
+    /// Retrieves patient object that was saved for this event
+    /// If patient details haven't yet been saved, it will return nil
+    /// - Returns: Patient or nil
     func getCurrentPatient() -> Patient? {
         if !savedPatients.isEmpty {
             if let i = savedPatients.index(where: { $0.event == CurrentEventProvider.currentEvent }) {
@@ -115,6 +124,9 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         return nil
     }
     
+    /// Used to saved patient details
+    /// Retrieves data inputed into the table cells and creates a Patient Object
+    /// This object is then persisted to the database and user will be alerted
     func savePatient() {
         if !detailsValid() {
             alertControllerHelper(title: "Details Invalid", message: "You have missed out some details")
@@ -146,6 +158,7 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Helper Methods
     
+    /// Sets the DOB cell to value of datepicker
     func datePickerChanged() {
         let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
         let datePickerCell = patientTable.cellForRow(at: IndexPath(row: 3, section: 0)) as! DatePickerCell
@@ -158,6 +171,9 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         patientTable.endUpdates()
     }
     
+    /// Checks if the details entered are valid
+    ///
+    /// - Returns: true if valid, false if invalid
     func detailsValid() -> Bool {
         let nameCell = patientTable.cellForRow(at: IndexPath(row: 0, section: 0)) as! NameCell
         let dobCell = patientTable.cellForRow(at: IndexPath(row: 2, section: 0)) as! DOBCell
@@ -168,6 +184,11 @@ class PatientDetailsController: UIViewController, UITableViewDelegate, UITableVi
         return true
     }
     
+    /// Helper method to display alert to user (messagebox)
+    ///
+    /// - Parameters:
+    ///   - title: title of alert
+    ///   - message: message of alert
     func alertControllerHelper(title: String, message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))

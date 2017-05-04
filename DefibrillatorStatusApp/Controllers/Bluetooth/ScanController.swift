@@ -190,11 +190,6 @@ class ScanController: UIViewController, UITableViewDelegate, UITableViewDataSour
     /// - Parameters:
     ///   - title: title of alert
     ///   - message: message of alert
-    /// <#Description#>
-    ///
-    /// - Parameters:
-    ///   - title: <#title description#>
-    ///   - message: <#message description#>
     func alertControllerHelper(title: String, message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
