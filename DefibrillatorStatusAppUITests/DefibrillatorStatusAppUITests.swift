@@ -32,7 +32,7 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         let passwordSecureTextField = app.secureTextFields["Password"]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText("password")
-        
+        app.otherElements.containing(.staticText, identifier:"AED STATUS").element.tap()
         app.buttons["Log In"].tap()
         
         XCTAssert(app.navigationBars["Find Defibrillator"].staticTexts["Find Defibrillator"].exists)
