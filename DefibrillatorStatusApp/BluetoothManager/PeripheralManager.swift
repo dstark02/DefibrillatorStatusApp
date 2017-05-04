@@ -13,7 +13,6 @@ extension BluetoothManager {
     
     // MARK : Peripheral Methods
     
-    
     /// Discover services from connected Defibrillator
     func discoverDefibrillatorServices() {
         currentPeripheral?.discoverServices([BluetoothConstants.serviceUUID])

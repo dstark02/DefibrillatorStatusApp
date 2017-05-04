@@ -63,7 +63,6 @@ class BluetoothManager: NSObject, BluetoothManagerProtocol, CBCentralManagerDele
         downloadComplete = false
         downloadProgress = 0
         fileLength = 0
-        //date = nil
         defibrillatorList = [CBPeripheral]()
         eventList = [String]()
         event = Event()

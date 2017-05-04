@@ -41,6 +41,7 @@
 		D33DCCB11E2FFF25002C4D11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DCCB01E2FFF25002C4D11 /* Event.swift */; };
 		D34376091E81EA2100BE228E /* SegmentedControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */; };
 		D34EB39D1E39302600735300 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EB39C1E39302600735300 /* Colour.swift */; };
+		D35097471EBA3516002EF294 /* CurrentEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35097461EBA3516002EF294 /* CurrentEventTests.swift */; };
 		D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E79CE1E7C371300033BAC /* PatientTests.swift */; };
 		D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389A2A51E7EDA0A00C854C3 /* EventTests.swift */; };
 		D38D18241EA12EC300F7BC13 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38D18221EA12EC300F7BC13 /* Realm.framework */; };
@@ -149,6 +150,7 @@
 		D33DCCB01E2FFF25002C4D11 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D34376081E81EA2100BE228E /* SegmentedControllerPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerPreview.swift; sourceTree = "<group>"; };
 		D34EB39C1E39302600735300 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		D35097461EBA3516002EF294 /* CurrentEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventTests.swift; sourceTree = "<group>"; };
 		D37E79CE1E7C371300033BAC /* PatientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientTests.swift; sourceTree = "<group>"; };
 		D389A2A51E7EDA0A00C854C3 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		D38D18221EA12EC300F7BC13 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				D389A2A51E7EDA0A00C854C3 /* EventTests.swift */,
 				D3F4452B1E82EAEA00233DA1 /* BluetoothScanTests.swift */,
 				D3B9D0AC1E82F6FA007C2BB0 /* EventListTests.swift */,
+				D35097461EBA3516002EF294 /* CurrentEventTests.swift */,
 			);
 			path = DefibrillatorStatusAppTests;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 			files = (
 				D3B9D0AD1E82F6FA007C2BB0 /* EventListTests.swift in Sources */,
 				D328C3251DB80B3200E3485B /* DownloadTests.swift in Sources */,
+				D35097471EBA3516002EF294 /* CurrentEventTests.swift in Sources */,
 				D3F4452C1E82EAEA00233DA1 /* BluetoothScanTests.swift in Sources */,
 				D389A2A61E7EDA0A00C854C3 /* EventTests.swift in Sources */,
 				D37E79CF1E7C371300033BAC /* PatientTests.swift in Sources */,

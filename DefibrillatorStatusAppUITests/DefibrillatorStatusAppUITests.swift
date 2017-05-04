@@ -75,7 +75,14 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(eventInfoButton.exists)
     }
     
-    func testEventInformationNavigationAndExists() {
+    func testChartControllerBackNavigation() {
+        testChartControllerExists()
+        
+        app.navigationBars["DefibrillatorStatusApp.Segmented"].buttons["Saved Events"].tap()
+        XCTAssert(app.navigationBars["Saved Events"].staticTexts["Saved Events"].exists)
+    }
+    
+    func testEventInformationExists() {
         testChartControllerExists()
         
         app.buttons["Event Information"].tap()
@@ -89,9 +96,9 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(tablesQuery.staticTexts["Patient Information"].exists)
     }
     
-    func testPatientNavigationAndExists() {
+    func testPatientControllerExists() {
         
-        testEventInformationNavigationAndExists()
+        testEventInformationExists()
         
         app.tables.staticTexts["Patient Information"].tap()
         let tablesQuery = app.tables
@@ -100,10 +107,28 @@ class DefibrillatorStatusAppUITests: XCTestCase {
         XCTAssert(tablesQuery.staticTexts["D.O.B"].exists)
     }
     
-    func testEventLogNavigationAndExists() {
-        testEventInformationNavigationAndExists()
+    func testPatientBackNavigation() {
+        
+        testPatientControllerExists()
+        
+        let backButton = app.navigationBars["DefibrillatorStatusApp.PatientDetails"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0)
+        backButton.tap()
+        let tablesQuery = app.tables
+        XCTAssert(tablesQuery.staticTexts["Event Information"].exists)
+    }
+    
+    func testEventLogNavigation() {
+        testEventInformationExists()
         app.tables.staticTexts["Event Log"].tap()
         XCTAssert(app.tables.staticTexts["Event Log"].exists)
+    }
+    
+    func testEventLogBackNavigation() {
+        testEventLogNavigation()
+       
+        app.navigationBars["DefibrillatorStatusApp.EventLog"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0).tap()
+        XCTAssert(app.tables.staticTexts["Event Information"].exists)
+        
     }
     
 }

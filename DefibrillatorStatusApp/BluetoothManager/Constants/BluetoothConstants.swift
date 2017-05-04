@@ -10,7 +10,6 @@ import Foundation
 import CoreBluetooth
 
 struct BluetoothConstants {
-    static let deviceSerialNumber = "12A345678910"
     static let serviceUUID = CBUUID(string: "7776A332-27D8-44DE-B92B-97AC0FAD7690")
     static let passwordCharacteristicUUID = CBUUID(string: "7776A332-27D8-44DE-B92B-97AC0FAD7691")
     static let eventListCharacteristicUUID = CBUUID(string: "7776A332-27D8-44DE-B92B-97AC0FAD7692")
